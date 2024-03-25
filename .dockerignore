@@ -1,0 +1,28 @@
+# Ignore development environment files
+.gitignore
+.npmrc
+.env
+.env.local
+.env.development
+.env.production
+
+# Ignore test and coverage files
+**/*.test.js
+**/*.test.ts
+**/*.spec.js
+**/*.spec.ts
+**/coverage/*
+
+# Ignore documentation and build artifacts
+**/docs/*
+**/build/*
+
+# Ignore logs and temporary files
+**/logs/*
+**/tmp/*
+**/cache/*
+
+# Ignore sensitive data
+**/secrets/*
+**/passwords/*
+**/keys/*
