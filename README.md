@@ -1,6 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Read me
 
-# Project Documentation
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Scripts
 
@@ -50,6 +50,9 @@ Configure your project with environment variables in a `.env.local` file at the 
 
 # Development API
 NEXT_PUBLIC_API_HOST="http://localhost:3001"
+
+# Site URL. Used for sitemap
+SITE_URL="https://ziti.io"
 ```
 
 Uncomment the relevant line for your development or production environment.
