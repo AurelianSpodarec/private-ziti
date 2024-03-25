@@ -1,36 +1,75 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Project Documentation
 
-First, run the development server:
+## Scripts
+
+Run these scripts from the command line to manage your project:
+
+### Development
+
+Starts the development server, allowing live reloading for a smoother development experience.
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Access the development server at http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Compiles the application into static output files optimized for production.
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Runs the compiled app in production mode. Remember to build your app with `npm run build` first.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+npm run start
+```
 
-## Deploy on Vercel
+### Lint
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Runs the linter to catch issues and enforce code style guidelines.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+npm run lint
+```
+
+## Environment Variables
+
+Configure your project with environment variables in a `.env.local` file at the root:
+
+```plaintext
+# Production API
+# NEXT_PUBLIC_API_HOST="https://ziti.io:8080"
+
+# Development API
+NEXT_PUBLIC_API_HOST="http://localhost:3001"
+```
+
+Uncomment the relevant line for your development or production environment.
+
+## Docker Deployment
+
+Build a Docker image for the project using:
+
+```shell
+docker build -t ziti.io:latest .
+```
+
+## Coding Standards
+
+Begin all files with a comment specifying the path and filename, enhancing readability and maintainability:
+
+```javascript
+// src/path/to/file/filename.js
+```
+
+## Documentation
+
+Access the documentation at: https://ziti.atlassian.net/wiki/spaces/ZAD/overview?homepageId=12648669
