@@ -53,6 +53,9 @@ NEXT_PUBLIC_API_HOST="http://localhost:3001"
 
 # Site URL. Used for sitemap
 SITE_URL="https://ziti.io"
+
+# Mixpanel Token
+NEXT_PUBLIC_MIXPANEL_TOKEN=""
 ```
 
 Uncomment the relevant line for your development or production environment.
