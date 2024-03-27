@@ -13,5 +13,5 @@ export function initializeMixpanel(): void {
   mixpanel.init(token, { debug: true, track_pageview: true, persistence: 'localStorage' });
 }
 
-// Export mixpanel to be used throughout your application
+// Export mixpanel to be used by src/app/components/MixpanelInitializer.tsx
 export default mixpanel;
