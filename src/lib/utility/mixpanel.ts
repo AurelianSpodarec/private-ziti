@@ -4,9 +4,9 @@ import mixpanel from 'mixpanel-browser';
 
 // Function to initialize Mixpanel with token from environment variable
 export function initializeMixpanel(): void {
-  const token = process.env.MIXPANEL_TOKEN;
+  const token = process.env.NEXT_PUBLIC_MIXPANEL_TOKEN;
   if (!token) {
-    console.warn('MIXPANEL_TOKEN is not set in the environment. Mixpanel has not been initialized.');
+    console.warn('NEXT_PUBLIC_MIXPANEL_TOKEN is not set in the environment. Mixpanel has not been initialized.');
     return;
   }
   
