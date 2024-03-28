@@ -7,7 +7,8 @@ RUN npm ci
 COPY . .
 # Set environment variable during image build 
 ENV NEXT_PUBLIC_API_HOST="https://ziti.io:8080/api/v1"
-# ENV NEXT_PUBLIC_API_HOST="http://web-nginx:8080/api/v1"
+ENV NEXT_PUBLIC_MIXPANEL_TOKEN="822fc869cabe34d3a7d3d3d2fef6a87d"
+ENV SITE_URL="https://ziti.io"
 RUN npm run build
 
 # Production stage
