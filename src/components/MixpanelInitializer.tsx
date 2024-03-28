@@ -2,15 +2,16 @@
 
 'use client'
 
-import React, { useEffect } from 'react';
-import { initializeMixpanel } from '@/lib/utility/mixpanel';
+import type React from 'react'
+import { useEffect } from 'react'
+import { initializeMixpanel } from '@/lib/utility/mixpanel'
 
 const MixpanelInitializer: React.FC = () => {
   useEffect(() => {
-    initializeMixpanel();
-  }, []);
+    initializeMixpanel()
+  }, [])
 
-  return null;
-};
+  return null
+}
 
-export default MixpanelInitializer;
+export default MixpanelInitializer
