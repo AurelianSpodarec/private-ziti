@@ -28,6 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "**./*.js",
+    "**/*.jsx",
     "*.js",
     "next.config.mjs"
   ],
