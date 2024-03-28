@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@sentry/nextjs": "^7.108.0",
+    "@sentry/nextjs": "^7.109.0",
     "jwt-decode": "^4.0.0",
     "mixpanel-browser": "^2.49.0",
     "next": "14.1.4",
