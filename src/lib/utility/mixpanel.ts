@@ -21,8 +21,6 @@ export function initializeMixpanel (): void {
     track_pageview: true,
     persistence: 'localStorage'
   })
-
-  console.log('Mixpanel has been initialized.')
 }
 
 export default mixpanel
