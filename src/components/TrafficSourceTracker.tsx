@@ -18,7 +18,7 @@ const getSourceInfo = (): {
   let sourceType = 'Direct' // Default to direct if no other source is found
   const campaign = utmCampaign ?? ''
 
-  if (utmSource !== undefined && utmMedium !== undefined) {
+  if (utmSource !== null && utmMedium !== null) {
     sourceType = `${utmMedium} - ${utmSource}` // Combining Medium and Source for more detailed tracking
   } else if (referrer.includes('google') || referrer.includes('bing') || referrer.includes('yahoo') || referrer.includes('baidu') || referrer.includes('yandex') || referrer.includes('duckduckgo')) {
     sourceType = 'Organic Search'
