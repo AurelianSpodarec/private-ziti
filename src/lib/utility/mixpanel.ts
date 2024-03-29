@@ -10,7 +10,7 @@ export function initializeMixpanel (): void {
     return
   }
 
-  mixpanel.init(token, { debug: true, track_pageview: true, persistence: 'localStorage' })
+  mixpanel.init(token, { api_host: 'https://ziti.io/mixpanel', debug: true, track_pageview: true, persistence: 'localStorage' })
 }
 
 // Export mixpanel to be used by src/app/components/MixpanelInitializer.tsx
