@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import mixpanel from 'mixpanel-browser'
 
 interface SourceInfo {
-  sourceType: string
+  SourceType: string
   Source?: string
   Medium?: string
   Campaign?: string
@@ -23,18 +23,18 @@ const getSourceInfo = (): SourceInfo => {
   const utmTerm = urlParams.get('utm_term') // running+shoes
   const referrer = document.referrer
 
-  const sourceType = 'Direct' // Default to direct if no other source is found
-  const info: SourceInfo = { sourceType }
+  const SourceType = 'Direct' // Default to direct if no other source is found
+  const info: SourceInfo = { SourceType }
   const paidMediums = ['cpc', 'ppc', 'cpm', 'paidsearch']
 
   if (utmMedium !== null && paidMediums.includes(utmMedium)) {
-    info.sourceType = 'Paid'
+    info.SourceType = 'Paid'
   } else if (['google', 'bing', 'yahoo', 'baidu', 'yandex', 'duckduckgo'].some(domain => referrer.includes(domain))) {
-    info.sourceType = 'Organic Search'
+    info.SourceType = 'Organic Search'
   } else if (['facebook', 'tiktok', 'instagram', 'twitter', 'linkedin', 'warpcast', 'reddit'].some(domain => referrer.includes(domain))) {
-    info.sourceType = 'Social Media'
+    info.SourceType = 'Social Media'
   } else if (referrer !== '') {
-    info.sourceType = 'Referral'
+    info.SourceType = 'Referral'
   }
 
   // Only add to the info object if they are present
@@ -51,11 +51,11 @@ const TrafficSourceTracker = (): null => {
   useEffect(() => {
     // Only track in production environment
     if (process.env.NODE_ENV === 'production') {
-      const { sourceType, Source, Medium, Campaign, Content, Term } = getSourceInfo()
+      const { SourceType, Source, Medium, Campaign, Content, Term } = getSourceInfo()
 
       // Dispatch this information to your analytics service
       mixpanel.track_pageview({
-        sourceType,
+        SourceType,
         ...(Source !== null && Source !== '' ? { Source } : {}),
         ...(Medium !== null && Medium !== '' ? { Medium } : {}),
         ...(Campaign !== null && Campaign !== '' ? { Campaign } : {}),
