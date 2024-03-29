@@ -8,8 +8,9 @@ import MixpanelInitializer from '../components/MixpanelInitializer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: '',
-  description: ''
+  title: 'Discover, Connect, Invest - Ziti.io ',
+  description: 'Explore global property listings, connect with experts, and invest confidently worldwide with Ziti.',
+  robots: 'noindex'
 }
 
 export default function RootLayout ({
