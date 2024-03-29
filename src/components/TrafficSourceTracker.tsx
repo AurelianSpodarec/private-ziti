@@ -22,7 +22,7 @@ const getSourceInfo = (): {
     sourceType = `${utmMedium} - ${utmSource}` // Combining Medium and Source for more detailed tracking
   } else if (referrer.includes('google') || referrer.includes('bing') || referrer.includes('yahoo') || referrer.includes('baidu') || referrer.includes('yandex') || referrer.includes('duckduckgo')) {
     sourceType = 'Organic Search'
-  } else if (referrer.includes('facebook') || referrer.includes('tiktok') || referrer.includes('instagram') || referrer.includes('twitter') || referrer.includes('linkedin') || referrer.includes('warpcast')) {
+  } else if (referrer.includes('facebook') || referrer.includes('tiktok') || referrer.includes('instagram') || referrer.includes('twitter') || referrer.includes('linkedin') || referrer.includes('warpcast') || referrer.includes('reddit')) {
     sourceType = 'Social Media'
   } else if (referrer !== '') {
     sourceType = 'Referral'
@@ -36,7 +36,6 @@ const TrafficSourceTracker = (): null => {
     // Only track in production environment
     if (process.env.NODE_ENV === 'production') {
       const { sourceType, campaign } = getSourceInfo()
-      console.log('User Source Type:', sourceType, 'Campaign:', campaign)
 
       // Dispatch this information to your analytics service
       mixpanel.track_pageview({ sourceType, campaign })
