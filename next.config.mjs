@@ -23,7 +23,30 @@ const nextConfig = {
       }
     ]
   },
-  poweredByHeader: false
+  poweredByHeader: false,
+  rewrites: async () => {
+    return {
+      beforeFiles: [
+        {
+          source: '/monitoring',
+          has: [
+            {
+              type: 'query',
+              key: 'o',
+              value: '(?<orgid>.*)'
+            },
+            {
+              type: 'query',
+              key: 'p',
+              value: '(?<projectid>.*)'
+            }
+          ],
+          destination:
+              'https://o:orgid.ingest.sentry.io/api/:projectid/envelope/'
+        }
+      ]
+    }
+  }
 }
 
 export default withSentryConfig(nextConfig, {
