@@ -5,44 +5,67 @@
 import { useEffect } from 'react'
 import mixpanel from 'mixpanel-browser'
 
-const getSourceInfo = (): {
+interface SourceInfo {
   sourceType: string
-  campaign: string
-} => {
+  Source?: string
+  Medium?: string
+  Campaign?: string
+  Content?: string
+  Term?: string
+}
+
+const getSourceInfo = (): SourceInfo => {
   const urlParams = new URLSearchParams(window.location.search)
-  const utmSource = urlParams.get('utm_source')
-  const utmMedium = urlParams.get('utm_medium')
-  const utmCampaign = urlParams.get('utm_campaign')
+  const utmSource = urlParams.get('utm_source') // editor
+  const utmMedium = urlParams.get('utm_medium') // link
+  const utmCampaign = urlParams.get('utm_campaign') // designshare
+  const utmContent = urlParams.get('utm_content') // header-image
+  const utmTerm = urlParams.get('utm_term') // running+shoes
   const referrer = document.referrer
 
-  let sourceType = 'Direct' // Default to direct if no other source is found
-  const campaign = utmCampaign ?? ''
+  const sourceType = 'Direct' // Default to direct if no other source is found
+  const info: SourceInfo = { sourceType }
+  const paidMediums = ['cpc', 'ppc', 'cpm', 'paidsearch']
 
-  if (utmSource !== null && utmMedium !== null) {
-    sourceType = `${utmMedium} - ${utmSource}` // Combining Medium and Source for more detailed tracking
-  } else if (referrer.includes('google') || referrer.includes('bing') || referrer.includes('yahoo') || referrer.includes('baidu') || referrer.includes('yandex') || referrer.includes('duckduckgo')) {
-    sourceType = 'Organic Search'
-  } else if (referrer.includes('facebook') || referrer.includes('tiktok') || referrer.includes('instagram') || referrer.includes('twitter') || referrer.includes('linkedin') || referrer.includes('warpcast') || referrer.includes('reddit')) {
-    sourceType = 'Social Media'
+  if (utmMedium !== null && paidMediums.includes(utmMedium)) {
+    info.sourceType = 'Paid'
+  } else if (['google', 'bing', 'yahoo', 'baidu', 'yandex', 'duckduckgo'].some(domain => referrer.includes(domain))) {
+    info.sourceType = 'Organic Search'
+  } else if (['facebook', 'tiktok', 'instagram', 'twitter', 'linkedin', 'warpcast', 'reddit'].some(domain => referrer.includes(domain))) {
+    info.sourceType = 'Social Media'
   } else if (referrer !== '') {
-    sourceType = 'Referral'
+    info.sourceType = 'Referral'
   }
 
-  return { sourceType, campaign }
+  // Only add to the info object if they are present
+  if (utmSource !== null) info.Source = utmSource
+  if (utmMedium !== null) info.Medium = utmMedium
+  if (utmCampaign !== null) info.Campaign = utmCampaign
+  if (utmContent !== null) info.Content = utmContent
+  if (utmTerm !== null) info.Term = utmTerm
+
+  return info
 }
 
 const TrafficSourceTracker = (): null => {
   useEffect(() => {
     // Only track in production environment
     if (process.env.NODE_ENV === 'production') {
-      const { sourceType, campaign } = getSourceInfo()
+      const { sourceType, Source, Medium, Campaign, Content, Term } = getSourceInfo()
 
       // Dispatch this information to your analytics service
-      mixpanel.track_pageview({ sourceType, campaign })
+      mixpanel.track_pageview({
+        sourceType,
+        ...(Source !== null && Source !== '' ? { Source } : {}),
+        ...(Medium !== null && Medium !== '' ? { Medium } : {}),
+        ...(Campaign !== null && Campaign !== '' ? { Campaign } : {}),
+        ...(Content !== null && Content !== '' ? { Content } : {}),
+        ...(Term !== null && Term !== '' ? { Term } : {})
+      })
     }
   }, [])
 
-  return null // This component does not render anything
+  return null
 }
 
 export default TrafficSourceTracker
