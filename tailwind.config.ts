@@ -1,10 +1,10 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
 const config: Config = {
   darkMode: ['class'],
   content: [
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}"
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   prefix: '',
   theme: {
@@ -36,7 +36,7 @@ const config: Config = {
           PG100: '#244E4D',
           PG8L: '#EDF1F1'
         },
-        'jungle-geen':{
+        'jungle-geen': {
           JG42D: '#0E413C',
           JG54D: '#114F48',
           JG60D: '#145D55',
@@ -45,7 +45,7 @@ const config: Config = {
           JG71L: '#6CBDB4',
           JG13L: '#E2F2F0'
         },
-        'gulf-stream':{
+        'gulf-stream': {
           GS66L: '#B4CFCB',
           GS42L: '#CFE0DE',
           GS31L: '#DCE8E7',
@@ -54,7 +54,7 @@ const config: Config = {
           GS8L: '#F6F9F9',
           GS2L: '#FDFEFD'
         },
-        'blck-blue':{
+        'blck-blue': {
           BB48D: '#0E171C',
           BB82D: '#182730',
           BB77D: '#16242D',
@@ -173,8 +173,8 @@ const config: Config = {
                 background: '#1D2F3B'
               }
             }
-            }
-          },
+          }
+        },
         // Light theme specific colors
         light: {
           background: '#FDFDFD',
@@ -282,12 +282,11 @@ const config: Config = {
                 background: '#CFE0DE'
               }
             }
-            }
           }
-        },
-      },
+        }
+      }
     }
   },
-  plugins: [],
-};
-export default config;
+  plugins: []
+}
+export default config
