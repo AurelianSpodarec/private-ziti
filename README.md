@@ -44,21 +44,26 @@ npm run lint
 
 Configure your project with environment variables in a `.env.local` file at the root:
 
-```plaintext
-# Production API
-# NEXT_PUBLIC_API_HOST="https://ziti.io:8080"
+(Uncomment the relevant API line for development or production environment.)
 
+```plaintext
 # Development API
 NEXT_PUBLIC_API_HOST="http://localhost:3001"
 
-# Site URL. Used for sitemap
+# Production API
+# NEXT_PUBLIC_API_HOST="https://ziti.io:8080"
+
+# Sentry.io
+NEXT_PUBLIC_SENTRY_DSN=""
+SENTRY_ORG=""
+SENTRY_PROJECT=""
+
+# Site URL - Used for sitemap
 SITE_URL="https://ziti.io"
 
-# Mixpanel Token
+# Mixpanel Token - Only used in NODE_ENV: production
 NEXT_PUBLIC_MIXPANEL_TOKEN=""
 ```
-
-Uncomment the relevant line for your development or production environment.
 
 ## Docker Deployment
 
