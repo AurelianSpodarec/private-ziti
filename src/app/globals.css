@@ -2,14 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+:root {
+  /* Oceanic Forest */
+  --OF-71D: #15212a;
+  --OF-82D: #1e403f;
+  --OF-100: #244e4d;
+  --OF-54L: #899f9f;
+  --OF-8L: #edf1f1;
+
+  /* Jungle Green */
+  --JG-42D: #0e413c;
+  --JG-54D: #114f48;
+  --JG-60D: #145d55;
+  --JG-89D: #1d8a7e;
+  --JG-77L: #54b2a8;
+  --JG-71L: #6cbdb4;
+  --JG-13L: #e2f2f0;
+
+  /* Gulf Stream */
+  --GS-66L: #b4cfcb;
+  --GS-42L: #cfe0de;
+  --GS-31L: #dce8e7;
+  --GS-25L: #e3edeb;
+  --GS-13L: #f0f6f5;
+  --GS-8L: #f6f9f9;
+  --GS-2L: #fdfefd;
+
+  /* Black Blue */
+  --BB-48D: #0e171c;
+  --BB-82D: #182730;
+  --BB-77D: #16242d;
+  --BB-100: #1d2f3b;
+  --BB-89L: #364651;
+  --BB-77L: #515f68;
+  --BB-66L: #6a767e;
+  --BB-48L: #939ca1;
+  --BB-42L: #a0a8ad;
+  --BB-25L: #c7cbce;
+
+  /* Stroke */
+  --S-000: #47dff3; /* Custom variable */
+
+  /* Atoll Blue */
+  --AB-2L: #fdfdfd;
+
+  /* Green */
+  --G-10L: #e8f3ed;
+  --G-100: #1c834c;
+
+  /* Red */
+  --R-85L: #dd2748;
+  --R-10L: #fbe6e9;
+  --R-3L: #fef7f9;
+
+  /* Yellow */
+  --Y-100: #ffb82e;
+  --Y-15L: #ffeac0;
+  --Y-10L: #fff8ea;
 }
 
 @layer utilities {
