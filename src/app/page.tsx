@@ -2,7 +2,8 @@
 
 export default function Home (): JSX.Element {
   return (
-    <main>
+    <main className="flex flex-col h-screen bg-light-background dark:bg-dark-background text-light-text-primary dark:text-dark-text-primary">
+
     </main>
   )
 }

@@ -1,10 +1,10 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
 const config: Config = {
   darkMode: ['class'],
   content: [
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}"
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   prefix: '',
   theme: {
@@ -26,17 +26,16 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Constant colors
-        white: '#FFFFFF',
+        // Universal colors applicable to both themes go here
         stroke: '#47DFF3',
-        'plantation-green': {
-          PG71D: '#15212A',
-          PG82D: '#1E403F',
-          PG54L: '#899F9F',
-          PG100: '#244E4D',
-          PG8L: '#EDF1F1'
+        'oceanic-forest': {
+          OF71D: '#15212A',
+          OF82D: '#1E403F',
+          OF54L: '#899F9F',
+          OF100: '#244E4D',
+          OF8L: '#EDF1F1'
         },
-        'jungle-geen':{
+        'jungle-geen': {
           JG42D: '#0E413C',
           JG54D: '#114F48',
           JG60D: '#145D55',
@@ -45,7 +44,7 @@ const config: Config = {
           JG71L: '#6CBDB4',
           JG13L: '#E2F2F0'
         },
-        'gulf-stream':{
+        'gulf-stream': {
           GS66L: '#B4CFCB',
           GS42L: '#CFE0DE',
           GS31L: '#DCE8E7',
@@ -54,7 +53,7 @@ const config: Config = {
           GS8L: '#F6F9F9',
           GS2L: '#FDFEFD'
         },
-        'blck-blue':{
+        'blck-blue': {
           BB48D: '#0E171C',
           BB82D: '#182730',
           BB77D: '#16242D',
@@ -66,228 +65,108 @@ const config: Config = {
           BB42L: '#A0A8AD',
           BB25L: '#C7CBCE'
         },
-        // Dark theme specific colors
-        dark: {
-          background: '#0E171C',
-          primary: '#1D8A7E',
-          'light-gray': '#515F68',
-          'extra-light-gs': '#111C23',
-          'mid-gs': '#16242D',
-          'light-gs': '#364651',
-          error: {
-            background: '#2C141E',
-            light: '#B70122',
-            dark: '#B70122'
-          },
-          success: {
-            background: '#07150E',
-            light: '#60A882',
-            dark: '#1C834C'
-          },
-          warning: {
-            background: '#16242D',
-            light: '#805C17',
-            dark: '#B28120'
-          },
-          info: {
-            background: '#10181E',
-            light: '#5398FF',
-            dark: '#5398FF'
-          },
-          text: {
-            primary: '#FFFFFF',
-            'mid-gray': '#C7CBCE',
-            'light-gray': '#A0A8AD'
-          },
-          messages: {
-            sent: {
-              background: '#1F9387'
-            },
-            received: {
-              background: '#15212A'
-            }
-          },
-          input: {
-            backgrund: '#16242D',
-            text: '#C7CBCE',
-            title: '#515F68',
-            action: '#54B2A8',
-            description: '#A0A8AD',
-            hover: {
-              border: '#114F48'
-            },
-            focused: {
-              border: '#1D8A7E'
-            },
-            success: {
-              icon: '#1C834C',
-              border: '#114F48'
-            },
-            loading: {
-              border: '#515F68'
-            },
-            disabled: {
-              text: '#515F68'
-            }
-          },
-          btn: {
-            disabled: {
-              text: '#515F68',
-              background: '#16242D'
-            },
-            primary: {
-              text: '#FDFEFD',
-              default: {
-                background: '#1D8A7E'
-              },
-              hover: {
-                background: '#145D55'
-              },
-              click: {
-                background: '#0E413C'
-              }
-            },
-            focused: {
-              stroke: '#47DFF3'
-            },
-            secondary: {
-              default: {
-                border: '#54B2A8',
-                text: '#54B2A8'
-              },
-              hover: {
-                background: '#15212A'
-              },
-              click: {
-                background: '#182730'
-              }
-            },
-            tertinary: {
-              default: {
-                text: '#54B2A8'
-              },
-              hover: {
-                background: '#15212A'
-              },
-              click: {
-                background: '#1D2F3B'
-              }
-            }
-            }
-          },
-        // Light theme specific colors
-        light: {
-          background: '#FDFDFD',
-          primary: '#244E4D',
-          'light-gray': '#A0A8AD',
-          'extra-light-gs': '#F6F9F9',
-          'mid-gs': '#B4CFCB',
-          'light-gs': '#DCE8E7',
-          error: {
-            background: '#FEF7F9',
-            light: '#FBE6E9',
-            dark: '#DD2748'
-          },
-          success: {
-            background: '#E8F3ED',
-            light: '#BBDAC9',
-            dark: '#1C834C'
-          },
-          warning: {
-            background: '#FFF8EA',
-            light: '#FFEAC0',
-            dark: '#FFB82E'
-          },
-          info: {
-            background: '#EBF3FF',
-            light: '#C2DBFF',
-            dark: '#5398FF'
-          },
-          text: {
-            primary: '#1D2F3B',
-            'mid-gray': '#515F68',
-            'light-gray': '#939BA1'
-          },
-          messages: {
-            sent: {
-              background: '#3A828C'
-            },
-            received: {
-              background: '#EDF1F1'
-            }
-          },
-          input: {
-            backgrund: '#ECF3F4',
-            text: '#16242D',
-            title: '#899F9F',
-            action: '#1D8A7E',
-            description: '#515F68',
-            hover: {
-              border: '#CFE0DE'
-            },
-            focused: {
-              border: '#1D8A7E'
-            },
-            success: {
-              icon: '#1C834C',
-              border: '#B4CFCB'
-            },
-            loading: {
-              border: '#CFE0DE'
-            },
-            disabled: {
-              text: '#899F9F'
-            }
-          },
-          btn: {
-            disabled: {
-              text: '#B4CFCB',
-              background: '#F0F6F5'
-            },
-            primary: {
-              text: '#FFFFFF',
-              default: {
-                background: '#244E4D'
-              },
-              hover: {
-                background: '#1E403F'
-              },
-              click: {
-                background: '#1D8A7E'
-              }
-            },
-            focused: {
-              stroke: '#47DFF3'
-            },
-            secondary: {
-              default: {
-                border: '#244E4D',
-                text: '#244E4D'
-              },
-              hover: {
-                background: '#E2F2F0'
-              },
-              click: {
-                background: '#CFE0DE'
-              }
-            },
-            tertinary: {
-              default: {
-                text: '#244E4D'
-              },
-              hover: {
-                background: '#E2F2F0'
-              },
-              click: {
-                background: '#CFE0DE'
-              }
-            }
-            }
-          }
-        },
-      },
+        // Dark theme colors
+        'dark-background': '#0E171C',
+        'dark-primary': '#1D8A7E',
+        'dark-light-gray': '#515F68',
+        'dark-extra-light-gs': '#111C23',
+        'dark-mid-gs': '#16242D',
+        'dark-light-gs': '#364651',
+        'dark-error-bg': '#2C141E',
+        'dark-error-light': '#B70122',
+        'dark-error-dark': '#B70122',
+        'dark-success-bg': '#07150E',
+        'dark-success-light': '#60A882',
+        'dark-success-dark': '#1C834C',
+        'dark-warning-bg': '#16242D',
+        'dark-warning-light': '#805C17',
+        'dark-warning-dark': '#B28120',
+        'dark-info-bg': '#10181E',
+        'dark-info-light': '#5398FF',
+        'dark-info-dark': '#5398FF',
+        'dark-text-primary': '#FFFFFF',
+        'dark-text-mid-gray': '#C7CBCE',
+        'dark-text-light-gray': '#A0A8AD',
+        'dark-msg-sent': '#1F9387',
+        'dark-msg-received': '#15212A',
+        'dark-input-bg': '#16242D',
+        'dark-input-text': '#C7CBCE',
+        'dark-input-title': '#515F68',
+        'dark-input-action': '#54B2A8',
+        'dark-input-description': '#A0A8AD',
+        'dark-input-hover-border': '#114F48',
+        'dark-input-focused-border': '#1D8A7E',
+        'dark-input-success-icon': '#1C834C',
+        'dark-input-success-border': '#114F48',
+        'dark-input-loading-border': '#515F68',
+        'dark-input-disabled-text': '#515F68',
+        'dark-btn-disabled-text': '#515F68',
+        'dark-btn-disabled-bg': '#16242D',
+        'dark-btn-primary-text': '#FDFEFD',
+        'dark-btn-primary-bg': '#1D8A7E',
+        'dark-btn-primary-hover-bg': '#145D55',
+        'dark-btn-primary-click-bg': '#0E413C',
+        'dark-btn-focused-stroke': '#47DFF3',
+        'dark-btn-secondary-default-border': '#54B2A8',
+        'dark-btn-secondary-default-text': '#54B2A8',
+        'dark-btn-secondary-hover-bg': '#15212A',
+        'dark-btn-secondary-click-bg': '#182730',
+        'dark-btn-tertiary-default-text': '#54B2A8',
+        'dark-btn-tertiary-hover-bg': '#15212A',
+        'dark-btn-tertiary-click-bg': '#1D2F3B',
+        // Light theme colors
+        'light-background': '#FDFDFD',
+        'light-primary': '#244E4D',
+        'light-light-gray': '#A0A8AD',
+        'light-extra-light-gs': '#F6F9F9',
+        'light-mid-gs': '#B4CFCB',
+        'light-light-gs': '#DCE8E7',
+        'light-error-bg': '#FEF7F9',
+        'light-error-light': '#FBE6E9',
+        'light-error-dark': '#DD2748',
+        'light-success-bg': '#E8F3ED',
+        'light-success-light': '#BBDAC9',
+        'light-success-dark': '#1C834C',
+        'light-warning-bg': '#FFF8EA',
+        'light-warning-light': '#FFEAC0',
+        'light-warning-dark': '#FFB82E',
+        'light-info-bg': '#EBF3FF',
+        'light-info-light': '#C2DBFF',
+        'light-info-dark': '#5398FF',
+        'light-text-primary': '#1D2F3B',
+        'light-text-mid-gray': '#515F68',
+        'light-text-light-gray': '#939BA1',
+        'light-msg-sent': '#3A828C',
+        'light-msg-received': '#EDF1F1',
+        'light-input-bg': '#ECF3F4',
+        'light-input-text': '#16242D',
+        'light-input-title': '#899F9F',
+        'light-input-action': '#1D8A7E',
+        'light-input-description': '#515F68',
+        'light-input-hover-border': '#CFE0DE',
+        'light-input-focused-border': '#1D8A7E',
+        'light-input-success-icon': '#1C834C',
+        'light-input-success-border': '#B4CFCB',
+        'light-input-loading-border': '#CFE0DE',
+        'light-input-disabled-text': '#899F9F',
+        'light-btn-disabled-text': '#B4CFCB',
+        'light-btn-disabled-bg': '#F0F6F5',
+        'light-btn-primary-text': '#FFFFFF',
+        'light-btn-primary-bg': '#244E4D',
+        'light-btn-primary-hover-bg': '#1E403F',
+        'light-btn-primary-click-bg': '#1D8A7E',
+        'light-btn-focused-stroke': '#47DFF3',
+        'light-btn-secondary-default-border': '#244E4D',
+        'light-btn-secondary-default-text': '#244E4D',
+        'light-btn-secondary-hover-bg': '#E2F2F0',
+        'light-btn-secondary-click-bg': '#CFE0DE',
+        'light-btn-tertiary-default-text': '#244E4D',
+        'light-btn-tertiary-hover-bg': '#E2F2F0',
+        'light-btn-tertiary-click-bg': '#CFE0DE'
+      }
     }
   },
-  plugins: [],
-};
-export default config;
+  plugins: []
+}
+
+export default config
