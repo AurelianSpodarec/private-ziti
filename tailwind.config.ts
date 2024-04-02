@@ -29,7 +29,7 @@ const config: Config = {
         // Constant colors
         white: '#FFFFFF',
         stroke: '#47DFF3',
-        'plantation-green': {
+        'oceanic-forest': {
           PG71D: '#15212A',
           PG82D: '#1E403F',
           PG54L: '#899F9F',
