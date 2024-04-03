@@ -26,147 +26,267 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Universal colors applicable to both themes go here
-        stroke: 'var(--S-000)', // Created a custom variable
-        'oceanic-forest': {
-          OF71D: 'var(--OF-71D)',
-          OF82D: 'var(--OF-82D)',
-          OF54L: 'var(--OF-54L)',
-          OF100: 'var(--OF-100)',
-          OF8L: 'var(--OF-8L)'
+        // Constant colors
+        white: '#FFFFFF',
+        stroke: '#47DFF3',
+        'plantation-green': {
+          PG71D: '#15212A',
+          PG82D: '#1E403F',
+          PG54L: '#899F9F',
+          PG100: '#244E4D',
+          PG8L: '#EDF1F1'
         },
         'jungle-geen': {
-          JG42D: 'var(--JG-42D)',
-          JG54D: 'var(--JG-54D)',
-          JG60D: 'var(--JG-60D)',
-          JG89D: 'var(--JG-89D)',
-          JG77L: 'var(--JG-77L)',
-          JG71L: '#6CBDB4', // not used?
-          JG13L: 'var(--JG-13L)'
+          JG42D: '#0E413C',
+          JG54D: '#114F48',
+          JG60D: '#145D55',
+          JG89D: '#1D8A7E',
+          JG77L: '#54B2A8',
+          JG71L: '#6CBDB4',
+          JG13L: '#E2F2F0'
         },
         'gulf-stream': {
-          GS66L: 'var(--GS-66L)',
-          GS42L: 'var(--GS-42L)',
-          GS31L: 'var(--GS-31L)',
-          GS25L: '#E3EDEB', // not used?
-          GS13L: 'var(--GS-13L)',
-          GS8L: 'var(--GS-8L)',
-          GS2L: 'var(--GS-2L)'
+          GS66L: '#B4CFCB',
+          GS42L: '#CFE0DE',
+          GS31L: '#DCE8E7',
+          GS25L: '#E3EDEB',
+          GS13L: '#F0F6F5',
+          GS8L: '#F6F9F9',
+          GS2L: '#FDFEFD'
         },
-        'black-blue': {
-          BB48D: 'var(--BB-48D)',
-          BB82D: 'var(--BB-82D)',
-          BB77D: 'var(--BB-77D)',
-          BB100: 'var(--BB-100)',
-          BB89L: 'var(--BB-89L)',
-          BB77L: 'var(--BB-77L)',
-          BB66L: '#6A767E', // not used?
-          BB48L: '#939CA1', // not uses?
-          BB42L: 'var(--BB-42L)',
-          BB25L: 'var(--BB-25L)'
+        'blck-blue': {
+          BB48D: '#0E171C',
+          BB82D: '#182730',
+          BB77D: '#16242D',
+          BB100: '#1D2F3B',
+          BB89L: '#364651',
+          BB77L: '#515F68',
+          BB66L: '#6A767E',
+          BB48L: '#939CA1',
+          BB42L: '#A0A8AD',
+          BB25L: '#C7CBCE'
         },
-        // Light theme colors
-        'light-background': 'var(--AB-2L)',
-        'light-primary': 'var(--OF-100)',
-        'light-light-gray': 'var(--BB-42L)',
-        'light-extra-light-gs': 'var(--GS-8L)',
-        'light-mid-gs': 'var(--GS-66L)',
-        'light-light-gs': 'var(--GS-31L)',
-        'light-error-bg': 'var(--R-3L)',
-        'light-error-light': 'var(--R-10L)',
-        'light-error-dark': 'var(--R-85L)',
-        'light-success-bg': 'var(--G-10L)',
-        'light-success-light': '#BBDAC9', // no variable
-        'light-success-dark': 'var(--G-100)',
-        'light-warning-bg': 'var(--Y-10L)',
-        'light-warning-light': 'var(--Y-15L)',
-        'light-warning-dark': 'var(--Y-100)',
-        'light-info-bg': '#EBF3FF', // no variable
-        'light-info-light': '#C2DBFF', // no variable
-        'light-info-dark': '#5398FF', // no variable
-        'light-text-primary': 'var(--BB-100)',
-        'light-text-mid-gray': 'var(--BB-77L)',
-        'light-text-light-gray': '#939BA1', // no variable
-        'light-msg-sent': '#3A828C', // no variable
-        'light-msg-received': 'var(--OF-8L)',
-        'light-input-bg': '#ECF3F4', // no variable
-        'light-input-text': 'var(--BB-77D)',
-        'light-input-title': 'var(--OF-54L)',
-        'light-input-action': 'var(--JG-89D)',
-        'light-input-description': 'var(--BB-77L)',
-        'light-input-hover-border': 'var(--GS-42L)',
-        'light-input-focused-border': 'var(--JG-89D)',
-        'light-input-success-icon': 'var(--G-100)',
-        'light-input-success-border': 'var(--GS-66L)',
-        'light-input-loading-border': 'var(--GS-42L)',
-        'light-input-disabled-text': 'var(--OF-54L)',
-        'light-btn-disabled-text': 'var(--GS-66L)',
-        'light-btn-disabled-bg': 'var(--GS-13L)',
-        'light-btn-primary-text': '#FFFFFF', // no variable
-        'light-btn-primary-bg': 'var(--OF-100)',
-        'light-btn-primary-hover-bg': 'var(--OF-82D)',
-        'light-btn-primary-click-bg': 'var(--JG-89D)',
-        'light-btn-focused-stroke': 'var(--S-000)',
-        'light-btn-secondary-default-border': 'var(--OF-100)',
-        'light-btn-secondary-default-text': 'var(--OF-100)',
-        'light-btn-secondary-hover-bg': 'var(--JG-13L)',
-        'light-btn-secondary-click-bg': 'var(--GS-42L)',
-        'light-btn-tertiary-default-text': 'var(--OF-100)',
-        'light-btn-tertiary-hover-bg': 'var(--JG-13L)',
-        'light-btn-tertiary-click-bg': 'var(--GS-42L)',
-        // Dark theme colors
-        'dark-background': 'var(--BB-48D)',
-        'dark-primary': 'var(--JG-89D)',
-        'dark-light-gray': 'var(--BB-77L)',
-        'dark-extra-light-gs': '#111C23', // no variable
-        'dark-mid-gs': 'var(--BB-77D)',
-        'dark-light-gs': 'var(--BB-89L)',
-        'dark-error-bg': '#2C141E', // no variable
-        'dark-error-light': '#B70122', // no variable
-        'dark-error-dark': '#B70122', // no variable
-        'dark-success-bg': '#07150E', // no variable
-        'dark-success-light': '#60A882', // no variable
-        'dark-success-dark': 'var(--G-100)',
-        'dark-warning-bg': 'var(--BB-77D)',
-        'dark-warning-light': '#805C17', // no variable
-        'dark-warning-dark': '#B28120', // no variable
-        'dark-info-bg': '#10181E', // no variable
-        'dark-info-light': '#5398FF', // no variable
-        'dark-info-dark': '#5398FF', // no variable
-        'dark-text-primary': '#FFFFFF', // no variable
-        'dark-text-mid-gray': 'var(--BB-25L)',
-        'dark-text-light-gray': 'var(--BB-42L)',
-        'dark-msg-sent': '#1F9387', // no variable
-        'dark-msg-received': 'var(--OF-71D)',
-        'dark-input-bg': 'var(--BB-77D)',
-        'dark-input-text': 'var(--BB-25L)',
-        'dark-input-title': 'var(--BB-77L)',
-        'dark-input-action': 'var(--JG-77L)',
-        'dark-input-description': 'var(--BB-42L)',
-        'dark-input-hover-border': 'var(--JG-54D)',
-        'dark-input-focused-border': 'var(--JG-89D)',
-        'dark-input-success-icon': 'var(--G-100)',
-        'dark-input-success-border': 'var(--JG-54D)',
-        'dark-input-loading-border': 'var(--BB-77L)',
-        'dark-input-disabled-text': 'var(--BB-77L)',
-        'dark-btn-disabled-text': 'var(--BB-77L)',
-        'dark-btn-disabled-bg': 'var(--BB-77D)',
-        'dark-btn-primary-text': 'var(--GS-2L)',
-        'dark-btn-primary-bg': 'var(--JG-89D)',
-        'dark-btn-primary-hover-bg': 'var(--JG-60D)',
-        'dark-btn-primary-click-bg': 'var(--JG-42D)',
-        'dark-btn-focused-stroke': 'var(--S-000)',
-        'dark-btn-secondary-default-border': 'var(--JG-77L)',
-        'dark-btn-secondary-default-text': 'var(--JG-77L)',
-        'dark-btn-secondary-hover-bg': 'var(--OF-71D)',
-        'dark-btn-secondary-click-bg': 'var(--BB-82D)',
-        'dark-btn-tertiary-default-text': 'var(--JG-77L)',
-        'dark-btn-tertiary-hover-bg': 'var(--OF-71D)',
-        'dark-btn-tertiary-click-bg': 'var(--BB-100)'
+        // Light theme specific colors
+        light: {
+          background: '#FDFDFD',
+          primary: '#244E4D',
+          'light-gray': '#A0A8AD',
+          'extra-light-gs': '#F6F9F9',
+          'mid-gs': '#B4CFCB',
+          'light-gs': '#DCE8E7',
+          error: {
+            background: '#FEF7F9',
+            light: '#FBE6E9',
+            dark: '#DD2748'
+          },
+          success: {
+            background: '#E8F3ED',
+            light: '#BBDAC9',
+            dark: '#1C834C'
+          },
+          warning: {
+            background: '#FFF8EA',
+            light: '#FFEAC0',
+            dark: '#FFB82E'
+          },
+          info: {
+            background: '#EBF3FF',
+            light: '#C2DBFF',
+            dark: '#5398FF'
+          },
+          text: {
+            primary: '#1D2F3B',
+            'mid-gray': '#515F68',
+            'light-gray': '#939BA1'
+          },
+          messages: {
+            sent: {
+              background: '#3A828C'
+            },
+            received: {
+              background: '#EDF1F1'
+            }
+          },
+          input: {
+            backgrund: '#ECF3F4',
+            text: '#16242D',
+            title: '#899F9F',
+            action: '#1D8A7E',
+            description: '#515F68',
+            hover: {
+              border: '#CFE0DE'
+            },
+            focused: {
+              border: '#1D8A7E'
+            },
+            success: {
+              icon: '#1C834C',
+              border: '#B4CFCB'
+            },
+            loading: {
+              border: '#CFE0DE'
+            },
+            disabled: {
+              text: '#899F9F'
+            }
+          },
+          btn: {
+            disabled: {
+              text: '#B4CFCB',
+              background: '#F0F6F5'
+            },
+            primary: {
+              text: '#FFFFFF',
+              default: {
+                background: '#244E4D'
+              },
+              hover: {
+                background: '#1E403F'
+              },
+              click: {
+                background: '#1D8A7E'
+              }
+            },
+            focused: {
+              stroke: '#47DFF3'
+            },
+            secondary: {
+              default: {
+                border: '#244E4D',
+                text: '#244E4D'
+              },
+              hover: {
+                background: '#E2F2F0'
+              },
+              click: {
+                background: '#CFE0DE'
+              }
+            },
+            tertinary: {
+              default: {
+                text: '#244E4D'
+              },
+              hover: {
+                background: '#E2F2F0'
+              },
+              click: {
+                background: '#CFE0DE'
+              }
+            }
+          }
+        },
+        // Dark theme specific colors
+        dark: {
+          background: '#0E171C',
+          primary: '#1D8A7E',
+          'light-gray': '#515F68',
+          'extra-light-gs': '#111C23',
+          'mid-gs': '#16242D',
+          'light-gs': '#364651',
+          error: {
+            background: '#2C141E',
+            light: '#B70122',
+            dark: '#B70122'
+          },
+          success: {
+            background: '#07150E',
+            light: '#60A882',
+            dark: '#1C834C'
+          },
+          warning: {
+            background: '#16242D',
+            light: '#805C17',
+            dark: '#B28120'
+          },
+          info: {
+            background: '#10181E',
+            light: '#5398FF',
+            dark: '#5398FF'
+          },
+          text: {
+            primary: '#FFFFFF',
+            'mid-gray': '#C7CBCE',
+            'light-gray': '#A0A8AD'
+          },
+          messages: {
+            sent: {
+              background: '#1F9387'
+            },
+            received: {
+              background: '#15212A'
+            }
+          },
+          input: {
+            backgrund: '#16242D',
+            text: '#C7CBCE',
+            title: '#515F68',
+            action: '#54B2A8',
+            description: '#A0A8AD',
+            hover: {
+              border: '#114F48'
+            },
+            focused: {
+              border: '#1D8A7E'
+            },
+            success: {
+              icon: '#1C834C',
+              border: '#114F48'
+            },
+            loading: {
+              border: '#515F68'
+            },
+            disabled: {
+              text: '#515F68'
+            }
+          },
+          btn: {
+            disabled: {
+              text: '#515F68',
+              background: '#16242D'
+            },
+            primary: {
+              text: '#FDFEFD',
+              default: {
+                background: '#1D8A7E'
+              },
+              hover: {
+                background: '#145D55'
+              },
+              click: {
+                background: '#0E413C'
+              }
+            },
+            focused: {
+              stroke: '#47DFF3'
+            },
+            secondary: {
+              default: {
+                border: '#54B2A8',
+                text: '#54B2A8'
+              },
+              hover: {
+                background: '#15212A'
+              },
+              click: {
+                background: '#182730'
+              }
+            },
+            tertinary: {
+              default: {
+                text: '#54B2A8'
+              },
+              hover: {
+                background: '#15212A'
+              },
+              click: {
+                background: '#1D2F3B'
+              }
+            }
+          }
+        }
       }
     }
   },
   plugins: []
 }
-
 export default config
