@@ -1,13 +1,10 @@
-// src/app/layout.tsx
-
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
+
 import MixpanelInitializer from '@/components/MixpanelInitializer'
 import TrafficSourceTracker from '@/components/TrafficSourceTracker'
 import Scripts from '@/components/Scripts'
 
-const inter = Inter({ subsets: ['latin'] })
+import './../styles/styles.scss'
 
 export const metadata: Metadata = {
   title: 'Discover, Connect, Invest - Ziti',
@@ -15,16 +12,12 @@ export const metadata: Metadata = {
   robots: 'noindex'
 }
 
-export default function RootLayout ({
-  children
-}: Readonly<{
-  children: React.ReactNode
-}>): JSX.Element {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.Element {
   return (
     <html lang="en">
       <MixpanelInitializer />
       <TrafficSourceTracker />
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
       <Scripts />
     </html>
   )
