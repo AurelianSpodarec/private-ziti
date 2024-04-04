@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@sentry/nextjs": "^7.109.0",
     "jwt-decode": "^4.0.0",
     "mixpanel-browser": "^2.49.0",
