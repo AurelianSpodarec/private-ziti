@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Disallow: /
+
+# Host
+Host: https://ziti.io
+
+# Sitemaps
+Sitemap: https://ziti.io/sitemap.xml
