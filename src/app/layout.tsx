@@ -3,8 +3,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import MixpanelInitializer from '../components/MixpanelInitializer'
+import MixpanelInitializer from '@/components/MixpanelInitializer'
 import TrafficSourceTracker from '@/components/TrafficSourceTracker'
+import Scripts from '@/components/Scripts'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,6 +25,7 @@ export default function RootLayout ({
       <MixpanelInitializer />
       <TrafficSourceTracker />
       <body className={inter.className}>{children}</body>
+      <Scripts />
     </html>
   )
 }
