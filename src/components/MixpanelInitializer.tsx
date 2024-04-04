@@ -20,7 +20,7 @@ const MixpanelInitializer = (): null => {
     }
 
     mixpanel.init(token, {
-      api_host: 'https://ziti.io/mixpanel',
+      api_host: 'https://ziti.io/analytics/mixpanel',
       debug: false,
       track_pageview: false,
       persistence: 'localStorage'
