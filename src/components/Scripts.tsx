@@ -10,7 +10,6 @@ analytics.page();
 `
 const Scripts = (): JSX.Element | undefined => {
   if (process.env.NODE_ENV !== 'production') {
-    console.log('Scripts loading skipped outside of production environment.')
     return
   }
 
