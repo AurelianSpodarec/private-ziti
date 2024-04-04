@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
-import MixpanelInitializer from '@/components/MixpanelInitializer'
-import TrafficSourceTracker from '@/components/TrafficSourceTracker'
-import Scripts from '@/components/Scripts'
+import MixpanelInitializer from '@/lib/MixpanelInitializer'
+import TrafficSourceTracker from '@/lib/TrafficSourceTracker'
+import Scripts from '@/lib/Scripts'
 
 import './../styles/styles.scss'
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   robots: 'noindex'
 }
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.Element {
+function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.Element {
   return (
     <html lang="en">
       <MixpanelInitializer />
@@ -22,3 +22,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   )
 }
+
+export default RootLayout

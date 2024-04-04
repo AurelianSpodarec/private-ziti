@@ -1,8 +1,10 @@
 
-export default function Home (): JSX.Element {
+function Home(): JSX.Element {
   return (
     <main className="flex flex-col h-screen">
-      hi
+      Test
     </main>
   )
 }
+
+export default Home;
