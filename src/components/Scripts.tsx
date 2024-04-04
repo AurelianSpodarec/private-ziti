@@ -9,7 +9,7 @@ analytics.page();
 }}();
 `
 const Scripts = (): JSX.Element | undefined => {
-  if (process.env.NODE_ENV !== 'development') {
+  if (process.env.NODE_ENV !== 'production') {
     console.log('Segment initialization skipped outside of production environment.')
     return
   }
