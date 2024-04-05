@@ -1,13 +1,14 @@
-import type { Config } from 'tailwindcss'
+import { Config } from "tailwindcss";
+import { shadcnPreset } from "./src/lib/shadcn/shadcn-preset"
 
-const config: Config = {
-  darkMode: ['class'],
+const config = {
+  presets: [shadcnPreset],
   content: [
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}'
-  ],
-  theme: {},
-  plugins: []
-}
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	]
+} satisfies Config
 
 export default config

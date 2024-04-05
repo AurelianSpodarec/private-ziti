@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 
-import MixpanelInitializer from '@/lib/MixpanelInitializer'
-import TrafficSourceTracker from '@/lib/TrafficSourceTracker'
-import Scripts from '@/lib/Scripts'
+import MixpanelInitializer from '@/lib/other/MixpanelInitializer'
+import TrafficSourceTracker from '@/lib/other/TrafficSourceTracker'
+import Scripts from '@/lib/other/Scripts'
+import Provider from '@/utils/provider'
 
 import './../styles/styles.scss'
-import Provider from '@/utils/provider'
+import ModeToggle from '@/components/ModeToggle'
 
 export const metadata: Metadata = {
   title: 'Discover, Connect, Invest - Ziti',
@@ -20,6 +21,8 @@ function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.
       <TrafficSourceTracker />
       <body>
         <Provider>
+          <ModeToggle /> 
+          {/* TODO: Remove ModeToggle once done testing */}
           {children}
         </Provider>
       </body>
