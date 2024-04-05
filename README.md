@@ -81,6 +81,11 @@ Begin all files with a comment specifying the path and filename, enhancing reada
 // src/path/to/file/filename.js
 ```
 
+
+## Quick Notes
+
+### Services Ziti follows the same folder structure as postman (at least for now)
+
 ## Documentation
 
 Access the documentation at: https://ziti.atlassian.net/wiki/spaces/ZAD/overview?homepageId=12648669

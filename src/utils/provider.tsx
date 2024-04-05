@@ -8,9 +8,9 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 export default function Provider({ children, session }: { children: React.ReactNode, session?: any }) {
   const [client] = useState(new QueryClient());
 
-  if (process.env.NEXT_PUBLIC_VITE_ENVIRONMENT === undefined) {
-    console.error("Enviroment file not defined or staging variable not defined (.env)")
-  }
+  // if (process.env.NEXT_PUBLIC_VITE_ENVIRONMENT === undefined) {
+  //   console.error("Enviroment file not defined or staging variable not defined (.env)")
+  // }
 
   return (
     <QueryClientProvider client={client}>
