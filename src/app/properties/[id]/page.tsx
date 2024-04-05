@@ -9,12 +9,12 @@ function PropertySingle() {
   const { id } = useParams()
 
   const dataQuery = useQuery({
-    queryKey: ["sites/posts", id],
+    queryKey: [`properties/${id}`, id],
     queryFn: () => getPropertySingle(String(id))
   })
 
-  const data = dataQuery.data
-  console.log(dataQuery.data)
+  const data = dataQuery?.data
+  console.log(dataQuery?.data)
 
   return (
     <div>
