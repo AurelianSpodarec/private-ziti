@@ -6,7 +6,8 @@ import Scripts from '@/lib/other/Scripts'
 import Provider from '@/utils/provider'
 
 import './../styles/styles.scss'
-import ModeToggle from '@/components/ModeToggle'
+
+import Header from './_components/Header'
 
 export const metadata: Metadata = {
   title: 'Discover, Connect, Invest - Ziti',
@@ -21,8 +22,7 @@ function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.
       <TrafficSourceTracker />
       <body>
         <Provider>
-          <ModeToggle /> 
-          {/* TODO: Remove ModeToggle once done testing */}
+          <Header />
           {children}
         </Provider>
       </body>
