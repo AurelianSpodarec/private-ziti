@@ -5,6 +5,7 @@ import TrafficSourceTracker from '@/lib/TrafficSourceTracker'
 import Scripts from '@/lib/Scripts'
 
 import './../styles/styles.scss'
+import Provider from '@/utils/provider'
 
 export const metadata: Metadata = {
   title: 'Discover, Connect, Invest - Ziti',
@@ -17,7 +18,11 @@ function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.
     <html lang="en">
       <MixpanelInitializer />
       <TrafficSourceTracker />
-      <body>{children}</body>
+      <body>
+        <Provider>
+          {children}
+        </Provider>
+      </body>
       <Scripts />
     </html>
   )
