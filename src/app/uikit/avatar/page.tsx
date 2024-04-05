@@ -4,6 +4,7 @@ function UIKitAvatar() {
   return (
     <div>
       
+      <h2>Sizes</h2>
       
       <Avatar />
       <Avatar verified />
