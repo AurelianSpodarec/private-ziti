@@ -1,4 +1,4 @@
-import ModeToggle from "@/components/ModeToggle";
+import ModeToggle from "@/components/atoms/ModeToggle";
 import Link from "next/link";
 
 function MenuDesktop() {

@@ -1,5 +1,5 @@
 import { IArticle } from "@/interfaces/IBlog"
-import Avatar from "./atoms/Avatar"
+import Avatar from "../atoms/Avatar"
 import Link from "next/link"
 
 function CardArticle({ data }: { data: IArticle }) {

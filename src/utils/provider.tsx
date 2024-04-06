@@ -5,9 +5,9 @@ import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/utils/theme-provider";
 
-export default function Provider({ children, session }: { children: React.ReactNode, session?: any }) {
+function Provider({ children, session }: { children: React.ReactNode, session?: any }) {
   const [client] = useState(new QueryClient());
 
   // if (process.env.NEXT_PUBLIC_VITE_ENVIRONMENT === undefined) {
@@ -28,3 +28,5 @@ export default function Provider({ children, session }: { children: React.ReactN
     </ThemeProvider>
   );
 }
+
+export default Provider

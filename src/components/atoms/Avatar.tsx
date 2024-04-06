@@ -25,6 +25,7 @@ function Avatar({ verified, shape = "rounded-full" }: IAvatar) {
           </svg>
         </div>
       }
+      
     </UIAvatar>
   )
 }
