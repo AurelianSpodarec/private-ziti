@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { getPropertiesList } from "@/services/apis/requests/listing/properties";
-import CardProperty from "@/components/organisms/CardProperty";
+import CardProperty from "@/components/organisms/CardProperty/CardProperty";
 import Container from "@/components/Container";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
