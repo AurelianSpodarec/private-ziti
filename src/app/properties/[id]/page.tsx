@@ -5,6 +5,25 @@ import { useQuery } from "@tanstack/react-query"
 
 import { getPropertySingle } from "@/services/apis/requests/listing/properties"
 
+
+const property = {
+  squareFeet: {
+    name: "",
+    icon: "",
+  },
+  bathrooms: {
+    name: "Bath",
+    icon: ""
+  },
+  bedrooms: {
+    name: "Beds",
+    icon: ""
+  }
+}
+
+const amenities = ["backyard", "parking", "pool", "jacuzzi", "terrace", "elevator", "airConditioning"]
+
+
 function PropertySingle() {
   const { id } = useParams()
 
