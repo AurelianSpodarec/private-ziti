@@ -26,7 +26,7 @@ function FilterContainer({ name, children, row }: any) {
 function DrawerPropertyFilter() {
   return (
     <Drawer>
-      <DrawerTrigger asChild>
+      <DrawerTrigger asChild className="lg:hidden">
         <div>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 21V14" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -44,7 +44,6 @@ function DrawerPropertyFilter() {
           </span>
         </div>
       </DrawerTrigger>
-
 
       <DrawerContent className="bg-white h-full rounded-none">
         <div className="mx-auto w-full max-w-sm contents">

@@ -8,6 +8,7 @@ import CardProperty from "@/components/organisms/CardProperty/CardProperty";
 import Container from "@/components/Container";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DrawerPropertyFilter from "./_components/DrawerPropertyFilter";
+import { Badge } from "@/components/ui/badge";
 
 
 
@@ -26,7 +27,6 @@ function Page() {
   return (
     <Container>
 
-
       <div className="flex items-center justify-between">
         <Tabs defaultValue="account" className="">
           <TabsList>
@@ -37,6 +37,14 @@ function Page() {
         <div>
           <DrawerPropertyFilter />
         </div>
+      </div>
+
+      <div className="flex items-center whitespace-nowrap overflow-x-auto">
+        <Badge>Punta Cana</Badge>
+        <Badge>$120,000 - $350,000</Badge>
+        <Badge>2+ baths</Badge>
+        <Badge>Pool</Badge>
+        <Badge>Garden</Badge>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
