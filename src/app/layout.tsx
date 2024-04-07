@@ -8,6 +8,7 @@ import Provider from '@/utils/provider'
 import './../styles/styles.scss'
 
 import Header from './_components/Header'
+import Footer from './_components/Footer'
 
 export const metadata: Metadata = {
   title: 'Discover, Connect, Invest - Ziti',
@@ -24,6 +25,7 @@ function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.
         <Provider>
           <Header />
           {children}
+          <Footer />
         </Provider>
       </body>
       <Scripts />
