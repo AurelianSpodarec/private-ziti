@@ -7,6 +7,8 @@ export const shadcnPlugin = plugin(
         "--background": "0 0% 100%",
         "--foreground": "240 10% 3.9%",
 
+        "--woo": "240 10% 50%",
+
         "--muted": "240 4.8% 95.9%",
         "--muted-foreground": "240 3.8% 46.1%",
 
@@ -151,21 +153,21 @@ export const shadcnPlugin = plugin(
             "950": "#33423F",
           },
           blackBlue: {
-            "50": "#FAFBFB",
-            "100": "#EDEEEF",
-            "150": "#C7CBCE",
-            "200": "#AEB4B8",
-            "250": "#939BA1",
-            "300": "#6A767E",
-            "400": "#515F68",
-            "500": "#364651",
-            "600": "#1D2F3B",
-            "650": "#182730",
-            "700": "#15212A",
-            "750": "#0E171C",
-            "850": "#0A1115",
-            "900": "#0A1115",
-            "950": "#0A1115",
+            50: "#FAFBFB",
+            100: "#EDEEEF",
+            150: "#C7CBCE",
+            200: "#AEB4B8",
+            250: "#939BA1",
+            300: "#6A767E",
+            400: "#515F68",
+            500: "#364651",
+            600: "#1D2F3B",
+            650: "#182730",
+            700: "#15212A",
+            750: "#111C23",
+            850: "#0E171C",
+            900: "#0A1115",
+            950: "#0A1115",
           },
           red: {
             "50": "#FEF7F9",
@@ -237,7 +239,20 @@ export const shadcnPlugin = plugin(
           },
           // Named Colors
           // =================================================
+          // TODO: In dark mode these colors will change though @@@@@@@@@@@@@@@@@@@@@@@@
+          // But should use the same color primarly-500 that reffers to light and dark mode, depending theme the user has selected
+          primarly: {
+            dark: {
 
+            },
+            light: {
+
+            }
+            // DEFAULT: ""
+          },
+          secondary: {
+
+          },
           // ???
           // =================================================
           border: "var(--border)",
@@ -245,7 +260,7 @@ export const shadcnPlugin = plugin(
           ring: "var(--ring)",
           background: "var(--background)",
           foreground: "var(--foreground)",
-          
+
           // Components
           // =================================================
           primary: {
@@ -277,8 +292,8 @@ export const shadcnPlugin = plugin(
             foreground: "var(--card-foreground)",
           },
         },
-         // Animation
-          // =================================================
+        // Animation
+        // =================================================
         keyframes: {
           "accordion-down": {
             from: { height: '0' },
