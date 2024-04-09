@@ -1,13 +1,22 @@
 import plugin from "tailwindcss/plugin"
 
 export const shadcnPlugin = plugin(
-  function ({ addBase }) {
+  function ({ addBase, theme }) {
     addBase({
       ":root": {
+        "--primary": theme("colors.oceanicForest.800"),
+        // "--primary": `shadcnPlugin.config?.theme?.colors.red.500`,
+        
+        // "--primary": "0 0% 50%",
+        // "--primary": "#244E4D",
+
+        // "--primary": "240 5.9% 90%",
+        // "--primary": "var(--atollBlue-500)",
+        "--primary-foreground": "0 0% 98%",
+
+
         "--background": "0 0% 100%",
         "--foreground": "240 10% 3.9%",
-
-        "--woo": "240 10% 50%",
 
         "--muted": "240 4.8% 95.9%",
         "--muted-foreground": "240 3.8% 46.1%",
@@ -21,8 +30,6 @@ export const shadcnPlugin = plugin(
         "--border": "240 5.9% 90%",
         "--input": "240 5.9% 90%",
 
-        "--primary": "240 5.9% 10%",
-        "--primary-foreground": "0 0% 98%",
 
         "--secondary": "240 4.8% 95.9%",
         "--secondary-foreground": "240 5.9% 10%",
@@ -39,6 +46,11 @@ export const shadcnPlugin = plugin(
       },
 
       ".dark": {
+        "--primary": theme("colors.jungleGreen.800"),
+        // "--pr240 5.9% 90%",
+        // "--primary": "240 5.9% 90%",
+        "--primary-foreground": "240 5.9% 10%",
+
         "--background": "240 10% 3.9%",
         "--foreground": "0 0% 98%",
 
@@ -54,8 +66,6 @@ export const shadcnPlugin = plugin(
         "--border": "240 3.7% 15.9%",
         "--input": "240 3.7% 15.9%",
 
-        "--primary": "0 0% 98%",
-        "--primary-foreground": "240 5.9% 10%",
 
         "--secondary": "240 3.7% 15.9%",
         "--secondary-foreground": "0 0% 98%",
@@ -92,6 +102,9 @@ export const shadcnPlugin = plugin(
 
           // Primitives
           // =================================================
+          
+          // Neutral
+          // --------------------------------------
           oceanicForest: {
             "50": "#FBFBFB",
             "100": "#EDF1F1",
@@ -169,6 +182,8 @@ export const shadcnPlugin = plugin(
             900: "#0A1115",
             950: "#0A1115",
           },
+          // Feedback
+          // --------------------------------------
           red: {
             "50": "#FEF7F9",
             "100": "#FBE6E9",
@@ -239,32 +254,9 @@ export const shadcnPlugin = plugin(
           },
           // Named Colors
           // =================================================
-          // TODO: In dark mode these colors will change though @@@@@@@@@@@@@@@@@@@@@@@@
-          // But should use the same color primarly-500 that reffers to light and dark mode, depending theme the user has selected
-          primarly: {
-            dark: {
-
-            },
-            light: {
-
-            }
-            // DEFAULT: ""
-          },
-          secondary: {
-
-          },
-          // ???
-          // =================================================
-          border: "var(--border)",
-          input: "var(--input)",
-          ring: "var(--ring)",
-          background: "var(--background)",
-          foreground: "var(--foreground)",
-
-          // Components
-          // =================================================
           primary: {
             DEFAULT: "var(--primary)",
+            500: "var(--primary)",
             foreground: "var(--primary-foreground)",
           },
           secondary: {
@@ -283,6 +275,17 @@ export const shadcnPlugin = plugin(
             DEFAULT: "var(--accent)",
             foreground: "var(--accent-foreground)",
           },
+
+          // Other
+          // =================================================
+          border: "var(--border)",
+          input: "var(--input)",
+          ring: "var(--ring)",
+          background: "var(--background)",
+          foreground: "var(--foreground)",
+
+        // Components
+        // =================================================
           popover: {
             DEFAULT: "var(--popover)",
             foreground: "var(--popover-foreground)",

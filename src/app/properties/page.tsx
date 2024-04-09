@@ -10,9 +10,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DrawerPropertyFilter from "./_components/DrawerPropertyFilter";
 import { Badge } from "@/components/ui/badge";
 
-
-
-
 function Page() {
 
   const propertiesQuery = useQuery({
@@ -45,6 +42,10 @@ function Page() {
         <Badge>2+ baths</Badge>
         <Badge>Pool</Badge>
         <Badge>Garden</Badge>
+      </div>
+
+      <div className="bg-primary text-primary">
+        Test@@@@@@@@@@@@@@@
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
