@@ -4,51 +4,45 @@ export const shadcnPlugin = plugin(
   function ({ addBase, theme }) {
     addBase({
       ":root": {
+
+        // Named Colors
+        // =============================================================
         "--primary": theme("colors.oceanicForest.800"),
-        // "--primary": `shadcnPlugin.config?.theme?.colors.red.500`,
-        
-        // "--primary": "0 0% 50%",
-        // "--primary": "#244E4D",
-
-        // "--primary": "240 5.9% 90%",
-        // "--primary": "var(--atollBlue-500)",
         "--primary-foreground": "0 0% 98%",
-
-
-        "--background": "0 0% 100%",
-        "--foreground": "240 10% 3.9%",
-
-        "--muted": "240 4.8% 95.9%",
-        "--muted-foreground": "240 3.8% 46.1%",
-
-        "--popover": "0 0% 100%",
-        "--popover-foreground": "240 10% 3.9%",
-
-        "--card": "0 0% 100%",
-        "--card-foreground": "240 10% 3.9%",
-
-        "--border": "240 5.9% 90%",
-        "--input": "240 5.9% 90%",
-
-
+        
         "--secondary": "240 4.8% 95.9%",
         "--secondary-foreground": "240 5.9% 10%",
+        
+        "--background": "0 0% 100%",
+        "--foreground": "240 10% 3.9%",
 
         "--accent": "240 4.8% 95.9%",
         "--accent-foreground": "240 5.9% 10%",
 
+        "--muted": "240 4.8% 95.9%",
+        "--muted-foreground": "240 3.8% 46.1%",
+
+        // Other
+        // =============================================================
+        "--border": "240 5.9% 90%",
+        "--input": "240 5.9% 90%",
+        "--ring": "240 5% 64.9%",
+        "--radius": "0.5rem",
+        
+        // Components
+        // =============================================================
+        "--card": "0 0% 100%",
+        "--card-foreground": "240 10% 3.9%",
+
+        "--popover": "0 0% 100%",
+        "--popover-foreground": "240 10% 3.9%",
+        
         "--destructive": "0 84.2% 60.2%",
         "--destructive-foreground": "0 0% 98%",
-
-        "--ring": "240 5% 64.9%",
-
-        "--radius": "0.5rem",
+        
       },
-
       ".dark": {
         "--primary": theme("colors.jungleGreen.800"),
-        // "--pr240 5.9% 90%",
-        // "--primary": "240 5.9% 90%",
         "--primary-foreground": "240 5.9% 10%",
 
         "--background": "240 10% 3.9%",
@@ -65,7 +59,6 @@ export const shadcnPlugin = plugin(
 
         "--border": "240 3.7% 15.9%",
         "--input": "240 3.7% 15.9%",
-
 
         "--secondary": "240 3.7% 15.9%",
         "--secondary-foreground": "0 0% 98%",
@@ -252,6 +245,7 @@ export const shadcnPlugin = plugin(
             "900": "#14283E",
             "950": "#122233",
           },
+
           // Named Colors
           // =================================================
           primary: {
