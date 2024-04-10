@@ -13,6 +13,7 @@ const images = [
 ]
 
 function CardProperty({ isLoading, data }: { isLoading?: boolean, data?: IProperty }) {
+  
   if (isLoading) {
     return (
       <article>
@@ -40,7 +41,7 @@ function CardProperty({ isLoading, data }: { isLoading?: boolean, data?: IProper
             <div className="mt-auto z-10 absolute bottom-0 w-full">
               <div className="flex items-center justify-between">
                 <Badge blur="default" opacity="default">{data?.Sector.name}</Badge>
-                <Badge>1 of 10</Badge>
+                {/* <Badge>1 of 10</Badge> */}
               </div>
             </div>
           </div>

@@ -44,7 +44,7 @@ function Page() {
         <Badge>Garden</Badge>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {propertiesQuery.isLoading ?
           [...Array(9)].map((_, index) => {
             return <CardProperty key={index} isLoading={true} />
