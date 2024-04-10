@@ -30,7 +30,7 @@ function PropertyCarouselList({ data }) {
 
 function CarouselProperty({ images }: any) {
   return (
-    <Carousel className="rounded-2xl overflow-hidden h-auto">
+    <Carousel className="rounded-2xl overflow-hidden h-auto z-10">
       <PropertyCarouselList data={images} />
       <CarouselPrevious className="bg-white/90 hover:bg-white hover:zoom-in-105 left-8" />
       <CarouselNext className="bg-white/90 hover:bg-white hover:zoom-in-105 right-8" />

@@ -20,32 +20,35 @@ function CardProperty({ isLoading, data }: { isLoading?: boolean, data?: IProper
     )
   }
   return (
-    <article className="relative isolate flex flex-col overflow-hidden rounded-2xl p-4">
-      <Link href={`properties/${data?.id}`} className="h-full flex flex-col">
+    <article className="relative isolate flex flex-col h-[330px] overflow-hidden rounded-2xl">
+      <Link href={`properties/${data?.id}`} className="h-full flex flex-col relative p-4">
 
-        <div className="relative">
-          <div className="absolute left-4 right-4 top-4 z-10">
+        <div className="absolute top-0 right-0 bottom-0 left-0 h-[330px]">
+          <CarouselProperty images={images} />
+        </div>
+
+        <div className="relative h-full flex">
+
+          <div className="absolute w-full z-10">
             <div className="flex items-center justify-between z-10">
               <Badge>New</Badge>
               <button>Like</button>
             </div>
           </div>
-          <CarouselProperty images={images} />
-        </div>
 
-
-        <div className="mt-auto z-10 absolute bottom-0 w-full">
-          <div>
-            <div>{data?.Sector.name}</div>
+          <div className="mt-auto z-10 bottom-0 w-full ">
+            <div>
+              <div>{data?.Sector.name}</div>
+            </div>
+            <header className="bg-white rounded-3xl mt-auto">
+              <div className="flex justify-between items-center">
+                <h3>{data?.title}</h3>
+                <span className="text-primary">{data?.Currency}{data?.price}</span>
+              </div>
+              <p>{data?.description}</p>
+            </header>
           </div>
 
-          <header className="bg-white rounded-3xl mt-auto p-4">
-            <div className="flex justify-between items-center">
-              <h3>{data?.title}</h3>
-              <span>{data?.Currency}{data?.price}</span>
-            </div>
-            <p>{data?.description}</p>
-          </header>
         </div>
 
       </Link>
