@@ -33,8 +33,8 @@ function CardProperty({ isLoading, data }: ICardProperty) {
   //TODO: Add TypeScript
   const classPropertyStatus = {
     available: "",
-    new: "bg-green-550",
-    "pre-construction": "bg-blue-550"
+    new: "bg-green-550 bg-opacity-60",
+    "pre-construction": "bg-blue-550 bg-opacity-75"
   }
 
   return (
@@ -50,8 +50,9 @@ function CardProperty({ isLoading, data }: ICardProperty) {
             <div className="absolute w-full z-10">
               <div className="flex items-center justify-between z-10">
 
+                {/* TODO: Add TypeScript */}
                 {data?.PropertyStatus.statusName !== "available" &&
-                  <Badge className={classPropertyStatus[data?.PropertyStatus.statusName]}>{data?.PropertyStatus.statusName}</Badge>
+                  <Badge className={`${classPropertyStatus[data?.PropertyStatus.statusName]} backdrop-blur-sm px-3 py-1.5 bg-opacity-60`}>{data?.PropertyStatus.statusName}</Badge>
                 }
                 <Button className="ml-auto">Like</Button>
               </div>
