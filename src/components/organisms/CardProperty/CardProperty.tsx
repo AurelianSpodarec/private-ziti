@@ -34,7 +34,7 @@ function CardProperty({ isLoading, data }: { isLoading?: boolean, data?: IProper
         </div>
 
 
-        <div className="mt-auto mb- z-10">
+        <div className="mt-auto z-10 absolute bottom-0 w-full">
           <div>
             <div>{data?.Sector.name}</div>
           </div>

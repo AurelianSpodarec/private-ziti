@@ -1,3 +1,4 @@
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -8,7 +9,9 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
+import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import Link from "next/link"
 
 function FilterContainer({ name, children, row }: any) {
   return (
@@ -48,7 +51,7 @@ function DrawerPropertyFilter() {
       <DrawerContent className="bg-white h-full rounded-none">
         <div className="mx-auto w-full max-w-sm contents">
 
-          <DrawerHeader className="flex items-center justify-between">
+          <DrawerHeader className="flex items-center justify-between  ">
             <div className="flex">
               <DrawerTitle>Filter</DrawerTitle>
               <DrawerDescription>properties</DrawerDescription>
@@ -61,25 +64,25 @@ function DrawerPropertyFilter() {
           <section className="overflow-y-auto">
 
             <FilterContainer name="Sort by">
-              <button>Newest</button>
-              <button>Price</button>
-              <button>Price</button>
-              <button>A-Z</button>
-              <button>Z-A</button>
+              <Button>Newest</Button>
+              <Button>Price</Button>
+              <Button>Price</Button>
+              <Button>A-Z</Button>
+              <Button>Z-A</Button>
             </FilterContainer>
 
             <FilterContainer name="Price">
-              <button>House</button>
-              <button>Apartament</button>
+              <Button>House</Button>
+              <Button>Apartament</Button>
             </FilterContainer>
 
             <FilterContainer name="Area" row>
-              <input placeholder="Min"></input>
-              <input placeholder="Max"></input>
+              <Input placeholder="Min"></Input>
+              <Input placeholder="Max"></Input>
             </FilterContainer>
 
             <FilterContainer name="Land" row>
-              <input placeholder="Min"></input>
+              <Input placeholder="Min"></Input>
             </FilterContainer>
 
           </section>
@@ -87,8 +90,8 @@ function DrawerPropertyFilter() {
 
           <DrawerFooter>
             <div className="flex items-center justify-between">
-              <button>Reset</button>
-              <button>Apply</button>
+              <Button kind="outline">Reset</Button>
+              <Button>Apply</Button>
             </div>
           </DrawerFooter>
 
