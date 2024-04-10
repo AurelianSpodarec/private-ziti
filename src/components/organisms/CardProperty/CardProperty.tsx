@@ -2,6 +2,7 @@ import Link from "next/link";
 import { IProperty } from "@/interfaces/IProperties";
 import CarouselProperty from "./_components/PropertyCarousel";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 // TODO: Remove once the images are inside the database; used temporarly to simulate the images
 const images = [
@@ -20,41 +21,39 @@ function CardProperty({ isLoading, data }: { isLoading?: boolean, data?: IProper
     )
   }
   return (
-    <article className="relative isolate flex flex-col h-[330px] overflow-hidden rounded-2xl">
-      <Link href={`properties/${data?.id}`} className="h-full flex flex-col relative p-4">
+    <article className="relative isolate flex flex-col">
+      <Link href={`properties/${data?.id}`} className="h-full flex flex-col relative">
 
-        <div className="absolute top-0 right-0 bottom-0 left-0 h-[330px]">
-          <CarouselProperty images={images} />
-        </div>
-
-        <div className="relative h-full flex">
-
-          <div className="absolute w-full z-10">
-            <div className="flex items-center justify-between z-10">
-              <Badge>New</Badge>
-              <button>Like</button>
-            </div>
+        <div className="h-[330px] p-4">
+          <div className="absolute top-0 right-0 bottom-0 left-0 ">
+            <CarouselProperty images={images} />
           </div>
 
-          <div className="mt-auto z-10 bottom-0 w-full">
-            {/* <div className="bg-blackBlue-700/60 backdrop-blur-sm inline-block rounded-full px-4 py-1">
-              <div className="text-white">{data?.Sector.name}</div>
-            </div> */}
-            <div className="flex items-center justify-between mb-2">
-              <Badge blur="default" opacity="default">{data?.Sector.name}</Badge>
-              <Badge>1 of 10</Badge>
-            </div>
-
-            <header className="bg-white rounded-3xl mt-auto p-4">
-              <div className="flex justify-between items-center">
-                <h3 className="text-primary">{data?.title}</h3>
-                <span className="text-jungleGreen-800">{data?.Currency}{data?.price}</span>
+          <div className="relative h-full flex">
+            <div className="absolute w-full z-10">
+              <div className="flex items-center justify-between z-10">
+                <Badge>New</Badge>
+                <Button>Like</Button>
               </div>
-              <p className="text-foreground-250">{data?.description}</p>
-            </header>
+            </div>
+
+            <div className="mt-auto z-10 absolute bottom-0 w-full">
+              <div className="flex items-center justify-between">
+                <Badge blur="default" opacity="default">{data?.Sector.name}</Badge>
+                <Badge>1 of 10</Badge>
+              </div>
+            </div>
           </div>
 
         </div>
+
+        <header className="bg-white rounded-3xl mt-auto">
+          <div className="flex justify-between items-center">
+            <h3 className="text-base md:text-lg lg:text-lg text-primary">{data?.title}</h3>
+            <span className="text-base md:text-lg text-jungleGreen-800">{data?.Currency}{data?.price}</span>
+          </div>
+          <p className="text-sm text-foreground-250">{data?.description}</p>
+        </header>
 
       </Link>
     </article>
