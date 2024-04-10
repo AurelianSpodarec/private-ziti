@@ -8,7 +8,17 @@ export const shadcnPlugin = plugin(
         // Named Colors
         // =============================================================
         "--primary": theme("colors.oceanicForest.800"),
+        "--primary-50": theme("colors.gulfStream.100"),
+        "--primary-250": theme("colors.gulfStream.150"),
+        "--primary-500": theme("colors.gulfStream.450"), 
+
+        "--foreground-250": theme("colors.blackBlue.250"),
+        "--foreground-500": theme("colors.blackBlue.400"),
+        "--foreground-750": theme("colors.blackBlue.600"),
+
+
         "--primary-foreground": "0 0% 98%",
+
         
         "--secondary": "240 4.8% 95.9%",
         "--secondary-foreground": "240 5.9% 10%",
@@ -45,6 +55,10 @@ export const shadcnPlugin = plugin(
         "--primary": theme("colors.jungleGreen.800"),
         "--primary-foreground": "240 5.9% 10%",
 
+        "--foreground-250": theme("colors.blackBlue.250"),
+        "--foreground-500": theme("colors.blackBlue.400"),
+        "--foreground-750": theme("colors.blackBlue.600"),
+        
         "--background": "240 10% 3.9%",
         "--foreground": "0 0% 98%",
 
@@ -253,10 +267,13 @@ export const shadcnPlugin = plugin(
             500: "var(--primary)",
             foreground: "var(--primary-foreground)",
           },
-          secondary: {
-            DEFAULT: "var(--secondary)",
-            foreground: "var(--secondary-foreground)",
+
+          foreground: {
+            250: "var(--foreground-250)",
+            500: "var(--foreground-500)",
+            750: "var(--foreground-750)",
           },
+
           destructive: {
             DEFAULT: "var(--destructive)",
             foreground: "var(--destructive-foreground)",

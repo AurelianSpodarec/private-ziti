@@ -185,7 +185,8 @@ const buttonVariants = cva(
       variant: "monochrome",
       size: "medium",
     },
-  });
+  }
+);
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {

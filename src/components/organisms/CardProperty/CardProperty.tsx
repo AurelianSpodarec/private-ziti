@@ -36,16 +36,21 @@ function CardProperty({ isLoading, data }: { isLoading?: boolean, data?: IProper
             </div>
           </div>
 
-          <div className="mt-auto z-10 bottom-0 w-full ">
-            <div>
-              <div>{data?.Sector.name}</div>
+          <div className="mt-auto z-10 bottom-0 w-full">
+            {/* <div className="bg-blackBlue-700/60 backdrop-blur-sm inline-block rounded-full px-4 py-1">
+              <div className="text-white">{data?.Sector.name}</div>
+            </div> */}
+            <div className="flex items-center justify-between mb-2">
+              <Badge blur="default" opacity="default">{data?.Sector.name}</Badge>
+              <Badge>1 of 10</Badge>
             </div>
-            <header className="bg-white rounded-3xl mt-auto">
+
+            <header className="bg-white rounded-3xl mt-auto p-4">
               <div className="flex justify-between items-center">
-                <h3>{data?.title}</h3>
-                <span className="text-primary">{data?.Currency}{data?.price}</span>
+                <h3 className="text-primary">{data?.title}</h3>
+                <span className="text-jungleGreen-800">{data?.Currency}{data?.price}</span>
               </div>
-              <p>{data?.description}</p>
+              <p className="text-foreground-250">{data?.description}</p>
             </header>
           </div>
 
