@@ -12,8 +12,16 @@ const images = [
   "https://thumbor.forbes.com/thumbor/fit-in/x/https://www.forbes.com/advisor/wp-content/uploads/2021/08/download-7.jpg",
 ]
 
-function CardProperty({ isLoading, data }: { isLoading?: boolean, data?: IProperty }) {
-  
+interface ICardProperty {
+  isLoading?: boolean;
+  data?: IProperty;
+  isNew?: boolean;
+  underConstruction?: boolean;
+  propertyStatus: "available" | "new" | "construction";
+}
+
+function CardProperty({ isLoading, data }: ICardProperty) {
+
   if (isLoading) {
     return (
       <article>
@@ -21,6 +29,14 @@ function CardProperty({ isLoading, data }: { isLoading?: boolean, data?: IProper
       </article>
     )
   }
+
+  //TODO: Add TypeScript
+  const classPropertyStatus = {
+    available: "",
+    new: "bg-green-550",
+    "pre-construction": "bg-blue-550"
+  }
+
   return (
     <article className="relative isolate flex flex-col">
       <Link href={`properties/${data?.id}`} className="h-full flex flex-col relative">
@@ -33,16 +49,16 @@ function CardProperty({ isLoading, data }: { isLoading?: boolean, data?: IProper
           <div className="relative h-full flex">
             <div className="absolute w-full z-10">
               <div className="flex items-center justify-between z-10">
-                <Badge>New</Badge>
-                <Button>Like</Button>
+
+                {data?.PropertyStatus.statusName !== "available" &&
+                  <Badge className={classPropertyStatus[data?.PropertyStatus.statusName]}>{data?.PropertyStatus.statusName}</Badge>
+                }
+                <Button className="ml-auto">Like</Button>
               </div>
             </div>
 
             <div className="mt-auto z-10 absolute bottom-0 w-full">
-              <div className="flex items-center justify-between">
-                <Badge blur="default" opacity="default">{data?.Sector.name}</Badge>
-                {/* <Badge>1 of 10</Badge> */}
-              </div>
+              <Badge blur="base" opacity="base">{data?.Sector.name}</Badge>
             </div>
           </div>
 

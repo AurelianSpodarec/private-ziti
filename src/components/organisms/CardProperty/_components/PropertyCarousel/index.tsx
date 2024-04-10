@@ -58,7 +58,7 @@ function CarouselProperty({ images }: any) {
       <CarouselNext className="bg-white/90 hover:bg-white hover:zoom-in-105 right-8" />
 
       <div className="mt-auto ml-auto z-10 absolute bottom-0 w-full p-4 justify-end flex">
-        <Badge>{current} of {count}</Badge>
+        <Badge blur="base" opacity="base">{current} of {count}</Badge>
       </div>
 
     </Carousel>
