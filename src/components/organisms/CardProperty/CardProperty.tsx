@@ -52,7 +52,7 @@ function CardProperty({ isLoading, data }: ICardProperty) {
 
                 {/* TODO: Add TypeScript */}
                 {data?.PropertyStatus.statusName !== "available" &&
-                  <Badge className={`${classPropertyStatus[data?.PropertyStatus.statusName]} backdrop-blur-sm px-3 py-1.5 bg-opacity-60`}>{data?.PropertyStatus.statusName}</Badge>
+                  <Badge className={`${classPropertyStatus[data?.PropertyStatus.statusName]} backdrop-blur-sm bg-opacity-60`}>{data?.PropertyStatus.statusName}</Badge>
                 }
                 <Button className="ml-auto">Like</Button>
               </div>
