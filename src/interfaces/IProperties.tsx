@@ -31,43 +31,42 @@ export interface IProperty {
     PropertyType: IPropertyType;
     Sector: ISector;
     images: string[];
-  }
-  
-  export interface IPropertyStatus {
+}
+
+export interface IPropertyStatus {
     id: number;
     statusName: "available" | "new" | "pre-construction";
     deliveryDate: string | null;
     createdAt: string;
     updatedAt: string;
-  }
-  
-  export interface IPropertyType {
+}
+
+export interface IPropertyType {
     id: number;
     name: string;
     createdAt: string;
     updatedAt: string;
-  }
-  
-  export interface ISector {
+}
+
+export interface ISector {
     id: number;
     name: string;
     Municipality: IMunicipality;
-  }
-  
-  export interface IMunicipality {
+}
+
+export interface IMunicipality {
     id: number;
     name: string;
     Province: IProvince;
-  }
-  
-  export interface IProvince {
+}
+
+export interface IProvince {
     id: number;
     name: string;
     Country: ICountry;
-  }
-  
-  export interface ICountry {
+}
+
+export interface ICountry {
     id: number;
     name: string;
-  }
-  
+}

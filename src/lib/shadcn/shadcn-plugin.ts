@@ -15,10 +15,8 @@ export const shadcnPlugin = plugin(
         "--foreground-250": theme("colors.blackBlue.250"),
         "--foreground-500": theme("colors.blackBlue.400"),
         "--foreground-750": theme("colors.blackBlue.600"),
-
-
+        
         "--primary-foreground": "0 0% 98%",
-
 
         "--secondary": "240 4.8% 95.9%",
         "--secondary-foreground": "240 5.9% 10%",
@@ -49,7 +47,6 @@ export const shadcnPlugin = plugin(
 
         "--destructive": "0 84.2% 60.2%",
         "--destructive-foreground": "0 0% 98%",
-
       },
       ".dark": {
         "--primary": theme("colors.jungleGreen.800"),
