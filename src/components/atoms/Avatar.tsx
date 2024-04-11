@@ -9,13 +9,17 @@ interface IAvatar {
   size?: string;
   shape?: "rounded-full";
   border?: string;
+  src?: string;
+  alt?: string;
+  name: string;
+  fallbackText: string;
 }
 
-function Avatar({ verified, shape = "rounded-full" }: IAvatar) {
+function Avatar({ src, fallbackText, name, verified, shape = "rounded-full" }: IAvatar) {
   return (
     <UIAvatar className={`rounded-full ${shape} h-8 w-8`}>
-      <UIAvatarImage className={`rounded-full ${shape}`} src="https://github.com/shadcn.png" alt="@shadcn" />
-      <UIAvatarFallback>CN</UIAvatarFallback>
+      <UIAvatarImage className={`rounded-full ${shape}`} src={src} alt={name} />
+      <UIAvatarFallback>{fallbackText}</UIAvatarFallback>
 
       {verified &&
         <div className="absolute top-5 left-5 h-5 w-5">

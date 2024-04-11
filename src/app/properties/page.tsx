@@ -13,42 +13,50 @@ import { Button } from "@/components/ui/button";
 
 function NativeMobileMenu() {
   return (
-    <div className="fixed bottom-4 left-4 right-4 w-full z-30 space-x-4">
-      <Button
-        icon={
-          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        }
-      />
-      <Button
-        icon={
-          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        }
-      />
-      <Button
-        icon={
-          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        }
-      />
-      <Button
-        icon={
-          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        }
-      />
-      <Button
-        icon={
-          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        }
-      />
+    <div className="fixed left-1/2 right-1/2 bottom-4 w-full z-30 space-x-4">
+      <div>
+
+        <Button
+          kind="outline"
+          icon={
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          }
+        />
+        <Button
+          kind="outline"
+          icon={
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          }
+        />
+        <Button
+          kind="outline"
+          icon={
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          }
+        />
+        <Button
+          kind="outline"
+          icon={
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          }
+        />
+        <Button
+          kind="outline"
+          icon={
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          }
+        />
+      </div>
     </div>
   )
 }
@@ -67,9 +75,9 @@ function Page() {
   return (
     <Container>
 
-      {/* <NativeMobileMenu /> */}
+      <NativeMobileMenu />
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between lg:hidden">
         <Tabs defaultValue="account" className="">
           <TabsList>
             <TabsTrigger value="House">House</TabsTrigger>
@@ -81,7 +89,7 @@ function Page() {
         </div>
       </div>
 
-      <div className="flex items-center whitespace-nowrap overflow-x-auto">
+      <div className="flex items-center whitespace-nowrap overflow-x-auto lg:hidden">
         <Badge>Punta Cana</Badge>
         <Badge>$120,000 - $350,000</Badge>
         <Badge>2+ baths</Badge>

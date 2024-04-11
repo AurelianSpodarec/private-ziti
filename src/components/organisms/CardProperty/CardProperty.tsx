@@ -17,7 +17,10 @@ const images = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOJsYSkBRcPrU-M3vv4a-YEcVv1IGQJF0upfsh4AnmtOiFRNNmaRdtf9v8HpPJkCZ92k8&usqp=CAU",
   "https://www.trulia.com/pictures/thumbs_4/zillowstatic/fp/c631445b62dd159b3a59ca4ec8c277b4-full.jpg",
   "https://i.pinimg.com/originals/4d/e1/f8/4de1f83293c5786d62f838387244b485.jpg",
-  "https://media.istockphoto.com/id/1391605300/photo/colorful-orange-residential-home-or-house-in-puerto-rico.jpg?s=612x612&w=0&k=20&c=cI-nRl5IB2IGQ0YwyXXIDO3W0xlRDg-XiAjGHNZ3b3o="
+  "https://media.istockphoto.com/id/1391605300/photo/colorful-orange-residential-home-or-house-in-puerto-rico.jpg?s=612x612&w=0&k=20&c=cI-nRl5IB2IGQ0YwyXXIDO3W0xlRDg-XiAjGHNZ3b3o=",
+  "https://cdn.hometogo.net/large/e_v5/55a/724/ead310553a369da4dff0b2b16f.jpg",
+  "https://www.trulia.com/pictures/thumbs_4/zillowstatic/fp/35865cc9430e430cb537515e9e1bc190-full.jpg",
+  "https://ap.rdcpix.com/35fe40062461880943f95c882a6406a3l-m3114675221od-w480_h360.jpg"
 ]
 
 // TODO: Remove once real data is in the listings
