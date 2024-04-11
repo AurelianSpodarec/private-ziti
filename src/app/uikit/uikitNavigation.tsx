@@ -10,6 +10,7 @@ export const navigation = [
     title: "Atoms",
     links: [
       { title: "Avatar", href: "/uikit/avatar", },
+      { title: "Button", href: "/uikit/Button", },
     ],
   },
   // {
