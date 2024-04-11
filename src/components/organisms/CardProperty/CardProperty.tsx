@@ -12,7 +12,6 @@ import { getShuffledArr, images } from "./fakePropertyData";
 type ICardProperty = {
   data?: IProperty;
   isLoading?: boolean;
-  propertyStatus: keyof Pick<IPropertyStatus, "statusName">;
 }
 
 type ICardPropertyStatuses = {
