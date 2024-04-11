@@ -3,34 +3,12 @@ import React from "react"
 import { Badge } from "@/components/ui/badge"
 import {
   Carousel,
-  CarouselContent,
-  CarouselItem,
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel"
 
-function PropertyCarouselItem({ image }: { image: string }) {
-  return (
-    <CarouselItem className="mx-0 px-0 h-[330px]">
-      <img
-        src={image}
-        alt=""
-        className="h-full w-full object-cover"
-      />
-    </CarouselItem>
-  )
-}
-
-function PropertyCarouselList({ data }: { data: [string] }) {
-  return (
-    <CarouselContent>
-      {data.map((item) => {
-        return <PropertyCarouselItem image={item} />
-      })}
-    </CarouselContent>
-  )
-}
+import PropertyCarouselList from "./List"
 
 function CarouselProperty({ images }: any) {
   const [api, setApi] = React.useState<CarouselApi>()
@@ -48,6 +26,7 @@ function CarouselProperty({ images }: any) {
     })
   }, [api])
 
+  // TODO: Put Buttons and slide count into separate components
   return (
     <Carousel setApi={setApi} className="relative rounded-2xl overflow-hidden h-auto z-10">
       <PropertyCarouselList data={images} />

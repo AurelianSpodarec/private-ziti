@@ -22,6 +22,11 @@ type ICardPropertyStatuses = {
   }
 }
 
+let USDollar = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+
 function CardProperty({ data, isLoading }: ICardProperty) {
 
   if (isLoading) {
@@ -90,7 +95,7 @@ function CardProperty({ data, isLoading }: ICardProperty) {
         <header className="bg-white rounded-3xl mt-auto">
           <div className="flex justify-between items-center">
             <h3 className="text-base md:text-lg lg:text-lg text-primary">{data?.title}</h3>
-            <span className="text-base md:text-lg text-jungleGreen-800">{data?.Currency}{data?.price}</span>
+            <span className="text-base md:text-lg text-jungleGreen-800">{data && USDollar.format(data?.price)}</span>
           </div>
           <p className="text-sm text-foreground-250">{data?.description}</p>
         </header>
