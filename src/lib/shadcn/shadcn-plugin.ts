@@ -10,7 +10,7 @@ export const shadcnPlugin = plugin(
         "--primary": theme("colors.oceanicForest.800"),
         "--primary-50": theme("colors.gulfStream.100"),
         "--primary-250": theme("colors.gulfStream.150"),
-        "--primary-500": theme("colors.gulfStream.450"), 
+        "--primary-500": theme("colors.gulfStream.450"),
 
         "--foreground-250": theme("colors.blackBlue.250"),
         "--foreground-500": theme("colors.blackBlue.400"),
@@ -19,10 +19,10 @@ export const shadcnPlugin = plugin(
 
         "--primary-foreground": "0 0% 98%",
 
-        
+
         "--secondary": "240 4.8% 95.9%",
         "--secondary-foreground": "240 5.9% 10%",
-        
+
         "--background": "0 0% 100%",
         "--foreground": "240 10% 3.9%",
 
@@ -38,7 +38,7 @@ export const shadcnPlugin = plugin(
         "--input": "240 5.9% 90%",
         "--ring": "240 5% 64.9%",
         "--radius": "0.5rem",
-        
+
         // Components
         // =============================================================
         "--card": "0 0% 100%",
@@ -46,10 +46,10 @@ export const shadcnPlugin = plugin(
 
         "--popover": "0 0% 100%",
         "--popover-foreground": "240 10% 3.9%",
-        
+
         "--destructive": "0 84.2% 60.2%",
         "--destructive-foreground": "0 0% 98%",
-        
+
       },
       ".dark": {
         "--primary": theme("colors.jungleGreen.800"),
@@ -58,7 +58,7 @@ export const shadcnPlugin = plugin(
         "--foreground-250": theme("colors.blackBlue.250"),
         "--foreground-500": theme("colors.blackBlue.400"),
         "--foreground-750": theme("colors.blackBlue.600"),
-        
+
         "--background": "240 10% 3.9%",
         "--foreground": "0 0% 98%",
 
@@ -109,7 +109,7 @@ export const shadcnPlugin = plugin(
 
           // Primitives
           // =================================================
-          
+
           // Neutral
           // --------------------------------------
           oceanicForest: {
@@ -269,6 +269,7 @@ export const shadcnPlugin = plugin(
           },
 
           foreground: {
+            DEFAULT: "var(--foreground-500)",
             250: "var(--foreground-250)",
             500: "var(--foreground-500)",
             750: "var(--foreground-750)",
@@ -293,10 +294,9 @@ export const shadcnPlugin = plugin(
           input: "var(--input)",
           ring: "var(--ring)",
           background: "var(--background)",
-          foreground: "var(--foreground)",
 
-        // Components
-        // =================================================
+          // Components
+          // =================================================
           popover: {
             DEFAULT: "var(--popover)",
             foreground: "var(--popover-foreground)",
