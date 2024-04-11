@@ -32,6 +32,9 @@ const buttonVariants = cva(
       fullWidth: {
         true: "w-full",
       },
+      spacing: {
+        clean: "",
+      }
       // disabled: {
       //   true: "bg-surfaceDisabled text-textDisabled",
       // },
@@ -131,13 +134,13 @@ const buttonVariants = cva(
       {
         kind: "glass",
         size: "medium",
-        className: "px-5 py-3",
+        className: "px-3 py-3",
         // variant: "",
       },
       {
         kind: "glass",
         size: "medium",
-        className: "px-5 py-3",
+        className: "px-3 py-3",
         variant: "clean",
       }
     ],
