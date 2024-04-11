@@ -1,3 +1,5 @@
+import React from "react"
+
 import { Badge } from "@/components/ui/badge"
 import {
   Carousel,
@@ -7,7 +9,6 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel"
-import React from "react"
 
 function PropertyCarouselItem({ image }: { image: string }) {
   return (
@@ -21,7 +22,7 @@ function PropertyCarouselItem({ image }: { image: string }) {
   )
 }
 
-function PropertyCarouselList({ data }) {
+function PropertyCarouselList({ data }: { data: [string] }) {
   return (
     <CarouselContent>
       {data.map((item) => {
@@ -31,16 +32,13 @@ function PropertyCarouselList({ data }) {
   )
 }
 
-// Maybe this need to be transformed into the view of the carousel with all the content in
 function CarouselProperty({ images }: any) {
   const [api, setApi] = React.useState<CarouselApi>()
   const [current, setCurrent] = React.useState(0)
   const [count, setCount] = React.useState(0)
 
   React.useEffect(() => {
-    if (!api) {
-      return
-    }
+    if (!api) return
 
     setCount(api.scrollSnapList().length)
     setCurrent(api.selectedScrollSnap() + 1)
