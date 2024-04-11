@@ -197,24 +197,32 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   block?: boolean;
+  ring?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
-  icon, iconPosition, hideTextLoading, block, isLoading, kind = "solid", label, children, className, variant, size, asChild = false,
+  icon, iconPosition, hideTextLoading, block, isLoading, ring, kind = "solid", label, children, className, variant, size, asChild = false,
   ...props
 }, ref) => {
   const Comp = asChild ? Slot : "button"
 
+  // TODO: If no text, and is loading, take gap-2 away
   return (
+    // <div className={`  ${ring ? "bg-blackBlue-600/60 backdrop-blur-sm p-2 rounded-lg" : ""}`}>
     <Comp
-      className={
-        cn(buttonVariants({ variant, kind, size, className }),
-          `inline-flex justify-center gap-2 leading-4 items-center ${iconPosition === "right" && !isLoading ? "flex-row-reverse" : ""} ${block ? "w-full" : ""}`
-        )}
       ref={ref}
+      className={
+        cn(buttonVariants({ variant, kind, size, className }),`
+          inline-flex justify-center gap-2 leading-4 items-center
+          ${iconPosition === "right" && !isLoading ? "flex-row-reverse" : ""} 
+          ${block ? "w-full" : ""}
+          ${ring ? "ring-blackBlue-600/30 backdrop-blur-sm" : ""}
+        `)
+      }
       {...props}
     >
       <>
+
         {icon && (
           !isLoading || iconPosition !== "right" &&
           <div className="flex items-center max-h-4 max-w-4 h-4 w-4 select-none pointer-events-none wop">
@@ -241,6 +249,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
 
       </>
     </Comp>
+    // </div>
   )
 }
 )
