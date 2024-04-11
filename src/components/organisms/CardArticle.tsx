@@ -1,6 +1,7 @@
+import Link from "next/link"
+
 import { IArticle } from "@/interfaces/IBlog"
 import Avatar from "../atoms/Avatar"
-import Link from "next/link"
 
 function CardArticle({ data }: { data: IArticle }) {
   return (
@@ -11,7 +12,7 @@ function CardArticle({ data }: { data: IArticle }) {
         <header>
           <h3>{data.title}</h3>
           <div>
-            <Avatar />
+            <Avatar src="https://github.com/shadcn.png" fallbackText="JD" name="John Doe" />
             <span>{data.Author.name}</span>
             <span>{data.wordCount} min read - {data.datePublished}</span>
           </div>
