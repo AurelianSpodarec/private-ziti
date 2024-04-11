@@ -2,7 +2,7 @@ import Link from "next/link";
 import { IProperty } from "@/interfaces/IProperties";
 import CarouselProperty from "./_components/PropertyCarousel";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button/button";
 import Skeleton from "@/components/atoms/Skeleton";
 
 // TODO: Remove once the images are inside the database; used temporarly to simulate the images

@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button/button"
 import {
   Drawer,
   DrawerClose,
