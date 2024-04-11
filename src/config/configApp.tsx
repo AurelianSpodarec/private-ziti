@@ -1,5 +1,5 @@
 export let configApp = {
-  name: "AutoSite",
+  name: "Ziti",
   url: "ziti.io",
   http: "https://",
-} 
+}
