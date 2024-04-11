@@ -9,6 +9,49 @@ import Container from "@/components/Container";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DrawerPropertyFilter from "./_components/DrawerPropertyFilter";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+
+function NativeMobileMenu() {
+  return (
+    <div className="fixed bottom-4 left-4 right-4 w-full z-30 space-x-4">
+      <Button
+        icon={
+          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        }
+      />
+      <Button
+        icon={
+          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        }
+      />
+      <Button
+        icon={
+          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        }
+      />
+      <Button
+        icon={
+          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        }
+      />
+      <Button
+        icon={
+          <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 13L1 7L7 1" stroke="#1D2F3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        }
+      />
+    </div>
+  )
+}
 
 function Page() {
 
@@ -23,6 +66,8 @@ function Page() {
 
   return (
     <Container>
+
+      {/* <NativeMobileMenu /> */}
 
       <div className="flex items-center justify-between">
         <Tabs defaultValue="account" className="">

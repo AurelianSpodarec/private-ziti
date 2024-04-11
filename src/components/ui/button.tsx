@@ -206,14 +206,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
 }, ref) => {
   const Comp = asChild ? Slot : "button"
 
-  // TODO: If no text, and is loading, take gap-2 away
   return (
     // <div className={`  ${ring ? "bg-blackBlue-600/60 backdrop-blur-sm p-2 rounded-lg" : ""}`}>
     <Comp
       ref={ref}
       className={
-        cn(buttonVariants({ variant, kind, size, className }),`
-          inline-flex justify-center gap-2 leading-4 items-center
+        cn(buttonVariants({ variant, kind, size, className }), `
+          inline-flex justify-center leading-4 items-center
+          ${!children && isLoading && !label ? "" : "gap-2"}
           ${iconPosition === "right" && !isLoading ? "flex-row-reverse" : ""} 
           ${block ? "w-full" : ""}
           ${ring ? "ring-blackBlue-600/30 backdrop-blur-sm" : ""}
@@ -222,6 +222,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       {...props}
     >
       <>
+        {ring &&
+          <div className="relative">
+            {/* <div className="border border-gray-400 rounded-md bg-white p-16 relative z-20">1</div> */}
+            <div className="absolute -inset-1 rounded-md blur-md bg-gradient-to-br from-pink-500 via-cyan-500 to-violet-500 z-10"></div>
+          </div>
+        }
 
         {icon && (
           !isLoading || iconPosition !== "right" &&

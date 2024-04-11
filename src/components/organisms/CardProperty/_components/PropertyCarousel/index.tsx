@@ -60,7 +60,6 @@ function CarouselProperty({ images }: any) {
       <div className="mt-auto ml-auto z-10 absolute bottom-0 w-full p-4 justify-end flex">
         <Badge blur="base" opacity="base">{current} of {count}</Badge>
       </div>
-
     </Carousel>
   )
 }
