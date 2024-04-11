@@ -41,7 +41,7 @@ function CardProperty({ data, isLoading }: ICardProperty) {
     )
   }
 
-  const cardPropertyStatus = data && data?.PropertyStatus && data?.PropertyStatus.statusName
+  const cardPropertyStatus = data?.PropertyStatus.statusName
   const cardPropertyStatuses: ICardPropertyStatuses = {
     available: {
       name: "",
