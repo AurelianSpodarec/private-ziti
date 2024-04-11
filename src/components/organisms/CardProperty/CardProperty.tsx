@@ -3,6 +3,7 @@ import { IProperty } from "@/interfaces/IProperties";
 import CarouselProperty from "./_components/PropertyCarousel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Skeleton from "@/components/atoms/Skeleton";
 
 // TODO: Remove once the images are inside the database; used temporarly to simulate the images
 const images = [
@@ -25,7 +26,12 @@ function CardProperty({ isLoading, data }: ICardProperty) {
   if (isLoading) {
     return (
       <article>
-        IsLoading
+        <Skeleton type="image" className="h-[330px]" />
+        <div className="flex items-center justify-between">
+          <Skeleton variant="rectangular" className="w-[30%] h-4" />
+          <Skeleton variant="rectangular" className="w-20 h-4" />
+        </div>
+        <Skeleton variant="rectangular" className="w-[60%] h-4" />
       </article>
     )
   }

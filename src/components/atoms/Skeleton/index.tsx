@@ -11,7 +11,7 @@ function Skeleton({ className, variant = "rectangular", type, height = "h-2.5", 
 
   return (
     <div className={`${className && className} ${gutter ? gutter : "mb-2"} ${height} ${width}`}>
-      <div className={`${variant === "circle" ? "rounded-full" : "rounded-lg"} w-full h-full bg-gray-300 shadow animate-pulse`}>
+      <div className={`${variant === "circle" ? "rounded-full" : "rounded-md"} w-full h-full bg-gray-300 shadow animate-pulse`}>
         <div className="flex items-center justify-center h-full w-full">
           {type && (
             types[type]

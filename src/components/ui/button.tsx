@@ -189,14 +189,14 @@ const buttonVariants = cva(
 );
 
 
-function ButtonRing({ children, variant, ring }: any) {
-  if(!ring) return children
-  return (
-    <div className={cn(buttonVariants({ variant }), `${ring ? "ring__face" : ""}`)}>
-      {children}
-    </div>
-  )
-}
+// function ButtonRing({ children, variant, ring }: any) {
+//   if(!ring) return children
+//   return (
+//     <div className={cn(buttonVariants({ variant }), `${ring ? "ring__face" : ""}`)}>
+//       {children}
+//     </div>
+//   )
+// }
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
@@ -231,7 +231,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       {...props}
     >
       <>
-        <ButtonRing variant={variant} ring={ring}>
+        {/* <ButtonRing variant={variant} ring={ring}> */}
 
           {icon && (
             !isLoading || iconPosition !== "right" &&
@@ -257,7 +257,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
             </svg>
           )}
 
-        </ButtonRing>
+        {/* </ButtonRing> */}
       </>
     </Comp>
   )

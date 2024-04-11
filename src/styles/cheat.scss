@@ -7,21 +7,22 @@
 	appearance: none;
 	display: block;
 
-	border-radius: 50%;
+	// border-radius: 50%;
 	border: 3em solid transparent;
 	position: relative;
 	isolation: isolate;
+  cursor: pointer;
 
   // &:hover {
   //   background: red;
   // }
   &__face {
-    width: 3em;
-		height: 3em;
+    // width: 3em;
+		// height: 3em;
 		text-align: center;
-		line-height: 3em;
+		// line-height: 3em;
 		// background: white;
-		font-size: 3em;
+		// font-size: 3em;
 		// box-shadow: inset 0px -1px 4px -1px black;
 		border-radius: inherit;
   }

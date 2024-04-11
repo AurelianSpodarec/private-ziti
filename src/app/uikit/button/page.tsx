@@ -24,6 +24,9 @@ function UIKitButton() {
           <div className="absolute top-[4%] right-[53%]">
             <Button ring>Ring</Button>
           </div>
+          <div className="absolute top-[4%] right-[43%]">
+            <Button ring kind="outline">Ring</Button>
+          </div>
         </div>
       </div>
 
