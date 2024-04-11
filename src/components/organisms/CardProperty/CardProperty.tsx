@@ -42,7 +42,7 @@ interface ICardProperty {
 }
 
 function CardProperty({ isLoading, data }: ICardProperty) {
-
+  
   if (isLoading) {
     return (
       <article>
@@ -55,12 +55,21 @@ function CardProperty({ isLoading, data }: ICardProperty) {
       </article>
     )
   }
-
-  //TODO: Add TypeScript
-  const classPropertyStatus = {
-    available: "",
-    new: "bg-green-550 bg-opacity-60",
-    "pre-construction": "bg-blue-550 bg-opacity-75"
+  
+  const propertyStatus = data?.PropertyStatus.statusName
+  const propertyStatuses = {
+    available: {
+      name: "",
+      class: "",
+    },
+    new: {
+      name: "New",
+      class: "bg-green-550 bg-opacity-60",
+    },
+    "pre-construction": {
+      name: "Pre-Construction",
+      class: "bg-blue-550 bg-opacity-75",
+    }
   }
 
   return (
@@ -78,8 +87,8 @@ function CardProperty({ isLoading, data }: ICardProperty) {
 
                 {/* TODO: Add TypeScript */}
                 {data?.PropertyStatus.statusName !== "available" &&
-                  <Badge className={`${classPropertyStatus[data?.PropertyStatus.statusName]} backdrop-blur-sm bg-opacity-60`}>
-                    {data?.PropertyStatus.statusName}
+                  <Badge className={`${propertyStatuses[propertyStatus].class} backdrop-blur-sm bg-opacity-60`}>
+                    {propertyStatuses[propertyStatus].name}
                   </Badge>
                 }
                 <Button className="ml-auto rounded-full" variant="clean" kind="glass">
