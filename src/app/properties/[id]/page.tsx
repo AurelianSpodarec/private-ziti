@@ -21,7 +21,7 @@ const property = {
   }
 }
 
-const amenities = ["backyard", "parking", "pool", "jacuzzi", "terrace", "elevator", "airConditioning"]
+type amenities = ["backyard", "parking", "pool", "jacuzzi", "terrace", "elevator", "airConditioning"]
 
 
 function PropertySingle() {
