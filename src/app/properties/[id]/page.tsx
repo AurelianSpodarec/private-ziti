@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query"
 
 import { getPropertySingle } from "@/services/apis/requests/listing/properties"
 
-
 const property = {
   squareFeet: {
     name: "",
@@ -33,7 +32,6 @@ function PropertySingle() {
   })
 
   const data = dataQuery?.data
-  console.log(dataQuery?.data)
 
   return (
     <div>

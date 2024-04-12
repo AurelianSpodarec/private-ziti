@@ -1,7 +1,6 @@
 'use client'
 
 import { useQuery } from "@tanstack/react-query";
-
 import { getPropertiesList } from "@/services/apis/requests/listing/properties";
 
 import {

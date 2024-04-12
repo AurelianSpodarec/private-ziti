@@ -1,9 +1,9 @@
 'use client'
 
-import CardArticle from "@/components/organisms/CardArticle"
-import { getArticles } from "@/services/apis/requests/blog"
 import { useQuery } from "@tanstack/react-query"
-import { useEffect } from "react"
+import { getArticles } from "@/services/apis/requests/blog"
+
+import CardArticle from "@/components/organisms/CardArticle"
 
 function BlogIndex() {
 
@@ -11,10 +11,6 @@ function BlogIndex() {
     queryKey: ["properites"],
     queryFn: () => getArticles()
   })
-
-  useEffect(() => {
-    console.log(dataQuery.data?.NewsArticles)
-  }, [dataQuery.data])
 
   return (
     <div>

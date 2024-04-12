@@ -5,9 +5,14 @@
 import { IArticle, IAuthor } from "@/interfaces/IBlog"
 import FetchZiti from "../fetch/FetchZiti"
 
+interface IRes {
+  NewsArticles: IArticle[];
+  SchemaData: {}
+}
+
 // Blog: Articles 
 // ============================================================
-export async function getArticles(): Promise<IArticle[]> {
+export async function getArticles(): Promise<IRes> {
   return FetchZiti(`articles`, "GET")
 }
 
