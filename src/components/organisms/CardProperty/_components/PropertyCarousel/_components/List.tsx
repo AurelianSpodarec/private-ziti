@@ -8,7 +8,7 @@ function PropertyCarouselList({ data }: { data: [string] }) {
   return (
     <CarouselContent>
       {data.map((item) => {
-        return <PropertyCarouselItem image={item} />
+        return <PropertyCarouselItem key={item} image={item} />
       })}
     </CarouselContent>
   )
