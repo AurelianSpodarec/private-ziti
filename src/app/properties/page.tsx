@@ -11,34 +11,12 @@ import {
 } from "@/components/ui/tabs";
 import CardProperty from "@/components/organisms/CardProperty/CardProperty";
 import Container from "@/components/Container";
-import { Badge } from "@/components/ui/badge";
 
 import DrawerPropertyFilter from "./_components/DrawerPropertyFilter";
 import DialogPropertyFilter from "./_components/DialogPropertyFilter";
+import SelectedFilterItem from "./_components/SelectedFilterItem";
 
 const fakeDataSelectedFilters = ["Punta Cana", "$120,000 - $350,000", "2+ baths", "Pool", "Garden"]
-
-interface ISelectedFilterItem {
-  name: string;
-  onClick: any;
-}
-
-function SelectedFilterItem({ name, onClick }: ISelectedFilterItem) {
-  return (
-    <Badge
-      onClick={onClick}
-      label={name}
-      kind="outline"
-      variant="secondary"
-      icon={
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13.5 4.5L4.5 13.5" stroke="#515F68" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M4.5 4.5L13.5 13.5" stroke="#515F68" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      }
-    />
-  )
-}
 
 function Page() {
 
