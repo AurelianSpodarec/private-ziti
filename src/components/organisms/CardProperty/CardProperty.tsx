@@ -4,7 +4,7 @@ import { IProperty, IPropertyStatus } from "@/interfaces/IProperties";
 import CarouselProperty from "./_components/PropertyCarousel";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button/button";
+import { Button } from "@/components/ui/button";
 import Skeleton from "@/components/atoms/Skeleton";
 
 import { getShuffledArr, images } from "./fakePropertyData";
