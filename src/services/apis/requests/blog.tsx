@@ -7,7 +7,7 @@ import FetchZiti from "../fetch/FetchZiti"
 
 interface IRes {
   NewsArticles: IArticle[];
-  SchemaData: {}
+  SchemaData?: {}
 }
 
 // Blog: Articles 
@@ -16,7 +16,7 @@ export async function getArticles(): Promise<IRes> {
   return FetchZiti(`articles`, "GET")
 }
 
-export async function getArticleBySlug(slug: string): Promise<IArticle> {
+export async function getArticleBySlug(slug: string): Promise<IRes> {
   return FetchZiti(`articles/${slug}`, "GET")
 }
 

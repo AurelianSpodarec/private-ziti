@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query"
 import { useParams } from "next/navigation"
 
 function BlogView() {
-
   const { slug } = useParams()
 
   const dataQuery = useQuery({
@@ -13,8 +12,7 @@ function BlogView() {
     queryFn: () => getArticleBySlug(String(slug))
   })
 
-  const data = dataQuery?.data?.NewsArticle
-  console.log(data)
+  const data = dataQuery?.data?.NewsArticles
 
   return (
     <div>
