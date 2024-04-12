@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { getPropertiesList } from "@/services/apis/requests/listing/properties";
@@ -48,10 +47,6 @@ function Page() {
     queryFn: () => getPropertiesList()
   })
 
-  useEffect(() => {
-    console.log("woooo", propertiesQuery?.data?.Properties)
-  }, [propertiesQuery.data])
-
   return (
     <Container>
 
@@ -73,7 +68,7 @@ function Page() {
 
       <div className="flex items-center whitespace-nowrap overflow-x-auto lg:hidden mb-4 space-x-2">
         {fakeDataSelectedFilters.map(item => {
-          return <SelectedFilterItem key={item} name={item} onClick={console.log("click")} />
+          return <SelectedFilterItem key={item} name={item} onClick={() => console.log("click")} />
         })}
       </div>
 
