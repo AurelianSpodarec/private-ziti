@@ -15,6 +15,7 @@ import Container from "@/components/Container";
 import { Badge } from "@/components/ui/badge";
 
 import DrawerPropertyFilter from "./_components/DrawerPropertyFilter";
+import DialogPropertyFilter from "./_components/DialogPropertyFilter";
 
 function Page() {
 
@@ -40,6 +41,10 @@ function Page() {
         <div>
           <DrawerPropertyFilter />
         </div>
+      </div>
+
+      <div className="flex justify-end mb-4">
+        <DialogPropertyFilter />
       </div>
 
       <div className="flex items-center whitespace-nowrap overflow-x-auto lg:hidden">
