@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button"
 import {
   Drawer,
@@ -11,8 +10,6 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer"
 import { Input } from "@/components/ui/input"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import Link from "next/link"
 
 function FilterContainer({ name, children, row }: any) {
   return (

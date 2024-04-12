@@ -49,7 +49,7 @@ function Page() {
   })
 
   useEffect(() => {
-    console.log(propertiesQuery.data?.Properties)
+    console.log("woooo", propertiesQuery?.data?.Properties)
   }, [propertiesQuery.data])
 
   return (
@@ -73,7 +73,7 @@ function Page() {
 
       <div className="flex items-center whitespace-nowrap overflow-x-auto lg:hidden mb-4 space-x-2">
         {fakeDataSelectedFilters.map(item => {
-          return <SelectedFilterItem name={item} onClick={console.log("click")} />
+          return <SelectedFilterItem key={item} name={item} onClick={console.log("click")} />
         })}
       </div>
 
