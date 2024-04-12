@@ -5,9 +5,14 @@ import FetchZiti from "../../fetch/FetchZiti"
 
 import { IProperty } from "@/interfaces/IProperties"
 
+interface IRes {
+    Properties: IProperty[];
+    SchemaData: {}
+}
+
 // Property: General 
 // ============================================================
-export async function getPropertiesList(): Promise<IProperty[]> {
+export async function getPropertiesList(): Promise<IRes> {
     return FetchZiti(`properties`, "GET")
 }
 
