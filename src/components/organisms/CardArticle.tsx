@@ -8,7 +8,7 @@ function CardArticle({ data }: { data: IArticle }) {
     <article>
       <Link href={`blog/${data.slug}`}>
 
-        <img src={data.imageUrl} />
+        <img src={`https://ziti.io${data.imageUrl}`} />
         <header>
           <h3>{data.title}</h3>
           <div>
@@ -20,6 +20,6 @@ function CardArticle({ data }: { data: IArticle }) {
       </Link>
     </article>
   )
-}
+} 
 
 export default CardArticle

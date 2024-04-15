@@ -13,7 +13,9 @@ const badgeVariants = cva(
       kind: {
         solid: "",
         outline: "bg-transparent border border-current",
+        glass: "blackdrop-blur-sm",
       },
+      // Move blur to kind as glass
       blur: {
         base: "backdrop-blur-sm"
       },

@@ -7,16 +7,22 @@ const buttonVariants = cva(
       variant: {
         default: "bg-white text-text shadow-button border border-gray-400",
         primary: "bg-primary text-primary-foreground hover:bg-primary/90",
+
+        secondary: "",
+        
+
+        // To be deleted below
         warning: "bg-red-500 text-primary-foreground",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
         destructive: "bg-destructive text-white",
         monochrome: "bg-black text-white border border-gray-900",
         clean: "bg-blackBlue-800",
       },
       kind: {
-        outline: "bg-transparent border border-current shadow-[0_0_0_1px_currentColor]",
         plain: "shadow-none bg-transparent border border-current px-2 py-1 text-sm",
         solid: "",
+        outline: "bg-transparent border border-current shadow-[0_0_0_1px_currentColor]",
+        ghost: "",
+        ring: "",
         glass: "backdrop-blur-sm bg-opacity-60",
       },
       size: {
