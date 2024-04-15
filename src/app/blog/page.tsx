@@ -8,9 +8,11 @@ import CardArticle from "@/components/organisms/CardArticle"
 function BlogIndex() {
 
   const dataQuery = useQuery({
-    queryKey: ["properites"],
+    queryKey: ["blog"],
     queryFn: () => getArticles()
   })
+
+  // console.log(dataQuery?.data?.NewsArticles)
 
   return (
     <div>
