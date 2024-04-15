@@ -17,14 +17,13 @@ function BlogView() {
   const data = dataQuery?.data?.NewsArticle
   console.log(data)
   return (
-    <div>
-      <h1>{data?.title}</h1>
-      {/* <img src={`${data.image}`} /> */}
+    <article className="mx-auto">
+        <h1 className="text-primary text-sm md:text-lg lg:text-5xl font-medium">{data?.title}</h1>
+        <img className="rounded-md" src="https://news.airbnb.com/wp-content/uploads/sites/4/2024/04/02-Airbnb-Gassho-Village-Credit-Satoshi-Nagare.jpg?w=2048" />
+        {/* <img src={`${data?.imageUrl}`} /> */}
 
-      <div>
-        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data?.body, { sanitize: true }) }} />`
-      </div>
-    </div>
+        <div className="prose mx-autoprose mx-auto" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data?.body, { sanitize: true }) }} />`
+    </article>
   )
 }
 
