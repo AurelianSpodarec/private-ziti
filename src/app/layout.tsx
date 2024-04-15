@@ -24,7 +24,7 @@ function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.
       <TrafficSourceTracker />
       <body>
         <Provider>
-          <MobileNativeMenu />
+          {/* <MobileNativeMenu /> */}
           <Header />
           <main className="py-10">
             {children}
