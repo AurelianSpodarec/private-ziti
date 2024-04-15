@@ -6,7 +6,8 @@ import { IArticle, IAuthor } from "@/interfaces/IBlog"
 import FetchZiti from "../fetch/FetchZiti"
 
 interface IRes {
-  NewsArticles: IArticle[];
+  NewsArticles?: IArticle[];
+  NewsArticle?: IArticle;
   SchemaData?: {}
 }
 
