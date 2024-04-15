@@ -1,13 +1,13 @@
 'use client'
 
 import { Markup } from 'react-render-markup';
-import sanitizeHtml from 'sanitize-html';
 
 import { useParams } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
 
 import { getArticleBySlug } from "@/services/apis/requests/blog"
 import Avatar from '@/components/atoms/Avatar';
+import DOMPurify from 'dompurify';
 
 function BlogView() {
   const { slug } = useParams()
@@ -37,7 +37,7 @@ function BlogView() {
       <img className="rounded-lg my-10 mx-auto max-w-screen-lg" src="https://news.airbnb.com/wp-content/uploads/sites/4/2024/04/02-Airbnb-Gassho-Village-Credit-Satoshi-Nagare.jpg?w=2048" />
       {/* <img src={`${dataQuery?.data?.NewsArticle?.imageUrl}`} /> */}
       <div className="prose lg:prose-lg mx-auto">
-        <Markup markup={dataQuery?.data?.NewsArticle?.body} />
+        <Markup markup={DOMPurify.sanitize(dataQuery?.data?.NewsArticle?.body)} />
       </div>
       {/* <div className="prose mx-autoprose mx-auto" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data?.body, { sanitize: true }) }} />` */}
     </article>
