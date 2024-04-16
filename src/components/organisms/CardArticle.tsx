@@ -18,7 +18,7 @@ function CardArticle ({ data }: { data: IArticle }) {
         <header>
           <h3>{data.title}</h3>
           <div>
-            <Avatar src="https://github.com/shadcn.png" fallbackText="JD" name="John Doe" />
+            <Avatar src={data?.Author.imageUrl} name={data?.Author.givenName} />
             <span>{data.Author.name}</span>
             <span>{data.wordCount} min read - {data.datePublished}</span>
           </div>
