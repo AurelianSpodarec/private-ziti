@@ -1,13 +1,14 @@
 'use client'
 
-import { Markup } from 'react-render-markup';
+import { Markup } from 'react-render-markup'
 
-import { useParams } from "next/navigation"
-import DOMPurify from 'dompurify';
-import { useQuery } from "@tanstack/react-query"
+import { useParams } from 'next/navigation'
+import Image from 'next/image'
+import DOMPurify from 'dompurify'
+import { useQuery } from '@tanstack/react-query'
 
-import { getArticleBySlug } from "@/services/apis/requests/blog"
-import Avatar from '@/components/atoms/Avatar';
+import { getArticleBySlug } from '@/services/apis/requests/blog'
+import Avatar from '@/components/atoms/Avatar'
 
 import {
   EmailShareButton,
@@ -33,11 +34,11 @@ import {
   VKShareButton,
   WhatsappShareButton,
   WorkplaceShareButton,
-  XIcon,
-} from "react-share";
-import { LinkedinIcon } from 'lucide-react';
+  XIcon
+} from 'react-share'
+import { LinkedinIcon } from 'lucide-react'
 
-function FloatingShareButtons({ className, shareUrl, data }: any) {
+function FloatingShareButtons ({ className, shareUrl, data }: any) {
   return (
     <div className={`${className} flex`}>
       <FacebookShareButton
@@ -121,24 +122,20 @@ function FloatingShareButtons({ className, shareUrl, data }: any) {
   )
 }
 
-function BlogView() {
+function BlogView () {
   const { slug } = useParams()
 
   const dataQuery = useQuery({
     queryKey: [`blog/${slug}`, slug],
-    queryFn: () => getArticleBySlug(String(slug))
+    queryFn: async () => await getArticleBySlug(String(slug))
   })
 
   if (dataQuery.isLoading) return <div>Loading</div>
   const data = dataQuery?.data?.NewsArticle
   // console.log(dataQuery?.data?.NewsArticle)
-  const shareUrl = "https://www.google.com"
+  const shareUrl = 'https://www.google.com'
   return (
     <article className="">
-
-
-
-
 
       <div className="max-w-screen-sm mx-auto">
         <h1 className="text-primary text-sm md:text-lg lg:text-5xl font-medium">{dataQuery?.data?.NewsArticle?.title}</h1>
@@ -154,8 +151,18 @@ function BlogView() {
         </div>
       </div>
 
-      <img className="rounded-lg my-10 mx-auto max-w-screen-lg" src="https://news.airbnb.com/wp-content/uploads/sites/4/2024/04/02-Airbnb-Gassho-Village-Credit-Satoshi-Nagare.jpg?w=2048" />
-      {/* <img src={`${dataQuery?.data?.NewsArticle?.imageUrl}`} /> */}
+      <div className="flex justify-center items-center w-full">
+        <Image
+          src={`${dataQuery?.data?.NewsArticle?.imageUrl}`}
+          alt={`${dataQuery?.data?.NewsArticle?.imageCaption}`}
+          width={`${dataQuery?.data?.NewsArticle?.imageWidth}`}
+          height={`${dataQuery?.data?.NewsArticle?.imageHeight}`}
+          style={{
+            objectFit: 'contain'
+          }}
+        />
+      </div>
+
       <div className="prose lg:prose-lg mx-auto relative">
         <Markup markup={DOMPurify.sanitize(dataQuery?.data?.NewsArticle?.body)} />
 

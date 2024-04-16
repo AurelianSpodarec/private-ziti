@@ -1,14 +1,20 @@
-import Link from "next/link"
+import Link from 'next/link'
 
-import { IArticle } from "@/interfaces/IBlog"
-import Avatar from "../atoms/Avatar"
+import { type IArticle } from '@/interfaces/IBlog'
+import Image from 'next/image'
+import Avatar from '../atoms/Avatar'
 
-function CardArticle({ data }: { data: IArticle }) {
+function CardArticle ({ data }: { data: IArticle }) {
   return (
     <article>
       <Link href={`blog/${data.slug}`}>
 
-        <img src={`https://ziti.io${data.imageUrl}`} />
+        <Image
+          src={data.imageUrl}
+          alt={data.imageCaption}
+          width={data.imageWidth}
+          height={data.imageHeight}
+        />
         <header>
           <h3>{data.title}</h3>
           <div>
@@ -20,6 +26,6 @@ function CardArticle({ data }: { data: IArticle }) {
       </Link>
     </article>
   )
-} 
+}
 
 export default CardArticle
