@@ -151,12 +151,13 @@ function BlogView () {
         </div>
       </div>
 
-      <div className="flex justify-center items-center w-full">
+      <div className="max-w-screen-sm mx-auto">
         <Image
           src={`${dataQuery?.data?.NewsArticle?.imageUrl}`}
           alt={`${dataQuery?.data?.NewsArticle?.imageCaption}`}
           width={`${dataQuery?.data?.NewsArticle?.imageWidth}`}
           height={`${dataQuery?.data?.NewsArticle?.imageHeight}`}
+          priority='true'
           style={{
             objectFit: 'contain'
           }}
