@@ -12,7 +12,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'profile.ziti.io',
+        hostname: 'media.ziti.io',
         port: '',
         pathname: '/**'
       },
