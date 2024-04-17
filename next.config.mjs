@@ -30,7 +30,10 @@ const nextConfig = {
 const sentryWebpackPluginOptions = {
   silent: true,
   org: process.env.SENTRY_ORG,
-  project: process.env.SENTRY_PROJECT
+  project: process.env.SENTRY_PROJECT,
+  include: '.next',
+  ignore: ['node_modules'],
+  urlPrefix: '~/_next'
 }
 
 const sentryConfigOptions = {
