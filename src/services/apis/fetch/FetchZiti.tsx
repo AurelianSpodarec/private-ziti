@@ -14,7 +14,7 @@ async function FetchZiti(endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DEL
     },
     body: JSON.stringify(data)
   })
-  
+
   const content = await getResponseContent(response)
 
   if (response.ok) return content;

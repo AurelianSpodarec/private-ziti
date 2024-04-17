@@ -14,14 +14,19 @@ interface Res {
   SchemaData?: {}
 }
 
-// Blog: Articles 
-// ============================================================
-export async function getArticles(): Promise<[IArticle[], SchemaData]> {
-  return await FetchZiti(`articles`, "GET")
+interface Res2 {
+  NewsArticles?: IArticle[]
+  SchemaData?: {}
 }
 
-export async function getArticleBySlug(slug: string): Promise<Res> {
-  return await FetchZiti(`articles/${slug}`, "GET")
+// Blog: Articles 
+// ============================================================
+export async function getArticles(): Promise<Res2> {
+  return FetchZiti(`articles`, "GET")
+}
+
+export function getArticleBySlug(slug: string): Promise<Res> {
+  return FetchZiti(`articles/${slug}`, "GET")
 }
 
 // TODO: Create Article
