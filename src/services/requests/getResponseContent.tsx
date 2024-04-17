@@ -1,17 +1,21 @@
 const getResponseContent = async function (response:any) {
     if (!response) return;
-    const contentType = response.headers.get('Content-Type')
+    const contentType = response.headers.get("Content-Type")
 
     if (contentType) {
-        if (contentType.match('image')) {
+        if (contentType.match("image")) {
             return await response.blob()
         }
 
-        if (contentType.match('application/json')) {
+        if(contentType.match("text/html")) {
+            return await response.text()
+        }
+
+        if (contentType.match("application/json")) {
             return await response.json()
         }
 
-        if (contentType.match('application/zip')) {
+        if (contentType.match("application/zip")) {
             return await response.blob()
         }
     }
