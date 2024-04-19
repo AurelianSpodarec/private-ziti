@@ -15,9 +15,9 @@ interface IAvatar {
   fallbackText: string;
 }
 
-function Avatar({ src, fallbackText, name, verified, shape = "rounded-full" }: IAvatar) {
+function Avatar({ src, fallbackText, name, size = "h-8 w-8", verified, shape = "rounded-full" }: IAvatar) {
   return (
-    <UIAvatar className={`rounded-full ${shape} h-8 w-8`}>
+    <UIAvatar className={`rounded-full ${shape} ${size}`}>
       <UIAvatarImage className={`rounded-full ${shape}`} src={src} alt={name} />
       <UIAvatarFallback>{fallbackText}</UIAvatarFallback>
 

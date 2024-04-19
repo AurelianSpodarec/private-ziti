@@ -1,6 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-import Avatar from "@/components/atoms/Avatar";
+import Avatar from '@/components/atoms/Avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,15 +9,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu'
 
-
-function UserDropdown() {
+function UserDropdown () {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div className="flex items-center justify-between space-x-2">
-          <Avatar src="https://github.com/shadcn.png" fallbackText="JD" name="John Doe" />
+          <Avatar src="https://media.ziti.io/profile/bacbf896-83d1-4b0a-bf8d-78f4a4ddf42e/e1839b5b-1820-4f52-842e-77f0cfe4e79c.webp" fallbackText="JD" name="John Doe" />
           <span className="text-black">
             John Doe
           </span>
@@ -54,10 +53,9 @@ function UserDropdown() {
 
         </DropdownMenuGroup>
 
-
       </DropdownMenuContent>
     </DropdownMenu>
   )
 }
 
-export default UserDropdown;
+export default UserDropdown

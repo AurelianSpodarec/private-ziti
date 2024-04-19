@@ -21,7 +21,7 @@ interface Res2 {
 
 // Blog: Articles 
 // ============================================================
-export async function getArticles(): Promise<Res2> {
+export function getArticles(): Promise<Res2> {
   return FetchZiti(`articles`, "GET")
 }
 
@@ -33,10 +33,10 @@ export function getArticleBySlug(slug: string): Promise<Res> {
 
 // TODO: Create ARticle XSS
 
-export async function getAuthors(): Promise<IAuthor[]> {
+export function getAuthors(): Promise<IAuthor[]> {
   return FetchZiti(`authors`, "GET")
 }
 
-export async function getAuthor(slug: string): Promise<IAuthor> {
+export function getAuthor(slug: string): Promise<IAuthor> {
   return FetchZiti(`authors/${slug}`, "GET")
 }

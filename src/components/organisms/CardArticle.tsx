@@ -1,24 +1,32 @@
-import Link from "next/link"
+import Link from 'next/link'
 
-import { IArticle } from "@/interfaces/IBlog"
-import Avatar from "../atoms/Avatar"
+import Image from 'next/image'
+
+import { type IArticle } from '@/interfaces/IBlog'
+import Avatar from '../atoms/Avatar'
+import UserAvatarBox from '../molecules/EmptyState/UserAvatarBox'
+import { readingTime } from '@/lib/readingTime'
 
 function CardArticle({ data }: { data: IArticle }) {
   return (
-    <article>
-      <Link href={`blog/${data.slug}`}>
-
-        {/* <img src={`https://ziti.io${data.imageUrl}`} /> */}
-        <img className="rounded-lg" src="https://news.airbnb.com/wp-content/uploads/sites/4/2024/04/02-Airbnb-Gassho-Village-Credit-Satoshi-Nagare.jpg?w=2048" />
+    <article className="shadow bg-primary-50">
+      <Link href={`blog/${data.slug}`} className="p-4 block">
+        <div className="relative h-[220px] md:h-[300px] overflow-hidden">
+          <Image
+            src={data.imageUrl}
+            alt={data.imageCaption}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
         <header>
-          <h3 className="text-xs md:text-md lg:text-2xl">{data.title}</h3>
-          <div className="flex items-center">
-            <Avatar src="https://github.com/shadcn.png" fallbackText="JD" name="John Doe" />
-            <div className="flex flex-col">
-              <span>{data.Author.name}</span>
-              <span>{data.wordCount} min read - {data.datePublished}</span>
-            </div>
-          </div>
+          <h3 className="py-2 text-foreground-750 text-base md:text-lg lg:text-xl font-medium">{data.title}</h3>
+          <UserAvatarBox
+            src={data?.Author.imageUrl}
+            name={data?.Author.givenName}
+            fallbackText='Initials'
+            subTitle={`${readingTime(data?.wordCount)} min read`}
+          />
         </header>
       </Link>
     </article>

@@ -12,10 +12,10 @@ interface IRes {
 
 // Property: General 
 // ============================================================
-export async function getPropertiesList(): Promise<IRes> {
+export function getPropertiesList(): Promise<IRes> {
     return FetchZiti(`properties`, "GET")
 }
 
-export async function getPropertySingle(id:string): Promise<IProperty> {
+export function getPropertySingle(id:string): Promise<IProperty> {
     return FetchZiti(`properties/${id}`, "GET")
 }
