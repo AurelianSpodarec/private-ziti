@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { type IArticle } from '@/interfaces/IBlog'
-import Avatar from '../atoms/Avatar'
 import UserAvatarBox from '../molecules/EmptyState/UserAvatarBox'
 import { readingTime } from '@/lib/readingTime'
 
