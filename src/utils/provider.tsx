@@ -1,14 +1,14 @@
-"use client"
+'use client'
 
-import { useState } from "react";
+import { useState } from 'react'
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import { ThemeProvider } from "@/utils/theme-provider";
+import { ThemeProvider } from '@/utils/theme-provider'
 
-function Provider({ children, session }: { children: React.ReactNode, session?: any }) {
-  const [client] = useState(new QueryClient());
+function Provider ({ children, session }: { children: React.ReactNode, session?: unknown }) {
+  const [client] = useState(new QueryClient())
 
   // if (process.env.NEXT_PUBLIC_VITE_ENVIRONMENT === undefined) {
   //   console.error("Enviroment file not defined or staging variable not defined (.env)")
@@ -26,7 +26,7 @@ function Provider({ children, session }: { children: React.ReactNode, session?: 
         <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />
       </QueryClientProvider>
     </ThemeProvider>
-  );
+  )
 }
 
 export default Provider

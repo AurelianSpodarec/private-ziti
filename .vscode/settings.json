@@ -1,0 +1,52 @@
+{
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.tsx": "typescriptreact"
+  },
+  "editor.formatOnType": true,
+  "[typescript]": {
+    // "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "javascript.format.semicolons": "remove",
+  "typescript.format.semicolons": "remove",
+  "[javascript]": {
+    // "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[typescriptreact]": {
+    // "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[javascriptreact]": {
+    // "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "editor.formatOnSave": true,
+  "[javascript][typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+}
+// Remove semicolons;
+// indent by 2lines
+// single quotes

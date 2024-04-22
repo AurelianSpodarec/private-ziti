@@ -1,4 +1,4 @@
-function Home(): JSX.Element {
+function Home (): JSX.Element {
   return (
     <div>
       Test

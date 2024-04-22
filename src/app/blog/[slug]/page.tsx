@@ -1,25 +1,24 @@
 'use client'
-  ;
-import Image from 'next/image';
-import { Markup } from 'react-render-markup';
-import { useParams } from "next/navigation"
 
-import DOMPurify from 'dompurify';
+import Image from 'next/image'
+import { Markup } from 'react-render-markup'
+import { useParams } from 'next/navigation'
 
-import { useQuery } from "@tanstack/react-query"
-import { getArticleBySlug } from "@/services/apis/requests/blog"
+import DOMPurify from 'dompurify'
 
-import Avatar from '@/components/atoms/Avatar'
-import { readingTime } from '@/lib/readingTime';
-import UserAvatarBox from '@/components/molecules/EmptyState/UserAvatarBox';
-import Container from '@/components/Container';
+import { useQuery } from '@tanstack/react-query'
+import { getArticleBySlug } from '@/services/apis/requests/blog'
 
-function BlogView() {
+import { readingTime } from '@/lib/readingTime'
+import UserAvatarBox from '@/components/molecules/EmptyState/UserAvatarBox'
+import Container from '@/components/Container'
+
+function BlogView () {
   const { slug } = useParams()
 
   const dataQuery = useQuery({
-    queryKey: [`blog/${slug}`],
-    queryFn: () => getArticleBySlug(String(slug))
+    queryKey: [`blog/${String(slug)}`],
+    queryFn: async () => await getArticleBySlug(String(slug))
   })
 
   const data = dataQuery?.data?.NewsArticle
@@ -31,7 +30,7 @@ function BlogView() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(dataQuery?.data?.SchemaData),
+          __html: JSON.stringify(dataQuery?.data?.SchemaData)
         }}
       />
       <meta

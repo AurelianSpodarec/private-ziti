@@ -1,4 +1,4 @@
-function PageAssets() {
+function PageAssets () {
   return (
     <div>
       About

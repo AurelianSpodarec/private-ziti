@@ -1,4 +1,4 @@
-function PageContact() {
+function PageContact () {
   return (
     <div>
       Contact

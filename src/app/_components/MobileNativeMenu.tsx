@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 
-function MobileNativeMenu() {
+function MobileNativeMenu () {
   return (
     <div className="fixed left-1/2 right-1/2 bottom-4 w-full z-30 space-x-4">
       <div>
@@ -49,4 +49,4 @@ function MobileNativeMenu() {
   )
 }
 
-export default MobileNativeMenu;
+export default MobileNativeMenu

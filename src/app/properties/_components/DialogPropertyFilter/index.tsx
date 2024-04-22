@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -6,11 +6,11 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
+  DialogTrigger
+} from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
 
-function DialogPropertyFilter() {
+function DialogPropertyFilter () {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -20,7 +20,7 @@ function DialogPropertyFilter() {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you&apos;re done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">

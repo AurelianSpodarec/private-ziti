@@ -1,4 +1,4 @@
-function PageCommunityGuidelines() {
+function PageCommunityGuidelines () {
   return (
     <div>
       CommunityGuidelines

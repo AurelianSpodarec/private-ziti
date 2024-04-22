@@ -1,14 +1,14 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
-import Container from "@/components/Container";
+import Container from '@/components/Container'
 
-import MenuMobile from "./MenuMobile";
-import MenuDesktop from "./MenuDesktop";
+import MenuMobile from './MenuMobile'
+import MenuDesktop from './MenuDesktop'
 
-function LogoZiti() {
+function LogoZiti () {
   return (
     <svg width="93" height="30" viewBox="0 0 93 30" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M35.1588 26.5213H47.1628L47.9377 22.646H50.4517V29.6215H29.9414V26.9182L45.4236 5.61387H34.5917L33.6087 9.48911H31.0944V2.51367H50.6598V5.23579L35.1588 26.5213Z" fill="#244E4D" />
@@ -20,17 +20,17 @@ function LogoZiti() {
   )
 }
 
-function Header() {
+function Header () {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 1220) setMobileOpen(false);
-    };
+      if (window.innerWidth <= 1220) setMobileOpen(false)
+    }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    window.addEventListener('resize', handleResize)
+    return () => { window.removeEventListener('resize', handleResize) }
+  }, [])
 
   return (
     <header className="w-full z-30">
@@ -45,7 +45,7 @@ function Header() {
         <MenuDesktop />
 
         <div className="lg:hidden">
-          <button type="button" onClick={() => setMobileOpen(true)}>
+          <button type="button" onClick={() => { setMobileOpen(true) }}>
             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none"><g id="Menu / Hamburger_LG"><path id="Vector" d="M3 17H21M3 12H21M3 7H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path></g></svg>
           </button>
         </div>
@@ -58,4 +58,4 @@ function Header() {
   )
 }
 
-export default Header;
+export default Header

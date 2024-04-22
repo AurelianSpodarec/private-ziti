@@ -1,11 +1,7 @@
-import Avatar from "@/components/atoms/Avatar";
-import ModeToggle from "@/components/atoms/ModeToggle";
-import Link from "next/link";
-import UserDropdown from "../UserDropdown";
+import ModeToggle from '@/components/atoms/ModeToggle'
+import UserDropdown from '../UserDropdown'
 
-
-
-function MenuDesktop() {
+function MenuDesktop () {
   return (
     <nav className="hidden lg:block text-sm text-white font-montserrat">
       <div className="flex items-center space-x-7">
@@ -22,4 +18,4 @@ function MenuDesktop() {
   )
 }
 
-export default MenuDesktop;
+export default MenuDesktop

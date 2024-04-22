@@ -1,11 +1,11 @@
-import type { Config  } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
-import { shadcnPlugin } from "./shadcn-plugin"
-import animatePlugin from "tailwindcss-animate"
-import typography from "@tailwindcss/typography";
+import { shadcnPlugin } from './shadcn-plugin'
+import animatePlugin from 'tailwindcss-animate'
+import typography from '@tailwindcss/typography'
 
 export const shadcnPreset = {
-  darkMode: ["class"],
+  darkMode: ['class'],
   content: [],
-  plugins: [shadcnPlugin, animatePlugin, typography],
+  plugins: [shadcnPlugin, animatePlugin, typography]
 } satisfies Config

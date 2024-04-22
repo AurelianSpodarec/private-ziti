@@ -1,4 +1,4 @@
-function UIKit() {
+function UIKit () {
   return (
     <div>
       UI Kit

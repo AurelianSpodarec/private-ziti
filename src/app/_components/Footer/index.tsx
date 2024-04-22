@@ -1,4 +1,4 @@
-function Footer() {
+function Footer () {
   return (
     <footer className="bg-white">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
@@ -33,8 +33,6 @@ function Footer() {
             <path d="M174.541 3.45967C174.541 2.6027 174.786 1.93478 175.278 1.45589C175.77 0.976994 176.363 0.737549 177.057 0.737549C178.735 0.737549 179.574 1.64492 179.574 3.45967C179.574 4.29142 179.316 4.95305 178.798 5.44454C178.281 5.92342 177.701 6.16288 177.057 6.16288C176.288 6.16288 175.676 5.92342 175.222 5.44454C174.768 4.96566 174.541 4.30404 174.541 3.45967ZM182.091 30.3595H172.023V28.2234L175.316 27.2593V12.9304L172.023 12.1553V10.0381L179.196 9.84908V27.2593L182.091 28.2234V30.3595Z" fill="#515F68" />
           </svg>
         </div>
-
-
 
         <div className="mt-10 flex justify-center space-x-10">
           <a href="#" className="text-gray-400 hover:text-gray-500">
@@ -75,4 +73,4 @@ function Footer() {
   )
 }
 
-export default Footer;
+export default Footer

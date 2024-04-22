@@ -1,21 +1,21 @@
 import {
   UIAvatar,
   UIAvatarFallback,
-  UIAvatarImage,
-} from "@/components/ui/ui-avatar"
+  UIAvatarImage
+} from '@/components/ui/ui-avatar'
 
 interface IAvatar {
-  verified?: boolean;
-  size?: string;
-  shape?: "rounded-full";
-  border?: string;
-  src?: string;
-  alt?: string;
-  name: string;
-  fallbackText: string;
+  verified?: boolean
+  size?: string
+  shape?: 'rounded-full'
+  border?: string
+  src?: string
+  alt?: string
+  name: string
+  fallbackText: string
 }
 
-function Avatar({ src, fallbackText, name, size = "h-8 w-8", verified, shape = "rounded-full" }: IAvatar) {
+function Avatar ({ src, fallbackText, name, size = 'h-8 w-8', verified, shape = 'rounded-full' }: IAvatar) {
   return (
     <UIAvatar className={`rounded-full ${shape} ${size}`}>
       <UIAvatarImage className={`rounded-full ${shape}`} src={src} alt={name} />
@@ -29,9 +29,9 @@ function Avatar({ src, fallbackText, name, size = "h-8 w-8", verified, shape = "
           </svg>
         </div>
       }
-      
+
     </UIAvatar>
   )
 }
 
-export default Avatar;
+export default Avatar

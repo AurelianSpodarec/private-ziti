@@ -1,4 +1,4 @@
-function PageTestimonials() {
+function PageTestimonials () {
   return (
     <div>
       Testimonials

@@ -1,11 +1,11 @@
-import { Badge } from "@/components/ui/badge";
+import { Badge } from '@/components/ui/badge'
 
 interface ISelectedFilterItem {
-  name: string;
-  onClick: any;
+  name: string
+  onClick: () => void
 }
 
-function SelectedFilterItem({ name, onClick }: ISelectedFilterItem) {
+function SelectedFilterItem ({ name, onClick }: ISelectedFilterItem) {
   return (
     <Badge
       onClick={onClick}
@@ -22,4 +22,4 @@ function SelectedFilterItem({ name, onClick }: ISelectedFilterItem) {
   )
 }
 
-export default SelectedFilterItem;
+export default SelectedFilterItem

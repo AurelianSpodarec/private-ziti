@@ -1,4 +1,4 @@
-function PagePricing() {
+function PagePricing () {
   return (
     <div>
       Pricing

@@ -1,4 +1,4 @@
-function PageCareers() {
+function PageCareers () {
   return (
     <div>
       Careers

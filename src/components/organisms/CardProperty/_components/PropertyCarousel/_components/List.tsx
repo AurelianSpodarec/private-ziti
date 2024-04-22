@@ -1,10 +1,10 @@
 import {
   CarouselContent
-} from "@/components/ui/carousel"
+} from '@/components/ui/carousel'
 
-import PropertyCarouselItem from "./Item";
+import PropertyCarouselItem from './Item'
 
-function PropertyCarouselList({ data }: { data: [string] }) {
+function PropertyCarouselList ({ data }: { data: [string] }) {
   return (
     <CarouselContent>
       {data.map((item) => {
@@ -14,4 +14,4 @@ function PropertyCarouselList({ data }: { data: [string] }) {
   )
 }
 
-export default PropertyCarouselList;
+export default PropertyCarouselList

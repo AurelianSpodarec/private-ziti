@@ -1,4 +1,4 @@
-function PagePrivacyPolicy() {
+function PagePrivacyPolicy () {
   return (
     <div>
       PrivacyPolicy

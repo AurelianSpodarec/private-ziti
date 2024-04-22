@@ -1,27 +1,27 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { type VariantProps } from "class-variance-authority"
+import * as React from 'react'
+import { Slot } from '@radix-ui/react-slot'
+import { type VariantProps } from 'class-variance-authority'
 
-import { cn } from "@/lib/utils"
-import buttonVariants from "./buttonVariants";
+import { cn } from '@/lib/utils'
+import buttonVariants from './buttonVariants'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-  hideTextLoading?: boolean;
-  isLoading?: boolean;
-  label?: string;
-  icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
-  block?: boolean;
-  ring?: boolean;
+  asChild?: boolean
+  hideTextLoading?: boolean
+  isLoading?: boolean
+  label?: string
+  icon?: React.ReactNode
+  iconPosition?: 'left' | 'right'
+  block?: boolean
+  ring?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
-  icon, iconPosition, hideTextLoading, block, isLoading, ring, kind = "solid", label, children, className, variant, size, asChild = false,
+  icon, iconPosition, hideTextLoading, block, isLoading, ring, kind = 'solid', label, children, className, variant, size, asChild = false,
   ...props
 }, ref) => {
-  const Comp = asChild ? Slot : "button"
+  const Comp = asChild ? Slot : 'button'
 
   return (
     <Comp
@@ -29,10 +29,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       className={
         cn(buttonVariants({ variant, kind, size, className }), `
           inline-flex justify-center leading-4 items-center
-          ${!children && isLoading && !label ? "" : "gap-2"}
-          ${iconPosition === "right" && !isLoading ? "flex-row-reverse" : ""}
-          ${block ? "w-full" : ""}
-          ${ring ? "ring isolate relative" : ""}
+          ${!children && isLoading && !label ? '' : 'gap-2'}
+          ${iconPosition === 'right' && !isLoading ? 'flex-row-reverse' : ''}
+          ${block ? 'w-full' : ''}
+          ${ring ? 'ring isolate relative' : ''}
         `)
       }
       {...props}
@@ -41,7 +41,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         {/* <ButtonRing variant={variant} ring={ring}> */}
 
         {icon && (
-          !isLoading || iconPosition !== "right" &&
+          !isLoading || iconPosition !== 'right' &&
           <div className="flex items-center max-h-4 max-w-4 h-4 w-4 select-none pointer-events-none wop">
             {icon}
           </div>
@@ -54,7 +54,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         )}
 
         {!hideTextLoading &&
-          <span>{children ? children : label}</span>
+          <span>{children || label}</span>
         }
 
         {isLoading && (
@@ -70,6 +70,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   )
 }
 )
-Button.displayName = "Button"
+Button.displayName = 'Button'
 
 export { Button, buttonVariants }

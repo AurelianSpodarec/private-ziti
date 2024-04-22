@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button'
 import {
   Drawer,
   DrawerClose,
@@ -7,13 +7,19 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
-import { Input } from "@/components/ui/input"
+  DrawerTrigger
+} from '@/components/ui/drawer'
+import { Input } from '@/components/ui/input'
 
-function FilterContainer({ name, children, row }: any) {
+interface IFilterContainer {
+  name?: string
+  row?: boolean
+  children: React.ReactNode
+}
+
+function FilterContainer ({ name, children, row = false }: IFilterContainer) {
   return (
-    <div className={`flex mb-6 ${row ? "flex-row" : "flex-col"}`}>
+    <div className={`flex mb-6 ${row ? 'flex-row' : 'flex-col'}`}>
       <span>
         {name}
       </span>
@@ -24,7 +30,7 @@ function FilterContainer({ name, children, row }: any) {
   )
 }
 
-function DrawerPropertyFilter() {
+function DrawerPropertyFilter () {
   return (
     <Drawer>
       <DrawerTrigger asChild className="lg:hidden">
@@ -85,7 +91,6 @@ function DrawerPropertyFilter() {
             </FilterContainer>
 
           </section>
-
 
           <DrawerFooter>
             <div className="flex items-center justify-between">

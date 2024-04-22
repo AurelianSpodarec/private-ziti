@@ -1,4 +1,4 @@
-function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.Element {
+function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>): JSX.Element {
   return (
     <div>
       {children}
@@ -6,4 +6,4 @@ function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.
   )
 }
 
-export default RootLayout;
+export default RootLayout

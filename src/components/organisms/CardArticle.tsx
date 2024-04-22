@@ -6,7 +6,7 @@ import { type IArticle } from '@/interfaces/IBlog'
 import UserAvatarBox from '../molecules/EmptyState/UserAvatarBox'
 import { readingTime } from '@/lib/readingTime'
 
-function CardArticle({ data }: { data: IArticle }) {
+function CardArticle ({ data }: { data: IArticle }) {
   return (
     <article className="shadow bg-primary-50">
       <Link href={`blog/${data.slug}`} className="p-4 block">

@@ -1,18 +1,18 @@
 export const navigation = [
   {
-    title: "Introduction",
+    title: 'Introduction',
     links: [
-      { title: "Getting started", href: "/", },
-      { title: "Installation", href: "/uikit/installation", },
-    ],
+      { title: 'Getting started', href: '/' },
+      { title: 'Installation', href: '/uikit/installation' }
+    ]
   },
   {
-    title: "Atoms",
+    title: 'Atoms',
     links: [
-      { title: "Avatar", href: "/uikit/avatar", },
-      { title: "Button", href: "/uikit/Button", },
-    ],
-  },
+      { title: 'Avatar', href: '/uikit/avatar' },
+      { title: 'Button', href: '/uikit/Button' }
+    ]
+  }
   // {
   //     title: "Molecules",
   //     links: [
@@ -27,4 +27,4 @@ export const navigation = [
   //         { title: "Design principles", href: "/docs/design-principles", },
   //     ],
   // },
-];
+]

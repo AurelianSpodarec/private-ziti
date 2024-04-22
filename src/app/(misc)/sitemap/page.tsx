@@ -1,4 +1,4 @@
-function PageSiteMap() {
+function PageSiteMap () {
   return (
     <div>
       SiteMap

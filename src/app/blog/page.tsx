@@ -1,16 +1,15 @@
 'use client'
 
-import { useQuery } from "@tanstack/react-query"
-import { getArticles } from "@/services/apis/requests/blog"
+import { useQuery } from '@tanstack/react-query'
+import { getArticles } from '@/services/apis/requests/blog'
 
-import CardArticle from "@/components/organisms/CardArticle"
-import Container from "@/components/Container"
+import CardArticle from '@/components/organisms/CardArticle'
+import Container from '@/components/Container'
 
-function BlogIndex() {
-
+function BlogIndex () {
   const dataQuery = useQuery({
-    queryKey: ["blog"],
-    queryFn: () => getArticles(),
+    queryKey: ['blog'],
+    queryFn: async () => await getArticles()
   })
 
   if (dataQuery.isLoading) return <div>Loading</div>

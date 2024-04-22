@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+// import type { Metadata } from 'next'
 
 import MixpanelInitializer from '@/lib/other/MixpanelInitializer'
 import TrafficSourceTracker from '@/lib/other/TrafficSourceTracker'
@@ -10,7 +10,7 @@ import './../styles/styles.scss'
 import Header from './_components/Header'
 import Footer from './_components/Footer'
 
-import MobileNativeMenu from './_components/MobileNativeMenu'
+// import MobileNativeMenu from './_components/MobileNativeMenu'
 
 // export const metadata: Metadata = {
 //   title: 'Discover, Connect, Invest - Ziti',
@@ -18,7 +18,7 @@ import MobileNativeMenu from './_components/MobileNativeMenu'
 //   robots: 'noindex'
 // }
 
-function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.Element {
+function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>): JSX.Element {
   return (
     <html lang="en">
       <MixpanelInitializer />

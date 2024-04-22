@@ -1,11 +1,11 @@
-import Avatar from "@/components/atoms/Avatar"
+import Avatar from '@/components/atoms/Avatar'
 
-function UIKitAvatar() {
+function UIKitAvatar () {
   return (
     <div>
-      
+
       <h2>Sizes</h2>
-      
+
       <Avatar />
       <Avatar verified />
     </div>

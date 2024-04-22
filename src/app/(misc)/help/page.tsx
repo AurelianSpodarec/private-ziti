@@ -1,4 +1,4 @@
-function PageHelp() {
+function PageHelp () {
   return (
     <div>
       Help

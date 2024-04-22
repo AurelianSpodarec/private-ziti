@@ -1,8 +1,11 @@
-import Link from "next/link";
-import { navigation } from "../uikitNavigation";
-import clsx from "clsx";
+import Link from 'next/link'
+import { navigation } from '../uikitNavigation'
 
-function UIKitNavigation({ className }: any) {
+interface IUIKitNavigation {
+  className: string
+}
+
+function UIKitNavigation ({ className }: IUIKitNavigation) {
   return (
     <>
       <div className="fixed h-screen w-[310px] text-base lg:text-sm bg-slate-50">
@@ -17,7 +20,7 @@ function UIKitNavigation({ className }: any) {
               </div>
 
               <ul role="list" className="space-y-9 text-white">
-                {navigation.map((section: any) => (
+                {navigation.map((section) => (
                   <li key={section.title}>
                     <h2 className="font-display font-medium text-slate-900 dark:text-white">
                       {section.title}
@@ -27,7 +30,7 @@ function UIKitNavigation({ className }: any) {
                       role="list"
                       className="mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
                     >
-                      {section.links.map((link: any) => (
+                      {section.links.map((link) => (
                         <li key={link.href} className="relative">
                           <Link href={link.href}>
                             {/* <a href={link.href}
@@ -55,4 +58,4 @@ function UIKitNavigation({ className }: any) {
   )
 }
 
-export default UIKitNavigation;
+export default UIKitNavigation

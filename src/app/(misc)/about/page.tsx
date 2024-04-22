@@ -1,4 +1,4 @@
-function PageAbout() {
+function PageAbout () {
   return (
     <div>
       About

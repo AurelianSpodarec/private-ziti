@@ -1,4 +1,4 @@
-function Page404() {
+function Page404 () {
   return (
     <div>
       Page 404

@@ -1,4 +1,3 @@
-
 // function ButtonRing({ children, variant, ring }: any) {
 //   if(!ring) return children
 //   return (
@@ -7,4 +6,3 @@
 //     </div>
 //   )
 // }
-

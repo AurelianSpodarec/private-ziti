@@ -1,33 +1,32 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-import { IProperty, IPropertyStatus } from "@/interfaces/IProperties";
-import CarouselProperty from "./_components/PropertyCarousel";
+import { type IProperty, type IPropertyStatus } from '@/interfaces/IProperties'
+import CarouselProperty from './_components/PropertyCarousel'
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import Skeleton from "@/components/atoms/Skeleton";
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import Skeleton from '@/components/atoms/Skeleton'
 
-import { getShuffledArr, images } from "./fakePropertyData";
+import { getShuffledArr, images } from './fakePropertyData'
 
-type ICardProperty = {
-  data?: IProperty;
-  isLoading?: boolean;
+interface ICardProperty {
+  data?: IProperty
+  isLoading?: boolean
 }
 
 type ICardPropertyStatuses = {
   [key in IPropertyStatus['statusName']]: {
-    name: string;
-    class: string;
+    name: string
+    class: string
   }
 }
 
-let USDollar = new Intl.NumberFormat('en-US', {
+const USDollar = new Intl.NumberFormat('en-US', {
   style: 'currency',
-  currency: 'USD',
-});
+  currency: 'USD'
+})
 
-function CardProperty({ data, isLoading }: ICardProperty) {
-
+function CardProperty ({ data, isLoading }: ICardProperty) {
   if (isLoading) {
     return (
       <article>
@@ -44,16 +43,16 @@ function CardProperty({ data, isLoading }: ICardProperty) {
   const cardPropertyStatus = data?.PropertyStatus.statusName
   const cardPropertyStatuses: ICardPropertyStatuses = {
     available: {
-      name: "",
-      class: "",
+      name: '',
+      class: ''
     },
     new: {
-      name: "New",
-      class: "bg-green-550 bg-opacity-60",
+      name: 'New',
+      class: 'bg-green-550 bg-opacity-60'
     },
-    "pre-construction": {
-      name: "Pre-Construction",
-      class: "bg-blue-550 bg-opacity-75",
+    'pre-construction': {
+      name: 'Pre-Construction',
+      class: 'bg-blue-550 bg-opacity-75'
     }
   }
 
@@ -70,7 +69,7 @@ function CardProperty({ data, isLoading }: ICardProperty) {
             <div className="absolute w-full z-10">
               <div className="flex items-center justify-between z-10">
 
-                {data?.PropertyStatus.statusName !== "available" &&
+                {data?.PropertyStatus.statusName !== 'available' &&
                   <Badge className={`${cardPropertyStatus && cardPropertyStatuses[cardPropertyStatus].class} backdrop-blur-sm bg-opacity-60`}>
                     {cardPropertyStatus && cardPropertyStatuses[cardPropertyStatus].name}
                   </Badge>
@@ -104,4 +103,4 @@ function CardProperty({ data, isLoading }: ICardProperty) {
   )
 }
 
-export default CardProperty;
+export default CardProperty

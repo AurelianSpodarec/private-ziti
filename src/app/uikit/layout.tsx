@@ -1,6 +1,6 @@
-import UIKitNavigation from "./_components/UIKitNavigation"
+import UIKitNavigation from './_components/UIKitNavigation'
 
-function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.Element {
+function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>): JSX.Element {
   return (
     <div>
       <div className="dark:bg-gray-800">
@@ -16,7 +16,6 @@ function RootLayout({ children }: Readonly<{ children: React.ReactNode }>): JSX.
               Nav
             </div>
           </div>
-
 
           <div className="min-w-0 max-w-2xl bg-white flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16 ml-[20rem]">
             <article className="max-w-4xl xl:mr-[10.5rem]">

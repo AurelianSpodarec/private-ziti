@@ -1,4 +1,4 @@
-function EmptyState() {
+function EmptyState () {
   return (
     <div>
       Empty State
