@@ -9,11 +9,9 @@ analytics.page();
 }}();
 `
 const Scripts = (): JSX.Element | undefined => {
-  if (process.env.NODE_ENV !== 'production') {
-    return
-  }
-
-  return (
+  // Check if NODE_ENV is 'production' and hostname is exactly 'ziti.io'
+  if (process.env.NODE_ENV === 'production' && window.location.hostname === 'ziti.io') {
+    return (
       <>
         <Script
           id="segment-script"
@@ -22,7 +20,10 @@ const Scripts = (): JSX.Element | undefined => {
         />
         {/* Add more scripts here as needed */}
       </>
-  )
+    )
+  }
+
+  // Return undefined if not in production mode or hostname is not 'ziti.io'
 }
 
 export default Scripts
