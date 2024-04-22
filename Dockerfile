@@ -10,7 +10,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 # Set environment variable during image build 
-ENV NEXT_PUBLIC_API_HOST="https://ziti.io:8080/api/v1"
+ENV NEXT_PUBLIC_API_HOST="https://ziti.io:8080"
 ENV NEXT_PUBLIC_MIXPANEL_TOKEN="822fc869cabe34d3a7d3d3d2fef6a87d"
 ENV SITE_URL="https://ziti.io"
 ENV NEXT_PUBLIC_SENTRY_DSN="https://4a545b38dd79d3c2013652ff0383b878@o4506980696195072.ingest.us.sentry.io/4506980698095616"
