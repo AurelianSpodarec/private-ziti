@@ -9,8 +9,15 @@ interface ISkeletonDataImage extends ISkeleton {
   className: string
 }
 
-function SkeletonDataImage ({ image, preconnect = `${configApp.http}${configApp.url}`, type = 'image', variant, className }: ISkeletonDataImage) {
-  const buildImage = preconnect ? `${preconnect}${image}` : image
+function SkeletonDataImage ({
+  image,
+  preconnect = `${configApp.http}${configApp.url}`,
+  type = 'image',
+  variant,
+  className
+}: ISkeletonDataImage) {
+  const buildImage = image ? `${preconnect}${image}` : '/path/to/default/image.jpg' // Provide a default image URL if image is undefined
+
   return (
     <>
       {image

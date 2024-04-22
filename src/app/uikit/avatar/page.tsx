@@ -6,8 +6,8 @@ function UIKitAvatar () {
 
       <h2>Sizes</h2>
 
-      <Avatar />
-      <Avatar verified />
+      <Avatar name="John Doe" fallbackText="JD" />
+      <Avatar name="Jane Doe" fallbackText="JD" verified />
     </div>
   )
 }

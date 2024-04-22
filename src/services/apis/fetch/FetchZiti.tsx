@@ -1,7 +1,8 @@
 import { getResponseContent, RequestError } from '../../requests'
 import config from './config_ziti'
 
-async function FetchZiti (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', data?: unknown) {
+// Define a generic function with a type parameter T
+async function FetchZiti<T> (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', data?: unknown): Promise<T> {
   const response = await fetch(`${config.API_URL}/${endpoint}`, {
     method,
     credentials: 'omit',
@@ -9,13 +10,16 @@ async function FetchZiti (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DE
       'Content-Type': 'application/json',
       Accept: 'application/json'
     },
-    body: JSON.stringify(data)
+    body: method !== 'GET' && data ? JSON.stringify(data) : null
   })
 
-  const content = await getResponseContent(response)
+  if (!response.ok) {
+    const content = await getResponseContent(response)
+    throw new RequestError(response.statusText, response.status, content)
+  }
 
-  if (response.ok) return content
-  throw new RequestError(response.statusText, response.status, content)
+  // Use the generic type T for parsing JSON
+  return await (response.json() as Promise<T>)
 }
 
 export default FetchZiti

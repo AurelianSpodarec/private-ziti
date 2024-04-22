@@ -44,26 +44,26 @@ function BlogView () {
           <div className="max-w-screen-md mx-auto">
             <h1 className="text-primary text-sm md:text-lg lg:text-5xl font-medium">{dataQuery?.data?.NewsArticle?.title}</h1>
             <UserAvatarBox
-              src={data?.Author.imageUrl}
-              name={data?.Author.givenName}
+              src={data?.Author.imageUrl || 'defaultImageUrl'} // Provide a default URL
+              name={data?.Author.givenName || 'Default Name'} // Provide a default name
               fallbackText='Initials'
-              subTitle={`${readingTime(data?.wordCount)} min read`}
+              subTitle={`${readingTime(data?.wordCount || 0)} min read`} // Ensure number is provided
             />
+
           </div>
 
           <div className="prose lg:prose-lg xl:prose-xl mx-auto relative">
             {/* TODO: Fix responsvines */}
             <Image
-              src={dataQuery?.data?.NewsArticle?.imageUrl}
-              alt={dataQuery?.data?.NewsArticle?.imageCaption}
-              // fill
+              src={dataQuery?.data?.NewsArticle?.imageUrl || 'defaultImageURL'}
+              alt={dataQuery?.data?.NewsArticle?.imageCaption || 'default alt text'}
               width={0}
               height={0}
               sizes="100vw"
               className="h-full w-full my-5"
               priority
             />
-            <Markup markup={DOMPurify.sanitize(dataQuery?.data?.NewsArticle?.body)} />
+            <Markup markup={DOMPurify.sanitize(dataQuery?.data?.NewsArticle?.body || '')} />
           </div>
         </article>
       </Container>

@@ -16,9 +16,16 @@ function BlogIndex () {
   return (
     <Container>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {dataQuery?.data?.NewsArticles.map((item) => {
-          return <CardArticle key={item.id} data={item} />
-        })}
+        {dataQuery?.data?.NewsArticles
+          ? (
+              dataQuery.data.NewsArticles.map((item) => (
+              <CardArticle key={item.id} data={item} />
+              ))
+            )
+          : (
+            <p>No news articles available.</p> // or any other fallback component or render logic
+            )
+        }
       </div>
     </Container>
   )
