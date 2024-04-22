@@ -76,6 +76,10 @@
     }
   },
   "lint-staged": {
+    "!(src/components/ui/**/*)*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
     "*.{ts,tsx,js,jsx}": [
       "npm run lint --fix",
       "git add -A"
