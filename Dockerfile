@@ -49,4 +49,3 @@ USER nextjs
 
 # Start the application
 CMD ["npm", "start"]
-
