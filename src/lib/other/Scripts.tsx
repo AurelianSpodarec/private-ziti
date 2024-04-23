@@ -9,9 +9,11 @@ analytics.page();
 }}();
 `
 const Scripts = (): JSX.Element | undefined => {
-  // Check if NODE_ENV is 'production' and hostname is exactly 'ziti.io'
-  if (process.env.NODE_ENV === 'production' && window.location.hostname === 'ziti.io') {
-    return (
+  // Check if the code is running in the browser environment
+  if (typeof window !== 'undefined') {
+    // Check if NODE_ENV is 'production' and hostname is exactly 'ziti.io'
+    if (process.env.NODE_ENV === 'production' && window.location.hostname === 'ziti.io') {
+      return (
       <>
         <Script
           id="segment-script"
@@ -20,7 +22,8 @@ const Scripts = (): JSX.Element | undefined => {
         />
         {/* Add more scripts here as needed */}
       </>
-    )
+      )
+    }
   }
 
   // Return undefined if not in production mode or hostname is not 'ziti.io'
