@@ -26,7 +26,7 @@ function BlogView () {
   if (dataQuery.isLoading) return <div>Loading Skeleton</div>
   return (
     <>
-      <title></title>
+      <title>Test Page Title</title>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

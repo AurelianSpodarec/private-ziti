@@ -3,7 +3,9 @@
 import MixpanelInitializer from '@/lib/other/MixpanelInitializer'
 import TrafficSourceTracker from '@/lib/other/TrafficSourceTracker'
 import Scripts from '@/lib/other/Scripts'
+
 import Provider from '@/utils/provider'
+import { poppins, sourceSerif } from '@/utils/fonts'
 
 import './../styles/styles.scss'
 
@@ -23,9 +25,9 @@ function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>): JSX
     <html lang="en">
       <MixpanelInitializer />
       <TrafficSourceTracker />
-      <body>
+      <body className={`${poppins.variable} ${sourceSerif.variable}`}>
         <Provider>
-          {/* <MobileNativeMenu /> */}
+          {/* TODO: <MobileNativeMenu /> */}
           <Header />
           <main className="py-10">
             {children}
