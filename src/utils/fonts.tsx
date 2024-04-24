@@ -11,11 +11,11 @@ export const poppins = Poppins({
 export const sourceSerif = localFont({
   src: [
     {
-      path: 'SourceSerifPro-SemiBold.otf',
+      path: '../../public/fonts/SourceSerifPro-SemiBold.otf',
       weight: '600'
     },
     {
-      path: 'SourceSerifPro-Regular.otf',
+      path: '../../public/fonts/SourceSerifPro-Regular.otf',
       weight: '400'
     }
   ],
