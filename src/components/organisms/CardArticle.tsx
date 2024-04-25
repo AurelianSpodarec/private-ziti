@@ -6,10 +6,17 @@ import { type IArticle } from '@/interfaces/IBlog'
 import UserAvatarBox from '../molecules/EmptyState/UserAvatarBox'
 import { readingTime } from '@/lib/readingTime'
 
-function CardArticle ({ data }: { data: IArticle }) {
+import React, { useState, useEffect } from 'react'
+
+interface ICardArticle {
+  data: IArticle
+  featured: boolean
+}
+
+function CardArticle ({ data, featured = false }: ICardArticle) {
   return (
     <article className="shadow bg-primary-50">
-      <Link href={`blog/${data.slug}`} className="p-4 block">
+      <Link href={`blog/${data.slug}`} className={`p-4 block ${featured ? 'flex flex-row grid grid-cols-2' : ''} `}>
         <div className="relative h-[220px] md:h-[300px] overflow-hidden">
           <Image
             src={data.imageUrl}
@@ -26,6 +33,11 @@ function CardArticle ({ data }: { data: IArticle }) {
             fallbackText='Initials'
             subTitle={`${readingTime(data?.wordCount)} min read`}
           />
+          <div>
+            {/* {featured && */}
+            {/* // { data.excerpt } */}
+            {/* // } */}
+          </div>
         </header>
       </Link>
     </article>

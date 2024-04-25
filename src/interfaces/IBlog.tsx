@@ -60,6 +60,7 @@ export interface IArticle {
   title: string
   slug: string
   description: string
+  excerpt: string
   body: string
   imageUrl: string
   imageWidth: number

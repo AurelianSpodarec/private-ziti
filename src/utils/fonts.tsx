@@ -1,4 +1,4 @@
-import { Poppins } from 'next/font/google'
+import { Poppins, Reem_Kufi } from 'next/font/google'
 import localFont from '@next/font/local'
 
 export const poppins = Poppins({
@@ -6,6 +6,13 @@ export const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-poppins'
+})
+
+export const reemKufi = Reem_Kufi({
+  weight: ['400', '600'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-reemKufi'
 })
 
 export const sourceSerif = localFont({
