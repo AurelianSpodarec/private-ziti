@@ -102,31 +102,33 @@ pipeline {
     post {
         always {
             script {
-                // Check the build result and set the BUILD_STATUS accordingly
-                if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
-                    BUILD_STATUS = 'Success'
-                    color = '#36A64F'
-                } else {
-                    BUILD_STATUS = 'Failed'
-                    color = '#FF0000'
+                if (["staging", "main"].contains(env.BRANCH_NAME)) {
+                    // Check the build result and set the BUILD_STATUS accordingly
+                    if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
+                        BUILD_STATUS = 'Success'
+                        color = '#36A64F'
+                    } else {
+                        BUILD_STATUS = 'Failed'
+                        color = '#FF0000'
+                    }
+
+                    // Set end time and calculate duration
+                    def endTime = new Date().time
+                    def duration = env.START_TIME ? (endTime - Long.parseLong(env.START_TIME)) / 1000 : 'N/A'
+                    def jobUrl = "${env.JENKINS_URL}job/ziti.io/job/${env.BRANCH_NAME}/${env.BUILD_NUMBER}/redirect"
+                    
+                    // Update the build status dynamically based on the result
+                    BUILD_STATUS = currentBuild.result ?: 'Success'
+                    
+                    // Prepare message
+                    def message = "${env.DEPLOY_URL} - #${env.BUILD_NUMBER} ${BUILD_STATUS} after ${duration} sec <${jobUrl}|(Open)>"
+
+                    // Send Slack notification
+                    slackSend (
+                        color: color,
+                        message: message
+                    )
                 }
-
-                // Set end time and calculate duration
-                def endTime = new Date().time
-                def duration = env.START_TIME ? (endTime - Long.parseLong(env.START_TIME)) / 1000 : 'N/A'
-                def jobUrl = "${env.JENKINS_URL}job/ziti.io/job/${env.BRANCH_NAME}/${env.BUILD_NUMBER}/redirect"
-                
-                // Update the build status dynamically based on the result
-                BUILD_STATUS = currentBuild.result ?: 'Success'
-                
-                // Prepare message
-                def message = "${env.DEPLOY_URL} - #${env.BUILD_NUMBER} ${BUILD_STATUS} after ${duration} sec <${jobUrl}|(Open)>"
-
-                // Send Slack notification
-                slackSend (
-                    color: color,
-                    message: message
-                )
             }
         }
     }
