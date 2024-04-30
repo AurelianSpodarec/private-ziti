@@ -32,25 +32,41 @@ pipeline {
             steps {
                 script {
                     env.DEPLOY_URL = (env.BRANCH_NAME == 'staging') ? 'https://stage.ziti.io' : 'https://ziti.io'
-                    env.SERVICE = (env.BRANCH_NAME == 'staging') ? 'staging-app-ziti' : 'main-app-ziti'
+                    env.SERVICE = 'app-ziti'
                     env.ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'staging') ? '85b6802a-38c8-4825-a043-0cbc55517e07' : '4853f2b5-af66-45e7-915f-3ce98eb89f14'
                     
                     // Checkout Docker Compose configuration
                     dir('docker-compose') {
-                        git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "${env.BRANCH_NAME}"
-                    }
+                        def branchToProject = [
+                          'staging': 'staging',
+                          'main': 'prod'
+                        ]
+                        
+                        git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "main"
                     
-                    // Create .env File
-                    withCredentials([file(credentialsId: "${env.ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
-                        dir('docker-compose') {
-                            sh 'cp $ENV_FILE .env'
+                        // Create .env File
+                        withCredentials([file(credentialsId: "${env.ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
+                            sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
                         }
-                    }
                     
-                    // Deploy service
-                    dir('docker-compose') {
-                        sh "sed -i '/${env.SERVICE}:/,/^[^ ]/{s|image: ${env.IMAGE_NAME}:.*|image: ${env.IMAGE_NAME}:${env.BUILD_ID}|}' docker-compose.yaml"
-                        sh "docker compose up -d --no-deps --force-recreate ${env.SERVICE}"
+                        // Deploy service
+                        if (!fileExists(".env.${branchToProject[env.BRANCH_NAME]}")) {
+                            error("File .env.${branchToProject[env.BRANCH_NAME]} not found.")
+                        }
+
+                        sh "sed -i '/${env.SERVICE}:/,/^[^ ]/{s|image: ${env.IMAGE_NAME}:.*|image: ${env.IMAGE_NAME}:${env.BUILD_ID}|}' docker-compose.frontend.yaml"
+                        
+                        // Loading variables to Jenkins environment
+                        def envFileContent = readFile(".env.${branchToProject[env.BRANCH_NAME]}")
+                        def envVars = envFileContent.split('\n')
+                        envVars.each { line ->
+                            def pair = line.split('=', 2)
+                            if (pair.length > 1) {
+                                env[pair[0].trim()] = pair[1].trim()
+                            }
+                        }
+
+                        sh "docker compose -f docker-compose.frontend.yaml --project-name ${branchToProject[env.BRANCH_NAME] ?: 'unknown'} up -d --no-deps --force-recreate ${env.SERVICE}"
                     }
                 }
             }
@@ -68,7 +84,7 @@ pipeline {
                 // Determine action type and prepare links for Slack notification
                 def actionType = ["staging", "main"].contains(env.BRANCH_NAME) ? "Deployment" : "Build"
                 def linkTarget = ["staging", "main"].contains(env.BRANCH_NAME) ? env.DEPLOY_URL : "Branch ${env.BRANCH_NAME}"
-                def jobUrl = "${env.JENKINS_URL}job/${env.JOB_NAME}/${env.BRANCH_NAME}/${env.BUILD_NUMBER}/redirect"
+                def jobUrl = "${env.JENKINS_URL}job/ziti.io/job/${env.BRANCH_NAME}/${env.BUILD_NUMBER}/redirect"
                 
                 // Determine the message color based on the build result
                 def color = (currentBuild.result == null || currentBuild.result == 'SUCCESS') ? '#36A64F' : '#FF0000'
