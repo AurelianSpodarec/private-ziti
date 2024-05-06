@@ -53,7 +53,7 @@ export const shadcnPlugin = plugin(
         // Named Colors
         // =============================================================
         '--primary': theme('colors.blackBlue.850'),
-        '--primary-50': theme('colors.blackBlue.850'),
+        '--primary-50': theme('colors.gulfStream.100'),
         '--primary-250': theme('colors.blackBlue.800'),
         '--primary-500': theme('colors.blackBlue.550'),
 
@@ -268,6 +268,7 @@ export const shadcnPlugin = plugin(
           // =================================================
           primary: {
             DEFAULT: 'var(--primary)',
+            50: 'var(--primary-50)',
             500: 'var(--primary)',
             foreground: 'var(--primary-foreground)'
           },

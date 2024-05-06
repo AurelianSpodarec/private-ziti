@@ -6,6 +6,7 @@ import { getArticles } from '@/services/apis/requests/blog'
 import CardArticle from '@/components/organisms/CardArticle'
 import Container from '@/components/Container'
 import { useEffect, useState } from 'react'
+import CardFeaturedArticle from '@/components/organisms/CardFeaturedArticle'
 
 function BlogIndex () {
   const dataQuery = useQuery({
@@ -29,7 +30,7 @@ function BlogIndex () {
       {articles.length !== 0 &&
         <>
           <div className="mb-6">
-            <CardArticle data={articles[0]} featured />
+            <CardFeaturedArticle data={articles[0]} />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
