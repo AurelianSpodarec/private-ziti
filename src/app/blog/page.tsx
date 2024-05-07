@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getArticles } from '@/services/apis/requests/blog'
 
 import CardArticle from '@/components/organisms/CardArticle'
+import { type IArticle } from '@/interfaces/IBlog'
 import Container from '@/components/Container'
 import { useEffect, useState } from 'react'
 import CardFeaturedArticle from '@/components/organisms/CardFeaturedArticle'
@@ -14,12 +15,12 @@ function BlogIndex () {
     queryFn: async () => await getArticles()
   })
 
-  const [articles, setArticles] = useState([])
+  const [articles, setArticles] = useState<IArticle[]>([])
 
   useEffect(() => {
     if (dataQuery.isSuccess) {
       console.log('woo', dataQuery)
-      setArticles(dataQuery.data.NewsArticles)
+      setArticles(dataQuery.data?.NewsArticles ?? [])
     }
   }, [dataQuery.data, dataQuery.isSuccess])
 
