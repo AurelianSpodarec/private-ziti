@@ -1,7 +1,7 @@
 import { getResponseContent, RequestError } from '../../requests'
 import config from './config_ziti'
 
-async function FetchZiti (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', data?: unknown) {
+async function FetchZiti<T> (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', data?: unknown): Promise<T> {
   const response = await fetch(`${config.API_URL}/${endpoint}`, {
     method,
     credentials: 'omit',
@@ -12,10 +12,16 @@ async function FetchZiti (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DE
     body: JSON.stringify(data)
   })
 
-  const content = await getResponseContent(response)
+  if (!response.ok) {
+    const errorContent = await response.json()
+    throw new RequestError(response.statusText, response.status, errorContent)
+  }
 
-  if (response.ok) return content
-  throw new RequestError(response.statusText, response.status, content)
+  const content = await getResponseContent(response)
+  if (!content) {
+    throw new Error('No content returned from the API')
+  }
+  return content as T
 }
 
 export default FetchZiti
