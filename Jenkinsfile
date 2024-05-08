@@ -81,7 +81,7 @@ pipeline {
                     SENTRY_AUTH_TOKEN = credentials('e4a6bc79-c567-4858-966f-54349a75a2f1')
                     SENTRY_ORG = ${env.SENTRY_ORG}
                     SENTRY_PROJECT = ${env.SENTRY_ORG}
-                    SENTRY_ENVIRONMENT = ${branchToProject[env.BRANCH_NAME] ?: 'unknown'
+                    SENTRY_ENVIRONMENT = ${branchToProject[env.BRANCH_NAME] ?: 'unknown'}
                 }
             }
             steps {
