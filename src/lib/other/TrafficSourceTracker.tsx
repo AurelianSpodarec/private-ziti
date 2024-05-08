@@ -49,8 +49,8 @@ const getSourceInfo = (): SourceInfo => {
 
 const TrafficSourceTracker = (): null => {
   useEffect(() => {
-    // Only track in production environment
-    if (process.env.NODE_ENV === 'production') {
+    // Only track in production deployment
+    if (window.location.hostname === 'ziti.io') {
       const { SourceType, Source, Medium, Campaign, Content, Term } = getSourceInfo()
 
       // Dispatch this information to your analytics service
