@@ -71,48 +71,6 @@ pipeline {
                 }
             }
         }
-        stage('Notify Sentry of deployment') {
-            steps {
-                script {
-                    def branchToProject = ['staging': 'staging', 'main': 'prod']
-
-                    // Re-read the .env file
-                    if (fileExists(".env.${branchToProject[env.BRANCH_NAME]}")) {
-                        def envFileContent = readFile(".env.${branchToProject[env.BRANCH_NAME]}")
-                        def envVars = envFileContent.split('\n')
-                        envVars.each { line ->
-                            def pair = line.split('=', 2)
-                            if (pair.length > 1) {
-                                env[pair[0].trim()] = pair[1].trim()
-                            }
-                        }
-                    }
-                    def sentryAuthToken = credentials('e4a6bc79-c567-4858-966f-54349a75a2f1')
-                    def sentryOrg = env.SENTRY_ORG
-                    def sentryProject = env.SENTRY_PROJECT
-                    def sentryEnvironment = branchToProject[env.BRANCH_NAME] ?: 'unknown'
-
-                    env.SENTRY_AUTH_TOKEN = sentryAuthToken
-                    env.SENTRY_ORG = sentryOrg
-                    env.SENTRY_PROJECT = sentryProject
-                    env.SENTRY_ENVIRONMENT = sentryEnvironment
-
-                    // Install Sentry CLI
-                    sh 'command -v sentry-cli || curl -sL https://sentry.io/get-cli/ | bash'
-
-                    // Commands to interact with Sentry
-                    sh '''
-                        export SENTRY_RELEASE=$(sentry-cli releases propose-version)
-                        sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
-                        sentry-cli releases set-commits $SENTRY_RELEASE --auto
-                        sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps /path/to/sourcemaps
-                        sentry-cli releases finalize $SENTRY_RELEASE
-                        sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_ENVIRONMENT
-                    '''
-                }
-            }
-        }
-
     }
 
     post {
