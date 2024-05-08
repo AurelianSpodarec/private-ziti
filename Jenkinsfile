@@ -98,12 +98,6 @@ pipeline {
                         env.SENTRY_PROJECT = sentryProject
                         env.SENTRY_ENVIRONMENT = sentryEnvironment
 
-                        // Check if sentry-cli is installed and install if not
-                        if (sh(script: "command -v sentry-cli", returnStatus: true) != 0) {
-                            // Install sentry-cli without sudo
-                            sh "curl -sL https://sentry.io/get-cli/ | SENTRY_CLI_NO_PROMPT=1 bash"
-                        }
-
                         // Commands to interact with Sentry
                         sh '''
                             export SENTRY_RELEASE=$(sentry-cli releases propose-version)
