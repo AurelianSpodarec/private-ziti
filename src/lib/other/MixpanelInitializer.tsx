@@ -7,9 +7,9 @@ import mixpanel from 'mixpanel-browser'
 
 const MixpanelInitializer = (): null => {
   useEffect(() => {
-    // Only initialize Mixpanel if in production environment
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('Mixpanel initialization skipped outside of production environment.')
+    // Only initialize Mixpanel if in production deployment
+    if (window.location.hostname === 'ziti.io') {
+      console.log('Mixpanel initialization skipped outside of production deployment.')
       return
     }
 
