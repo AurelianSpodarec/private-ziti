@@ -71,6 +71,33 @@ pipeline {
                 }
             }
         }
+        stage('Notify Sentry of deployment') {
+            environment {
+                script {
+                    def branchToProject = [
+                        'staging': 'staging',
+                        'main': 'prod'
+                    ]
+                    SENTRY_AUTH_TOKEN = credentials('e4a6bc79-c567-4858-966f-54349a75a2f1')
+                    SENTRY_ORG = ${env.SENTRY_ORG}
+                    SENTRY_PROJECT = ${env.SENTRY_ORG}
+                    SENTRY_ENVIRONMENT = ${branchToProject[env.BRANCH_NAME] ?: 'unknown'
+                }
+            }
+            steps {
+                // Install Sentry CLI
+                sh 'command -v sentry-cli || curl -sL https://sentry.io/get-cli/ | bash'
+
+                sh '''
+                    export SENTRY_RELEASE=$(sentry-cli releases propose-version)
+                    sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
+                    sentry-cli releases set-commits $SENTRY_RELEASE --auto
+                    sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps /path/to/sourcemaps
+                    sentry-cli releases finalize $SENTRY_RELEASE
+                    sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_ENVIRONMENT
+                '''
+            }
+        }
     }
 
     post {
