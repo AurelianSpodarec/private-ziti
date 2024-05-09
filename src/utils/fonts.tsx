@@ -18,7 +18,7 @@ export const reemKufi = Reem_Kufi({
 export const sourceSerif = localFont({
   src: [
     {
-      path: '../../public/fonts/SourceSerifPro-Semibold.otf',
+      path: '../../public/fonts/SourceSerifPro-SemiBold.otf',
       weight: '600'
     },
     {
