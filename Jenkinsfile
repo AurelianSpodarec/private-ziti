@@ -71,18 +71,19 @@ pipeline {
                     dir('docker-compose') {
                         sh "pwd"
                         sh "ls -lath"
-                        
+
                         def branchToProject = [
                           'staging': 'staging',
                           'main': 'prod'
                         ]
                         
-                        git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "main"
+                        // Branch previously downloaded.
+                        // git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "main"
                     
-                        // Create .env File
-                        withCredentials([file(credentialsId: "${ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
-                            sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
-                        }
+                        // Env file previously created
+                        // withCredentials([file(credentialsId: "${ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
+                        //     sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
+                        // }
                     
                         if (!fileExists(".env.${branchToProject[env.BRANCH_NAME]}")) {
                             error("File .env.${branchToProject[env.BRANCH_NAME]} not found.")
