@@ -69,6 +69,9 @@ pipeline {
                     
                     // Checkout Docker Compose configuration
                     dir('docker-compose') {
+                        sh "pwd"
+                        sh "ls -lath"
+                        
                         def branchToProject = [
                           'staging': 'staging',
                           'main': 'prod'
