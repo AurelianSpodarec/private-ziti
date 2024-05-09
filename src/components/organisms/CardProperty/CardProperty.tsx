@@ -60,7 +60,7 @@ function CardProperty ({ data, isLoading }: ICardProperty) {
 
         <div className="h-[330px] p-4">
           <div className="absolute top-0 right-0 bottom-0 left-0 ">
-            <CarouselProperty images={['placeholder.jpg']} />
+            {/* <CarouselProperty images={['placeholder.jpg']} /> */}
           </div>
 
           <div className="relative h-full flex">

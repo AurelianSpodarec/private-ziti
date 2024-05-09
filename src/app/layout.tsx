@@ -29,7 +29,7 @@ function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>): JSX
         <Provider>
           {/* TODO: <MobileNativeMenu /> */}
           <Header />
-          <main className="py-10">
+          <main>
             {children}
           </main>
           <Footer />

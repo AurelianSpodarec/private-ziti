@@ -1,72 +1,75 @@
-'use client'
-
 import Image from 'next/image'
-import { Markup } from 'react-render-markup'
-import { useParams } from 'next/navigation'
 
-import DOMPurify from 'dompurify'
-
-import { useQuery } from '@tanstack/react-query'
 import { getArticleBySlug } from '@/services/apis/requests/blog'
-
 import { readingTime } from '@/lib/readingTime'
+
 import UserAvatarBox from '@/components/molecules/EmptyState/UserAvatarBox'
 import Container from '@/components/Container'
+import { Button } from '@/components/ui/button'
 
-function BlogView () {
-  const { slug } = useParams()
+async function BlogView ({ params: { slug } }: { params: { slug: string } }) {
+  const res = await getArticleBySlug(slug)
+  const data = res.NewsArticle
 
-  const dataQuery = useQuery({
-    queryKey: [`blog/${String(slug)}`],
-    queryFn: async () => await getArticleBySlug(String(slug))
-  })
-
-  const data = dataQuery?.data?.NewsArticle
-
-  if (dataQuery.isLoading) return <div>Loading Skeleton</div>
   return (
     <>
-      <title>Test Page Title</title>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(dataQuery?.data?.SchemaData)
-        }}
-      />
+      {/* <title>Test Page Title</title>
+      // <script
+      //   type="application/ld+json"
+      //   dangerouslySetInnerHTML={{
+      //     __html: JSON.stringify(data?.SchemaData)
+      //   }}
+      // />
       <meta
         name="description"
         content="Contenttttt"
-      />
-      <Container>
+      /> */}
 
-        <article className="">
+      <article className="">
 
-          <div className="max-w-screen-md mx-auto">
-            <h1 className="text-primary text-sm md:text-lg lg:text-5xl font-medium">{dataQuery?.data?.NewsArticle?.title}</h1>
+        <section className="bg-primary-50 py-20 mb-20">
+          <Container >
+
+            <Button
+              asChild
+              icon={<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 8.5L2 8.5" stroke="#939BA1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M6.9998 13.5L2 8.5L6.9999 3.5" stroke="#939BA1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              }
+
+            >
+              Back to blog page
+            </Button>
+
+            <h1 className="text-primary text-sm md:text-lg lg:text-5xl font-medium">{data?.title}</h1>
             <UserAvatarBox
-              src={data?.Author.imageUrl || 'defaultImageUrl'} // Provide a default URL
-              name={data?.Author.givenName || 'Default Name'} // Provide a default name
+              src={data?.Author.imageUrl || 'defaultImageUrl'}
+              name={data?.Author.givenName || 'Default Name'}
               fallbackText='Initials'
-              subTitle={`${readingTime(data?.wordCount || 0)} min read`} // Ensure number is provided
+              subTitle={`${readingTime(data?.wordCount || 0)} min read`}
             />
 
-          </div>
+          </Container>
+        </section>
 
+        <Container>
           <div className="prose lg:prose-lg xl:prose-xl mx-auto relative">
-            {/* TODO: Fix responsvines */}
-            <Image
-              src={dataQuery?.data?.NewsArticle?.imageUrl || 'defaultImageURL'}
-              alt={dataQuery?.data?.NewsArticle?.imageCaption || 'default alt text'}
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="h-full w-full my-5"
-              priority
-            />
-            <Markup markup={DOMPurify.sanitize(dataQuery?.data?.NewsArticle?.body || '')} />
+            <div className="relative h-[577px] overflow-hidden">
+              <Image
+                src={data?.imageUrl || 'defaultImageURL'}
+                alt={data?.imageCaption || 'default alt text'}
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
+            </div>
+
+            <div dangerouslySetInnerHTML={{ __html: data?.body }} />
+
           </div>
-        </article>
-      </Container>
+        </Container>
+      </article >
     </>
   )
 }
