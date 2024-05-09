@@ -66,17 +66,6 @@ pipeline {
                             }
                         }
 
-                        // Check and load .sentryclirc file if it exists
-                        if (fileExists('.sentryclirc')) {
-                            def sentryConfig = readFile('.sentryclirc')
-                            sentryConfig.split('\n').each {
-                                def pair = it.trim().split('=', 2)
-                                if (pair.length > 1) {
-                                    env[pair[0].trim()] = pair[1].trim()
-                                }
-                            }
-                        }
-
                         sh "docker compose -f docker-compose.frontend.yaml --project-name ${branchToProject[env.BRANCH_NAME] ?: 'unknown'} up -d --no-deps --force-recreate ${env.SERVICE}"
                     }
                 }
