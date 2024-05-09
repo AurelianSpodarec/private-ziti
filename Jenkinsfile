@@ -78,6 +78,10 @@ pipeline {
                         ]
                         
                         git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "main"
+
+                        if (fileExists(".env.${branchToProject[env.BRANCH_NAME]}")) {
+                            sh "rm .env.${branchToProject[env.BRANCH_NAME]}"
+                        }
                     
                         // Create .env File
                         withCredentials([file(credentialsId: "${ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
