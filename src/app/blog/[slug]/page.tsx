@@ -65,7 +65,7 @@ async function BlogView ({ params: { slug } }: { params: { slug: string } }) {
               />
             </div>
 
-            <div dangerouslySetInnerHTML={{ __html: data?.body }} />
+            <div dangerouslySetInnerHTML={{ __html: data?.body || '' }} />
 
           </div>
         </Container>
