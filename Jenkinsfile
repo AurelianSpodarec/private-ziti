@@ -15,10 +15,40 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "docker build -t ${env.IMAGE_NAME}:latest ."
+                    def buildArgs = ''
+                    dir('docker-compose') {
+                        def branchToProject = [
+                            'staging': 'staging',
+                            'main': 'prod'
+                        ]
+                        
+                        git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "main"
+                    
+                        // Create .env File
+                        withCredentials([file(credentialsId: "${env.ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
+                            sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
+                        }
+                    
+                        if (!fileExists(".env.${branchToProject[env.BRANCH_NAME]}")) {
+                            error("File .env.${branchToProject[env.BRANCH_NAME]} not found.")
+                        }
 
-                    // Tag the image with the build ID
-                    sh "docker tag ${env.IMAGE_NAME}:latest ${env.IMAGE_NAME}:${env.BUILD_ID}"
+                        // Loading variables to Jenkins environment
+                        def envFileContent = readFile(".env.${branchToProject[env.BRANCH_NAME]}")
+                        def envVars = envFileContent.split('\n')
+                        buildArgs = envVars.collect { line ->
+                            def pair = line.split('=', 2)
+                            if (pair.length > 1) {
+                                "--build-arg ${pair[0].trim()}=${pair[1].trim()}"
+                            }
+                        }.join(' ')
+                    }
+                    dir('..') {
+                        // Building Docker image
+                        sh "docker build ${buildArgs} -t ${env.IMAGE_NAME}:latest ."
+                        // Tag the image with the build ID
+                        sh "docker tag ${env.IMAGE_NAME}:latest ${env.IMAGE_NAME}:${env.BUILD_ID}"
+                    }
                 }
             }
         }
@@ -49,7 +79,6 @@ pipeline {
                             sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
                         }
                     
-                        // Deploy service
                         if (!fileExists(".env.${branchToProject[env.BRANCH_NAME]}")) {
                             error("File .env.${branchToProject[env.BRANCH_NAME]} not found.")
                         }
@@ -65,8 +94,6 @@ pipeline {
                                 env[pair[0].trim()] = pair[1].trim()
                             }
                         }
-
-                        sh "echo $SENTRY_AUTH_TOKEN"
 
                         sh "docker compose -f docker-compose.frontend.yaml --project-name ${branchToProject[env.BRANCH_NAME] ?: 'unknown'} up -d --no-deps --force-recreate ${env.SERVICE}"
                     }
