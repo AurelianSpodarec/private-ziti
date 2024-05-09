@@ -9,6 +9,8 @@ pipeline {
         DOCKER_COMPOSE_CREDENTIALS_ID = '59023cb5-fac2-48f8-998e-107cec2c3de0'
         PATH = "${env.HOME}/bin:${env.PATH}"
         IMAGE_NAME = "${env.BRANCH_NAME.replaceAll("[^a-zA-Z0-9_.-]", "-").toLowerCase()}-app-ziti"
+        ENV_FILE_CREDENTIALS_ID = (${env.BRANCH_NAME} == 'main') ? 'b156afaf-7f89-4c7c-9490-9a9a7eafe28b' : 'b156afaf-7f89-4c7c-9490-9a9a7eafe28b'
+                    
     }
 
     stages {
@@ -17,7 +19,6 @@ pipeline {
                 script {
                     def buildArgs = ''
                     dir('docker-compose') {
-                        env.ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? '4853f2b5-af66-45e7-915f-3ce98eb89f14' : '85b6802a-38c8-4825-a043-0cbc55517e07'
                         def branchToProject = [
                             'staging': 'staging',
                             'main': 'prod'
@@ -37,11 +38,10 @@ pipeline {
                         // Loading variables to Jenkins environment
                         def envFileContent = readFile(".env.${branchToProject[env.BRANCH_NAME]}")
                         def envVars = envFileContent.split('\n')
-                        buildArgs = envVars.collect { line ->
-                            line = line.split('#')[0].trim() // Remove comments and trim whitespace
-                            if (line.isEmpty()) {
-                                return null // Skip empty lines or lines that were just comments
-                            }
+                        buildArgs = envVars.findAll { line -> // Use findAll to filter out empty lines and comments
+                            line = line.split('#')[0].trim()
+                            !line.isEmpty()
+                        }.collect { line ->
                             def pair = line.split('=', 2)
                             if (pair.length > 1) {
                                 "--build-arg ${pair[0].trim()}=${pair[1].trim()}"
@@ -68,7 +68,6 @@ pipeline {
                 script {
                     env.DEPLOY_URL = (env.BRANCH_NAME == 'staging') ? 'https://stage.ziti.io' : 'https://ziti.io'
                     env.SERVICE = 'app-ziti'
-                    env.ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? '4853f2b5-af66-45e7-915f-3ce98eb89f14' : '85b6802a-38c8-4825-a043-0cbc55517e07'
                     
                     // Checkout Docker Compose configuration
                     dir('docker-compose') {
@@ -93,14 +92,13 @@ pipeline {
                         // Loading variables to Jenkins environment
                         def envFileContent = readFile(".env.${branchToProject[env.BRANCH_NAME]}")
                         def envVars = envFileContent.split('\n')
-                        envVars.each { line ->
+                        envVars.findAll { line -> // First, filter out unwanted lines
                             line = line.split('#')[0].trim() // Remove comments and trim whitespace
-                            if (line.isEmpty()) {
-                                return null // Skip empty lines or lines that were just comments
-                            }
+                            !line.isEmpty() // Keep only lines that are not empty after removing comments and trimming
+                        }.each { line -> // Then, process each remaining line
                             def pair = line.split('=', 2)
                             if (pair.length > 1) {
-                                env[pair[0].trim()] = pair[1].trim()
+                                env[pair[0].trim()] = pair[1].trim() // Set each valid environment variable
                             }
                         }
 
