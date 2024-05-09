@@ -63,7 +63,7 @@ pipeline {
             }
             steps {
                 script {
-                    ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? 'b156afaf-7f89-4c7c-9490-9a9a7eafe28b' : 'b156afaf-7f89-4c7c-9490-9a9a7eafe28b'
+                    ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? '4853f2b5-af66-45e7-915f-3ce98eb89f14' : '85b6802a-38c8-4825-a043-0cbc55517e07'
                     env.DEPLOY_URL = (env.BRANCH_NAME == 'staging') ? 'https://stage.ziti.io' : 'https://ziti.io'
                     env.SERVICE = 'app-ziti'
                     
@@ -71,19 +71,18 @@ pipeline {
                     dir('docker-compose') {
                         sh "pwd"
                         sh "ls -lath"
-
+                        
                         def branchToProject = [
                           'staging': 'staging',
                           'main': 'prod'
                         ]
                         
-                        // Branch previously downloaded.
-                        // git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "main"
+                        git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "main"
                     
-                        // Env file previously created
-                        // withCredentials([file(credentialsId: "${ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
-                        //     sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
-                        // }
+                        // Create .env File
+                        withCredentials([file(credentialsId: "${ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
+                            sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
+                        }
                     
                         if (!fileExists(".env.${branchToProject[env.BRANCH_NAME]}")) {
                             error("File .env.${branchToProject[env.BRANCH_NAME]} not found.")
