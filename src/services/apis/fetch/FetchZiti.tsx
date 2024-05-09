@@ -7,7 +7,8 @@ async function FetchZiti (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DE
     credentials: 'omit',
     headers: {
       'Content-Type': 'application/json',
-      Accept: 'application/json'
+      Accept: 'application/json',
+      Origin: 'ziti'
     },
     body: JSON.stringify(data)
   })
@@ -15,6 +16,7 @@ async function FetchZiti (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DE
   const content = await getResponseContent(response)
 
   if (response.ok) return content
+  console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@', content)
   throw new RequestError(response.statusText, response.status, content)
 }
 
