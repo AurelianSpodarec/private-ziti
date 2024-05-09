@@ -66,6 +66,8 @@ pipeline {
                             }
                         }
 
+                        sh "echo $SENTRY_AUTH_TOKEN"
+
                         sh "docker compose -f docker-compose.frontend.yaml --project-name ${branchToProject[env.BRANCH_NAME] ?: 'unknown'} up -d --no-deps --force-recreate ${env.SERVICE}"
                     }
                 }
