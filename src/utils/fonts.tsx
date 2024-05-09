@@ -1,5 +1,5 @@
 import { Poppins, Reem_Kufi } from 'next/font/google'
-import localFont from '@next/font/local'
+import localFont from 'next/font/local'
 
 export const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
