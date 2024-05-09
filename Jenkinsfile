@@ -17,7 +17,7 @@ pipeline {
                 script {
                     def buildArgs = ''
                     dir('docker-compose') {
-                        env.ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'staging') ? '85b6802a-38c8-4825-a043-0cbc55517e07' : '4853f2b5-af66-45e7-915f-3ce98eb89f14'
+                        env.ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? '4853f2b5-af66-45e7-915f-3ce98eb89f14' : '85b6802a-38c8-4825-a043-0cbc55517e07'
                         def branchToProject = [
                             'staging': 'staging',
                             'main': 'prod'
@@ -64,7 +64,7 @@ pipeline {
                 script {
                     env.DEPLOY_URL = (env.BRANCH_NAME == 'staging') ? 'https://stage.ziti.io' : 'https://ziti.io'
                     env.SERVICE = 'app-ziti'
-                    env.ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'staging') ? '85b6802a-38c8-4825-a043-0cbc55517e07' : '4853f2b5-af66-45e7-915f-3ce98eb89f14'
+                    env.ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? '4853f2b5-af66-45e7-915f-3ce98eb89f14' : '85b6802a-38c8-4825-a043-0cbc55517e07'
                     
                     // Checkout Docker Compose configuration
                     dir('docker-compose') {
