@@ -47,14 +47,10 @@ pipeline {
                             }
                         }.join(' ')
                     }
-                    dir('..') {
-                        sh "pwd"
-                        sh "ls -la"
-                        // Building Docker image
-                        sh "docker build ${buildArgs} -t ${env.IMAGE_NAME}:latest ."
-                        // Tag the image with the build ID
-                        sh "docker tag ${env.IMAGE_NAME}:latest ${env.IMAGE_NAME}:${env.BUILD_ID}"
-                    }
+                    // Building Docker image
+                    sh "docker build ${buildArgs} -t ${env.IMAGE_NAME}:latest ."
+                    // Tag the image with the build ID
+                    sh "docker tag ${env.IMAGE_NAME}:latest ${env.IMAGE_NAME}:${env.BUILD_ID}"
                 }
             }
         }
