@@ -26,15 +26,15 @@ function BlogIndex () {
 
   if (dataQuery.isLoading) return <div>Loading</div>
   return (
-    <Container>
+    <Container size="6xl">
 
       {articles.length !== 0 &&
         <>
-          <div className="mb-6">
+          <div className="mb-16">
             <CardFeaturedArticle data={articles[0]} />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {articles.slice(1).map((item) => (
               <CardArticle key={item.id} data={item} />
             ))}
