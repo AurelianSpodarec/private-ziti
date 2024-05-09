@@ -38,6 +38,10 @@ pipeline {
                         def envFileContent = readFile(".env.${branchToProject[env.BRANCH_NAME]}")
                         def envVars = envFileContent.split('\n')
                         buildArgs = envVars.collect { line ->
+                            line = line.split('#')[0].trim() // Remove comments and trim whitespace
+                            if (line.isEmpty()) {
+                                return null // Skip empty lines or lines that were just comments
+                            }
                             def pair = line.split('=', 2)
                             if (pair.length > 1) {
                                 "--build-arg ${pair[0].trim()}=${pair[1].trim()}"
@@ -90,6 +94,10 @@ pipeline {
                         def envFileContent = readFile(".env.${branchToProject[env.BRANCH_NAME]}")
                         def envVars = envFileContent.split('\n')
                         envVars.each { line ->
+                            line = line.split('#')[0].trim() // Remove comments and trim whitespace
+                            if (line.isEmpty()) {
+                                return null // Skip empty lines or lines that were just comments
+                            }
                             def pair = line.split('=', 2)
                             if (pair.length > 1) {
                                 env[pair[0].trim()] = pair[1].trim()
