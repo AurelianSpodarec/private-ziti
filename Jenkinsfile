@@ -15,7 +15,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? 'b156afaf-7f89-4c7c-9490-9a9a7eafe28b' : 'b156afaf-7f89-4c7c-9490-9a9a7eafe28b'
+                    env.ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? 'b156afaf-7f89-4c7c-9490-9a9a7eafe28b' : 'b156afaf-7f89-4c7c-9490-9a9a7eafe28b'
                     def buildArgs = ''
                     dir('docker-compose') {
                         def branchToProject = [
@@ -26,7 +26,7 @@ pipeline {
                         git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "main"
                     
                         // Create .env File
-                        withCredentials([file(credentialsId: "${ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
+                        withCredentials([file(credentialsId: "${env.ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
                             sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
                         }
                     
@@ -49,6 +49,7 @@ pipeline {
                     }
                     // Building Docker image
                     sh "docker build ${buildArgs} -t ${env.IMAGE_NAME}:latest ."
+
                     // Tag the image with the build ID
                     sh "docker tag ${env.IMAGE_NAME}:latest ${env.IMAGE_NAME}:${env.BUILD_ID}"
                 }
@@ -63,15 +64,12 @@ pipeline {
             }
             steps {
                 script {
-                    ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? '4853f2b5-af66-45e7-915f-3ce98eb89f14' : '85b6802a-38c8-4825-a043-0cbc55517e07'
                     env.DEPLOY_URL = (env.BRANCH_NAME == 'staging') ? 'https://stage.ziti.io' : 'https://ziti.io'
                     env.SERVICE = 'app-ziti'
+                    env.ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? '4853f2b5-af66-45e7-915f-3ce98eb89f14' : '85b6802a-38c8-4825-a043-0cbc55517e07'
                     
                     // Checkout Docker Compose configuration
                     dir('docker-compose') {
-                        sh "pwd"
-                        sh "ls -lath"
-                        
                         def branchToProject = [
                           'staging': 'staging',
                           'main': 'prod'
@@ -84,7 +82,7 @@ pipeline {
                         }
                     
                         // Create .env File
-                        withCredentials([file(credentialsId: "${ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
+                        withCredentials([file(credentialsId: "${env.ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
                             sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
                         }
                     
