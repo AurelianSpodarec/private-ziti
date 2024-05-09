@@ -14,7 +14,7 @@ function CardFeaturedArticle ({ data }: ICardFeaturedArticle) {
   return (
     <article className="shadow bg-primary-50">
       <Link href={`blog/${data.slug}`} className="block xl:flex p-4 xl:p-8">
-        <div className="relative h:-[266px] sm:h-[360] md:h-[528px] xl:h-[480px] w-full xl:w-[70%] overflow-hidden mb-8 xl:mb-0">
+        <div className="relative h-[266px] sm:h-[360] md:h-[528px] xl:h-[480px] w-full xl:w-[70%] overflow-hidden mb-8 xl:mb-0">
           <Image
             src={data.imageUrl}
             alt={data.imageCaption}
