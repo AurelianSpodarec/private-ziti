@@ -18,14 +18,26 @@ async function BlogIndex () {
 
       <section className="bg-oceanicForest-800">
         <Container>
-          <div>
-            <h1>Your Source for Real Estate Insights and Inspiration</h1>
-            <p>Discover Expert Tips, Market Trends, and Stories From the Dominican Republic Real Estate Scene</p>
-          </div>
-          <div>
-            <div className="relative w-full h-full">
-              <Image src="/images/blog-image-banner.png" alt="Real Estate Homes" fill />
+          <div className="grid grid-cols-2">
+
+            <div>
+              <h1>Your Source for Real Estate Insights and Inspiration</h1>
+              <p>Discover Expert Tips, Market Trends, and Stories From the Dominican Republic Real Estate Scene</p>
             </div>
+            <div>
+              <div className="relative w-full h-full">
+                <Image
+                  src="/images/blog-image-banner.png"
+                  alt="Real Estate Homes"
+                  width="0"
+                  height="0"
+                  // className="object-contain h-full w-full"
+                  sizes="100vw"
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+
           </div>
         </Container>
       </section>
