@@ -1,11 +1,35 @@
+// src/app/articles/[slug]/page.tsx
+
 import Image from 'next/image'
 import Link from 'next/link'
+import type { Metadata, ResolvingMetadata } from 'next'
 
 import { getArticleBySlug } from '@/services/apis/requests/blog'
 import { readingTime } from '@/lib/readingTime'
 
 import UserAvatarBox from '@/components/molecules/EmptyState/UserAvatarBox'
 import Container from '@/components/Container'
+
+export async function generateMetadata (
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const res = await getArticleBySlug(params.slug)
+  const data = res.NewsArticle
+  const dataOpenGraph = res.OpenGraph
+
+  // TODO: Refactor - make it reusable for other pages later on
+  const openGraphMetaTags = Object.entries(dataOpenGraph as Record<string, string>).map(([property, content]) => (
+    <meta key={property} property={property} content={content} />
+  ))
+
+  return {
+    title: data?.title ? `${data.title} - Ziti.io` : 'Welcome to Ziti.io',
+    description: data?.excerpt || 'Explore global property listings, connect with experts, and invest confidently worldwide with Ziti.',
+    robots: 'noindex',
+    openGraph: dataOpenGraph
+  }
+}
 
 async function BlogView ({ params: { slug } }: { params: { slug: string } }) {
   const res = await getArticleBySlug(slug)
@@ -20,7 +44,6 @@ async function BlogView ({ params: { slug } }: { params: { slug: string } }) {
 
   return (
     <>
-      <title>{`${data?.title} - Zito`}</title>
       {openGraphMetaTags}
       <script
         type="application/ld+json"
