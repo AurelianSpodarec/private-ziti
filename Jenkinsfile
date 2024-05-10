@@ -27,7 +27,7 @@ pipeline {
                     
                         // Create .env File
                         withCredentials([file(credentialsId: "${env.ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
-                            sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
+                            sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'prod'}"
                         }
                     
                         if (!fileExists(".env.${branchToProject[env.BRANCH_NAME]}")) {
