@@ -16,26 +16,24 @@ async function BlogIndex () {
     <>
       <title>Blog - Ziti</title>
 
-      <section className="bg-oceanicForest-800">
-        <Container>
-          <div className="grid grid-cols-2">
+      <section className="bg-oceanicForest-800 py-16 mb-16">
+        <Container size="6xl">
+          <div className="lg:flex items-center">
 
             <div>
-              <h1>Your Source for Real Estate Insights and Inspiration</h1>
-              <p>Discover Expert Tips, Market Trends, and Stories From the Dominican Republic Real Estate Scene</p>
+              <h1 className="text-white text-5xl mb-3">Your Source for Real Estate Insights and Inspiration</h1>
+              <p className="text-gulfStream-400">Discover Expert Tips, Market Trends, and Stories From the Dominican Republic Real Estate Scene</p>
             </div>
-            <div>
-              <div className="relative w-full h-full">
-                <Image
-                  src="/images/blog-image-banner.png"
-                  alt="Real Estate Homes"
-                  width="0"
-                  height="0"
-                  // className="object-contain h-full w-full"
-                  sizes="100vw"
-                  className="w-full h-auto"
-                />
-              </div>
+
+            <div className="relative w-[55%] h-full hidden lg:block">
+              <Image
+                src="/images/blog-image-banner.png"
+                alt="Real Estate Homes"
+                width="0"
+                height="0"
+                sizes="100vw"
+                className="w-full h-auto"
+              />
             </div>
 
           </div>
@@ -49,7 +47,7 @@ async function BlogIndex () {
               <CardFeaturedArticle data={articles[0]} />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
               {articles.slice(1).map((item) => (
                 <CardArticle key={item.id} data={item} />
               ))}
