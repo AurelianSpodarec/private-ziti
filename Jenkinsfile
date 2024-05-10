@@ -127,7 +127,7 @@ pipeline {
                 // Determine action type and prepare links for Slack notification
                 def actionType = ["staging", "main"].contains(env.BRANCH_NAME) ? "Deployment" : "Build"
                 def linkTarget = ["staging", "main"].contains(env.BRANCH_NAME) ? env.DEPLOY_URL : "Branch ${env.BRANCH_NAME}"
-                def jobUrl = "${env.JENKINS_URL}job/ziti.io/job/${env.BRANCH_NAME}/${env.BUILD_NUMBER}/redirect"
+                def jobUrl = "${env.JENKINS_URL}job/ziti.io/job/${env.BRANCH_NAME}/${env.BUILD_NUMBER}/console"
                 
                 // Determine the message color based on the build result
                 def color = (currentBuild.result == null || currentBuild.result == 'SUCCESS') ? '#36A64F' : '#FF0000'
