@@ -32,7 +32,7 @@ function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>): JSX
           <main>
             {children}
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </Provider>
       </body>
       <Scripts />
