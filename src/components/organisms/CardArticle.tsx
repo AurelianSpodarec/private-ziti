@@ -15,7 +15,7 @@ interface ICardArticle {
 function CardArticle ({ data }: ICardArticle) {
   return (
     <article className="shadow bg-primary-50">
-      <Link href={`blog/${data.slug}`} className={'p-4 block'}>
+      <Link href={`articles/${data.slug}`} className={'p-4 block'}>
         <div className="relative h-[220px] md:h-[300px] overflow-hidden">
           <Image
             src={data.imageUrl}
