@@ -47,50 +47,50 @@ export const shadcnPlugin = plugin(
 
         '--destructive': '0 84.2% 60.2%',
         '--destructive-foreground': '0 0% 98%'
-      },
-      '.dark': {
-
-        // Named Colors
-        // =============================================================
-        '--primary': theme('colors.blackBlue.850'),
-        '--primary-50': theme('colors.gulfStream.100'),
-        '--primary-250': theme('colors.blackBlue.800'),
-        '--primary-500': theme('colors.blackBlue.550'),
-
-        '--foreground-250': theme('colors.blackBlue.250'),
-        '--foreground-500': theme('colors.blackBlue.150'),
-        '--foreground-750': theme('colors.white'),
-
-        '--background': theme('colors.blackBlue.600'),
-
-        // TODO: REFACTORING IN PROGRESS - above is refactored
-        '--primary-foreground': '240 5.9% 10%',
-
-        '--foreground': '0 0% 98%',
-
-        '--muted': '240 3.7% 15.9%',
-        '--muted-foreground': '240 5% 64.9%',
-
-        '--popover': '240 10% 3.9%',
-        '--popover-foreground': '0 0% 98%',
-
-        '--card': '240 10% 3.9%',
-        '--card-foreground': '0 0% 98%',
-
-        '--border': '240 3.7% 15.9%',
-        '--input': '240 3.7% 15.9%',
-
-        '--secondary': '240 3.7% 15.9%',
-        '--secondary-foreground': '0 0% 98%',
-
-        '--accent': '240 3.7% 15.9%',
-        '--accent-foreground': '0 0% 98%',
-
-        '--destructive': '0 62.8% 30.6%',
-        '--destructive-foreground': '0 85.7% 97.3%',
-
-        '--ring': '240 3.7% 15.9%'
       }
+      // '.dark': {
+
+      //   // Named Colors
+      //   // =============================================================
+      //   '--primary': theme('colors.blackBlue.850'),
+      //   '--primary-50': theme('colors.gulfStream.100'),
+      //   '--primary-250': theme('colors.blackBlue.800'),
+      //   '--primary-500': theme('colors.blackBlue.550'),
+
+      //   '--foreground-250': theme('colors.blackBlue.250'),
+      //   '--foreground-500': theme('colors.blackBlue.150'),
+      //   '--foreground-750': theme('colors.white'),
+
+      //   '--background': theme('colors.blackBlue.600'),
+
+      //   // TODO: REFACTORING IN PROGRESS - above is refactored
+      //   '--primary-foreground': '240 5.9% 10%',
+
+      //   '--foreground': '0 0% 98%',
+
+      //   '--muted': '240 3.7% 15.9%',
+      //   '--muted-foreground': '240 5% 64.9%',
+
+      //   '--popover': '240 10% 3.9%',
+      //   '--popover-foreground': '0 0% 98%',
+
+      //   '--card': '240 10% 3.9%',
+      //   '--card-foreground': '0 0% 98%',
+
+      //   '--border': '240 3.7% 15.9%',
+      //   '--input': '240 3.7% 15.9%',
+
+      //   '--secondary': '240 3.7% 15.9%',
+      //   '--secondary-foreground': '0 0% 98%',
+
+      //   '--accent': '240 3.7% 15.9%',
+      //   '--accent-foreground': '0 0% 98%',
+
+      //   '--destructive': '0 62.8% 30.6%',
+      //   '--destructive-foreground': '0 85.7% 97.3%',
+
+      //   '--ring': '240 3.7% 15.9%'
+      // }
     })
     addBase({
       '*': {
