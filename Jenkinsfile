@@ -23,7 +23,7 @@ pipeline {
                             'main': 'prod'
                         ]
 
-                        ENV_FILE_DESTINATION = ".env.${branchToProject[env.BRANCH_NAME] ?: '.env.prod'}"
+                        ENV_FILE_DESTINATION = ".env.${branchToProject[env.BRANCH_NAME] ?: 'prod'}"
                         
                         git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "main"
                     
