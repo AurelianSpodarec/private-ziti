@@ -7,6 +7,7 @@ import Container from '@/components/Container'
 
 import MenuMobile from './MenuMobile'
 import MenuDesktop from './MenuDesktop'
+import { usePathname } from 'next/navigation'
 
 function LogoZiti () {
   return (
@@ -21,6 +22,11 @@ function LogoZiti () {
 }
 
 function Header () {
+  // TODO: START; Remove once blog becomes part of theapp
+  const router = usePathname()
+  const isBlogPage = router.includes('/articles') // TODO: Use const for urls
+  // TODO: END
+
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
@@ -35,24 +41,28 @@ function Header () {
   return (
     <header className="w-full z-30">
       <Container>
-      <div className="flex justify-between items-center py-2">
+        <div className="flex justify-between items-center py-2">
 
-        <Link href="/">
-          <LogoZiti />
-          <span className="sr-only">Ziti</span>
-        </Link>
+          <Link href="/">
+            <LogoZiti />
+            <span className="sr-only">Ziti</span>
+          </Link>
 
-        <MenuDesktop />
+          <MenuDesktop />
 
-        <div className="lg:hidden">
-          <button type="button" onClick={() => { setMobileOpen(true) }}>
-            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none"><g id="Menu / Hamburger_LG"><path id="Vector" d="M3 17H21M3 12H21M3 7H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path></g></svg>
-          </button>
+          {/* TODO: Temporary - remove once the blog becomes part of the app */}
+          {!isBlogPage && (
+            <>
+              <div className="lg:hidden">
+                <button type="button" onClick={() => { setMobileOpen(true) }}>
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none"><g id="Menu / Hamburger_LG"><path id="Vector" d="M3 17H21M3 12H21M3 7H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path></g></svg>
+                </button>
+              </div>
+
+              <MenuMobile isOpen={mobileOpen} setMobileOpen={setMobileOpen} />
+            </>
+          )}
         </div>
-
-        <MenuMobile isOpen={mobileOpen} setMobileOpen={setMobileOpen} />
-
-      </div>
       </Container>
     </header>
   )
