@@ -9,6 +9,21 @@ module.exports = {
         disallow: '/'
       }
     ]
-  }
-  // exclude: ["/exclude"],
+  },
+  exclude: [
+    '/about',
+    '/properties',
+    '/community-guidelines',
+    '/pricing',
+    '/help',
+    '/uikit',
+    '/uikit/*',
+    '/careers',
+    '/privacy-policy',
+    '/testimonials',
+    '/brand-guide',
+    '/faq',
+    '/contact',
+    '/sitemap'
+  ]
 }
