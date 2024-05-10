@@ -1,48 +1,50 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { getArticleBySlug } from '@/services/apis/requests/blog'
 import { readingTime } from '@/lib/readingTime'
 
 import UserAvatarBox from '@/components/molecules/EmptyState/UserAvatarBox'
 import Container from '@/components/Container'
-import { Button } from '@/components/ui/button'
 
 async function BlogView ({ params: { slug } }: { params: { slug: string } }) {
   const res = await getArticleBySlug(slug)
+
   const data = res.NewsArticle
+  const dataOpenGraph = res.OpenGraph
+
+  // TODO: Refactor - make it reusable for other pages later on
+  const openGraphMetaTags = Object.entries(dataOpenGraph as Record<string, string>).map(([property, content]) => (
+    <meta key={property} property={property} content={content} />
+  ))
 
   return (
     <>
-      {/* <title>Test Page Title</title>
-      // <script
-      //   type="application/ld+json"
-      //   dangerouslySetInnerHTML={{
-      //     __html: JSON.stringify(data?.SchemaData)
-      //   }}
-      // />
-      <meta
-        name="description"
-        content="Contenttttt"
-      /> */}
+      <title>{`${data?.title} - Zito`}</title>
+      {openGraphMetaTags}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(res.SchemaData)
+        }}
+      />
 
-      <article className="">
+      <article>
 
-        <section className="bg-primary-50 py-20 mb-20">
-          <Container >
+        <section className="bg-primary-50 py-8 md:py-16 xl:py-20 mb-8 md:mb-16">
+          <Container size="6xl">
 
-            <Button
-              asChild
-              icon={<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Link href="/articles" className="flex items-center space-x-1 mb-8">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14 8.5L2 8.5" stroke="#939BA1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M6.9998 13.5L2 8.5L6.9999 3.5" stroke="#939BA1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              }
+              <span>
+                Back to articles page
+              </span>
+            </Link>
 
-            >
-              Back to blog page
-            </Button>
-
-            <h1 className="text-primary text-sm md:text-lg lg:text-5xl font-medium">{data?.title}</h1>
+            <h1 className="text-primary text-2xl md:text-3lg lg:text-5xl font-medium mb-4">{data?.title}</h1>
             <UserAvatarBox
               src={data?.Author.imageUrl || 'defaultImageUrl'}
               name={data?.Author.givenName || 'Default Name'}
@@ -53,15 +55,15 @@ async function BlogView ({ params: { slug } }: { params: { slug: string } }) {
           </Container>
         </section>
 
-        <Container>
-          <div className="prose lg:prose-lg xl:prose-xl mx-auto relative">
+        <Container size="6xl">
+          <div className="prose lg:prose-lg xl:prose-xl mx-auto relative max-w-full">
             <div className="relative h-[577px] overflow-hidden">
               <Image
                 src={data?.imageUrl || 'defaultImageURL'}
                 alt={data?.imageCaption || 'default alt text'}
-                layout="fill"
-                objectFit="cover"
+                fill
                 priority
+                className="object-cover"
               />
             </div>
 

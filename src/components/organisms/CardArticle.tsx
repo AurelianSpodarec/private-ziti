@@ -1,12 +1,12 @@
-import Link from 'next/link'
+import React from 'react'
 
+import Link from 'next/link'
 import Image from 'next/image'
 
 import { type IArticle } from '@/interfaces/IBlog'
-import UserAvatarBox from '../molecules/EmptyState/UserAvatarBox'
 import { readingTime } from '@/lib/readingTime'
 
-import React, { useState, useEffect } from 'react'
+import UserAvatarBox from '../molecules/EmptyState/UserAvatarBox'
 
 interface ICardArticle {
   data: IArticle
@@ -15,13 +15,15 @@ interface ICardArticle {
 function CardArticle ({ data }: ICardArticle) {
   return (
     <article className="shadow bg-primary-50">
-      <Link href={`blog/${data.slug}`} className={'p-4 block'}>
+      <Link href={`articles/${data.slug}`} className={'p-4 block'}>
         <div className="relative h-[220px] md:h-[300px] overflow-hidden">
           <Image
             src={data.imageUrl}
             alt={data.imageCaption}
-            layout="fill"
-            objectFit="cover"
+            width="0"
+            height="0"
+            sizes="100vw"
+            className="w-full h-full object-cover "
           />
         </div>
         <header>
