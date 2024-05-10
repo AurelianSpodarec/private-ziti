@@ -20,8 +20,10 @@ function CardArticle ({ data }: ICardArticle) {
           <Image
             src={data.imageUrl}
             alt={data.imageCaption}
-            layout="fill"
-            objectFit="cover"
+            width="0"
+            height="0"
+            sizes="100vw"
+            className="w-full h-full object-cover "
           />
         </div>
         <header>

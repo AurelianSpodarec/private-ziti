@@ -18,8 +18,11 @@ function CardFeaturedArticle ({ data }: ICardFeaturedArticle) {
           <Image
             src={data.imageUrl}
             alt={data.imageCaption}
-            layout="fill"
-            objectFit="cover"
+            priority
+            width="0"
+            height="0"
+            sizes="100vw"
+            className="w-full h-full object-cover "
           />
         </div>
         <header className="z-10 relative w-full xl:w-[30%] xl:p-8 flex">
