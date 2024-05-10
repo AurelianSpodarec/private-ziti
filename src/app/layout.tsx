@@ -15,6 +15,7 @@ import Footer from './_components/Footer'
 // import MobileNativeMenu from './_components/MobileNativeMenu'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.SITE_URL !== undefined && process.env.SITE_URL !== null && process.env.SITE_URL !== '' ? process.env.SITE_URL : 'https://ziti.io'),
   title: 'Discover, Connect, Invest - Ziti',
   description: 'Explore global property listings, connect with experts, and invest confidently worldwide with Ziti.',
   robots: {
