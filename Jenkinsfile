@@ -22,20 +22,22 @@ pipeline {
                             'staging': 'staging',
                             'main': 'prod'
                         ]
+
+                        ENV_FILE_DESTINATION = ".env.${branchToProject[env.BRANCH_NAME] ?: '.env.prod'}"
                         
                         git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "main"
                     
                         // Create .env File
-                        withCredentials([file(credentialsId: "${env.ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
-                            sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
+                        withCredentials([file(credentialsId: "${env.ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE_SOURCE')]) {
+                            sh "cp $ENV_FILE_SOURCE $ENV_FILE_DESTINATION"
                         }
                     
-                        if (!fileExists(".env.${branchToProject[env.BRANCH_NAME]}")) {
-                            error("File .env.${branchToProject[env.BRANCH_NAME]} not found.")
+                        if (!fileExists("$ENV_FILE_DESTINATION")) {
+                            error("File $ENV_FILE_DESTINATION not found.")
                         }
 
                         // Loading variables to Jenkins environment
-                        def envFileContent = readFile(".env.${branchToProject[env.BRANCH_NAME]}")
+                        def envFileContent = readFile("$ENV_FILE_DESTINATION")
                         def envVars = envFileContent.split('\n')
                         buildArgs = envVars.findAll { line -> // Use findAll to filter out empty lines and comments
                             line = line.split('#')[0].trim()
@@ -74,20 +76,22 @@ pipeline {
                           'staging': 'staging',
                           'main': 'prod'
                         ]
+
+                        ENV_FILE_DESTINATION = ".env.${branchToProject[env.BRANCH_NAME]}"
                         
                         git credentialsId: "${DOCKER_COMPOSE_CREDENTIALS_ID}", url: "${DOCKER_COMPOSE_REPO_URL}", branch: "main"
 
-                        if (fileExists(".env.${branchToProject[env.BRANCH_NAME]}")) {
-                            sh "rm .env.${branchToProject[env.BRANCH_NAME]}"
+                        if (fileExists("$ENV_FILE_DESTINATION")) {
+                            sh "rm ${ENV_FILE_DESTINATION}"
                         }
                     
                         // Create .env File
-                        withCredentials([file(credentialsId: "${env.ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE')]) {
-                            sh "cp $ENV_FILE .env.${branchToProject[env.BRANCH_NAME] ?: 'unknown'}"
+                        withCredentials([file(credentialsId: "${env.ENV_FILE_CREDENTIALS_ID}", variable: 'ENV_FILE_SOURCE')]) {
+                            sh "cp $ENV_FILE_SOURCE $ENV_FILE_DESTINATION"
                         }
                     
-                        if (!fileExists(".env.${branchToProject[env.BRANCH_NAME]}")) {
-                            error("File .env.${branchToProject[env.BRANCH_NAME]} not found.")
+                        if (!fileExists("$ENV_FILE_DESTINATION")) {
+                            error("File $ENV_FILE_DESTINATION not found.")
                         }
 
                         sh "sed -i '/${env.SERVICE}:/,/^[^ ]/{s|image: ${env.IMAGE_NAME}:.*|image: ${env.IMAGE_NAME}:${env.BUILD_ID}|}' docker-compose.frontend.yaml"
