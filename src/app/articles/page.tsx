@@ -7,6 +7,25 @@ import CardArticle from '@/components/organisms/CardArticle'
 import Container from '@/components/Container'
 import CardFeaturedArticle from '@/components/organisms/CardFeaturedArticle'
 import Image from 'next/image'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Articles - Ziti',
+  description: 'Discover expert tips, market trends, and stories from the Dominican Republic real estate scene.',
+  openGraph: {
+    title: 'Articles - Ziti',
+    description: 'Explore the latest in Dominican Republic real estate with expert insights and market analysis.',
+    images: [
+      {
+        url: '/images/blog-image-banner.png',
+        width: 461,
+        height: 414,
+        alt: 'Overview of Dominican Republic real estate'
+      }
+    ],
+    type: 'website'
+  }
+}
 
 async function BlogIndex () {
   const res = await getArticles()
@@ -14,7 +33,6 @@ async function BlogIndex () {
 
   return (
     <>
-      <title>Blog - Ziti</title>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
