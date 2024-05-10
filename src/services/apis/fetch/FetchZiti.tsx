@@ -16,7 +16,6 @@ async function FetchZiti (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DE
   const content = await getResponseContent(response)
 
   if (response.ok) return content
-  console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@', content)
   throw new RequestError(response.statusText, response.status, content)
 }
 

@@ -1,12 +1,12 @@
-import Link from 'next/link'
+import React from 'react'
 
+import Link from 'next/link'
 import Image from 'next/image'
 
 import { type IArticle } from '@/interfaces/IBlog'
-import UserAvatarBox from '../molecules/EmptyState/UserAvatarBox'
 import { readingTime } from '@/lib/readingTime'
 
-import React, { useState, useEffect } from 'react'
+import UserAvatarBox from '../molecules/EmptyState/UserAvatarBox'
 
 interface ICardArticle {
   data: IArticle

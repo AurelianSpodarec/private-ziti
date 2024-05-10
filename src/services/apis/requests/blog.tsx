@@ -5,18 +5,16 @@
 import { type IArticle, type IAuthor } from '@/interfaces/IBlog'
 import FetchZiti from '../fetch/FetchZiti'
 
-interface SchemaData {
-  SchemaData: {}
-}
-
 interface Res {
   NewsArticle?: IArticle
   SchemaData?: {}
+  OpenGraph?: {}
 }
 
 interface Res2 {
   NewsArticles?: IArticle[]
   SchemaData?: {}
+  OpenGraph?: {}
 }
 
 // Blog: Articles
