@@ -24,7 +24,7 @@ function LogoZiti () {
 function Header () {
   // TODO: START; Remove once blog becomes part of theapp
   const router = usePathname()
-  const isBlogPage = router.includes('/blog')
+  const isBlogPage = router.includes('/articles') // TODO: Use const for urls
   // TODO: END
 
   const [mobileOpen, setMobileOpen] = useState(false)
