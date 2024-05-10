@@ -15,6 +15,12 @@ async function BlogIndex () {
   return (
     <>
       <title>Blog - Ziti</title>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(res.SchemaData)
+        }}
+      />
 
       <section className="bg-oceanicForest-800 py-16 mb-16">
         <Container size="6xl">
