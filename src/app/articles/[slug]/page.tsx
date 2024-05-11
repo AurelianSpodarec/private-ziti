@@ -19,7 +19,7 @@ export async function generateMetadata (
   const dataOpenGraph = res.OpenGraph
 
   return {
-    title: data?.title ? `${data.title} - Ziti.io` : 'Welcome to Ziti.io',
+    title: data?.title ? `${data.title} - Ziti` : 'Welcome to Ziti',
     description: data?.excerpt || 'Explore global property listings, connect with experts, and invest confidently worldwide with Ziti.',
     robots: 'noindex',
     openGraph: dataOpenGraph?.OpenGraphData,
