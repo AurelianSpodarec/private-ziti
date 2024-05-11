@@ -17,9 +17,9 @@ export const metadata: Metadata = {
     description: 'Explore the latest in Dominican Republic real estate with expert insights and market analysis.',
     images: [
       {
-        url: '/images/blog-image-banner.png',
-        width: 461,
-        height: 414,
+        url: 'https://media.ziti.io/assets/articles/banner-hero.png',
+        width: 922,
+        height: 827,
         alt: 'Overview of Dominican Republic real estate'
       }
     ],
@@ -51,10 +51,10 @@ async function BlogIndex () {
 
             <div className="relative w-[55%] h-full hidden lg:block">
               <Image
-                src="/images/blog-image-banner.png"
+                src="https://media.ziti.io/assets/articles/banner-hero.png"
                 alt="Real Estate Homes"
-                width="0"
-                height="0"
+                width="922"
+                height="827"
                 sizes="100vw"
                 className="w-full h-auto"
               />
