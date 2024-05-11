@@ -18,16 +18,12 @@ export async function generateMetadata (
   const data = res.NewsArticle
   const dataOpenGraph = res.OpenGraph
 
-  // TODO: Refactor - make it reusable for other pages later on
-  const openGraphMetaTags = Object.entries(dataOpenGraph as Record<string, string>).map(([property, content]) => (
-    <meta key={property} property={property} content={content} />
-  ))
-
   return {
     title: data?.title ? `${data.title} - Ziti.io` : 'Welcome to Ziti.io',
     description: data?.excerpt || 'Explore global property listings, connect with experts, and invest confidently worldwide with Ziti.',
     robots: 'noindex',
-    openGraph: dataOpenGraph
+    openGraph: dataOpenGraph?.OpenGraphData,
+    twitter: dataOpenGraph?.OpenGraphTwitter
   }
 }
 
@@ -35,16 +31,9 @@ async function BlogView ({ params: { slug } }: { params: { slug: string } }) {
   const res = await getArticleBySlug(slug)
 
   const data = res.NewsArticle
-  const dataOpenGraph = res.OpenGraph
-
-  // TODO: Refactor - make it reusable for other pages later on
-  const openGraphMetaTags = Object.entries(dataOpenGraph as Record<string, string>).map(([property, content]) => (
-    <meta key={property} property={property} content={content} />
-  ))
 
   return (
     <>
-      {openGraphMetaTags}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
