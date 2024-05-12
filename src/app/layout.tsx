@@ -19,16 +19,15 @@ export const metadata: Metadata = {
   title: 'Discover, Connect, Invest - Ziti',
   description: 'Explore global property listings, connect with experts, and invest confidently worldwide with Ziti.',
   robots: {
-    index: false, // Disallow indexing of all pages
-    follow: false, // Do not follow links from this page
-    nocache: true, // Instructs to not cache the page
+    index: true, // Allow indexing
+    follow: true, // Follow links
+    nocache: true, // Do not cache the page
     googleBot: {
-      index: false, // Specifically tell Googlebot not to index
-      follow: false, // Specifically tell Googlebot not to follow links
+      index: true, // Specifically tell Googlebot to index
+      follow: true, // Specifically tell Googlebot to follow links
       noimageindex: true, // Prevent Googlebot from indexing images
       'max-video-preview': -1, // No video previews
-      'max-image-preview': 'none', // No image previews
-      'max-snippet': -1 // No snippets
+      'max-image-preview': 'none' // No image previews
     }
   }
 }
