@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Global Real Estate Insights: Explore Trends - Ziti',
   description: 'Discover expert tips, market trends, and stories from the Dominican Republic real estate scene.',
   openGraph: {
-    title: 'Global Real Estate Insights: Explore Trends - Ziti',
+    title: 'Global Real Estate Insights: Explore Trends',
     description: 'Explore the latest in Dominican Republic real estate with expert insights and market analysis.',
     images: [
       {
