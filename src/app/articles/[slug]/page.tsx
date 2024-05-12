@@ -40,7 +40,7 @@ async function BlogView ({ params: { slug } }: { params: { slug: string } }) {
                 <path d="M6.9998 13.5L2 8.5L6.9999 3.5" stroke="#939BA1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <span>
-                Back to articles page
+                Explore more articles
               </span>
             </Link>
 
