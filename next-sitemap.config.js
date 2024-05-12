@@ -6,31 +6,38 @@ module.exports = {
     policies: [
       {
         userAgent: '*',
-        Allow: '/'
+        disallow: '',
+        allow: '/'
       },
       {
         userAgent: 'Googlebot',
-        Allow: '/'
+        disallow: '',
+        allow: '/'
       },
       {
         userAgent: 'Bingbot',
-        Allow: '/'
+        disallow: '',
+        allow: '/'
       },
       {
         userAgent: 'Baiduspider',
-        Allow: '/'
+        disallow: '',
+        allow: '/'
       },
       {
         userAgent: 'Yahoo Slurp',
-        Allow: '/'
+        disallow: '',
+        allow: '/'
       },
       {
         userAgent: 'YandexBot',
-        Allow: '/'
+        disallow: '',
+        allow: '/'
       },
       {
         userAgent: 'DuckDuckBot',
-        Allow: '/'
+        disallow: '',
+        allow: '/'
       }
     ]
   },
