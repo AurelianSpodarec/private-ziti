@@ -29,13 +29,11 @@ function CardFeaturedArticle ({ data }: ICardFeaturedArticle) {
           <div className="my-auto">
 
             <h3 className="text-foreground-750 text-base md:text-xl lg:text-2xl font-medium">
-              {/* {data.title} */}
-              Why you should check Punta Cana real estate in 2024.
+              {data.title}
             </h3>
 
             <p className="py-4 xl:py-8">
-              Punta Cana presents a compelling opportunity: a thriving real estate market.
-              {/* {data.excerpt} */}
+              {data.excerpt}
             </p>
             <Button
               icon={
