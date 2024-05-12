@@ -10,10 +10,10 @@ import Image from 'next/image'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'International Real Estate Articles - Ziti',
+  title: 'Global Real Estate Insights: Explore Trends - Ziti',
   description: 'Discover expert tips, market trends, and stories from the Dominican Republic real estate scene.',
   openGraph: {
-    title: 'Articles - Ziti',
+    title: 'Global Real Estate Insights: Explore Trends - Ziti',
     description: 'Explore the latest in Dominican Republic real estate with expert insights and market analysis.',
     images: [
       {
