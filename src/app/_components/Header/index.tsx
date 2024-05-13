@@ -43,7 +43,7 @@ function Header () {
       <Container>
         <div className="flex justify-between items-center py-2">
 
-          <Link href="/">
+          <Link href="/articles">
             <LogoZiti />
             <span className="sr-only">Ziti</span>
           </Link>
