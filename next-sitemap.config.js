@@ -39,6 +39,9 @@ module.exports = {
         disallow: '',
         allow: '/'
       }
+    ],
+    additionalSitemaps: [
+      'https://ziti.io/articles-sitemap.xml' // <==== Add here
     ]
   },
   exclude: [
@@ -55,6 +58,7 @@ module.exports = {
     '/brand-guide',
     '/faq',
     '/contact',
-    '/sitemap'
+    '/sitemap',
+    '/articles-sitemap.xml'
   ]
 }
