@@ -1,3 +1,5 @@
+// src/services/apis/requests/blog.tsx
+
 // ============================================================
 // API Blog
 // ============================================================
@@ -8,7 +10,10 @@ import FetchZiti from '../fetch/FetchZiti'
 interface Res {
   NewsArticle?: IArticle
   SchemaData?: {}
-  OpenGraph?: {}
+  OpenGraph?: {
+    OpenGraphData?: {}
+    OpenGraphTwitter?: {}
+  }
 }
 
 interface Res2 {
