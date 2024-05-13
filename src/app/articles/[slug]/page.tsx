@@ -4,11 +4,24 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata, ResolvingMetadata } from 'next'
 
-import { getArticleBySlug } from '@/services/apis/requests/blog'
+import { getArticles, getArticleBySlug } from '@/services/apis/requests/blog'
 import { readingTime } from '@/lib/readingTime'
 
 import UserAvatarBox from '@/components/molecules/EmptyState/UserAvatarBox'
 import Container from '@/components/Container'
+
+// Define generateStaticParams to statically generate pages for each article slug
+export async function generateStaticParams () {
+  const response = await getArticles()
+  const articles = response.NewsArticles || []
+
+  // Map each article to a parameter object containing the slug
+  return articles.map((article) => ({
+    params: {
+      slug: article.slug
+    }
+  }))
+}
 
 export async function generateMetadata (
   { params }: { params: { slug: string } },
