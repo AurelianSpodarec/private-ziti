@@ -1,3 +1,5 @@
+// src/app/articles-sitemap.xml/route.ts
+
 import { getServerSideSitemap, type ISitemapField } from 'next-sitemap'
 import { getArticles } from '@/services/apis/requests/blog'
 
