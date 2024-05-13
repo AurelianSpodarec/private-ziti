@@ -11,16 +11,19 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Global Real Estate Insights: Explore Trends - Ziti',
-  description: 'Discover expert tips, market trends, and stories from the Dominican Republic real estate scene.',
+  description: 'Discover professional advice, current market trends, and engaging stories from the Dominican Republic\'s vibrant real estate scene.',
   openGraph: {
     title: 'Global Real Estate Insights: Explore Trends',
-    description: 'Explore the latest in Dominican Republic real estate with expert insights and market analysis.',
+    description: 'Explore the latest developments in Dominican Republic real estate, featuring expert insights and comprehensive market analysis.',
+    url: 'https://ziti.io/articles',
+    siteName: 'Ziti',
+    locale: 'en-US',
     images: [
       {
         url: 'https://media.ziti.io/assets/articles/banner-hero.png',
+        alt: 'Overview of Dominican Republic real estate',
         width: 922,
-        height: 827,
-        alt: 'Overview of Dominican Republic real estate'
+        height: 827
       }
     ],
     type: 'website'
