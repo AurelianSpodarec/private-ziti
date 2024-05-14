@@ -17,7 +17,7 @@ import SelectedFilterItem from './_components/SelectedFilterItem'
 
 const fakeDataSelectedFilters = ['Punta Cana', '$120,000 - $350,000', '2+ baths', 'Pool', 'Garden']
 
-function Page () {
+function PropertiesPage () {
   const propertiesQuery = useQuery({
     queryKey: ['properites'],
     queryFn: async () => await getPropertiesList()
@@ -62,4 +62,4 @@ function Page () {
   )
 }
 
-export default Page
+export default PropertiesPage

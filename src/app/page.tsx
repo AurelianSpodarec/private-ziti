@@ -1,9 +1,7 @@
+import PropertiesPage from './(app)/properties/page'
+
 function Home (): JSX.Element {
-  return (
-    <div>
-      Home Page
-    </div>
-  )
+  return <PropertiesPage />
 }
 
 export default Home

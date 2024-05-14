@@ -1,7 +1,17 @@
+// @ts-check
 import { withSentryConfig } from '@sentry/nextjs'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects () {
+    return [
+      {
+        source: '/properties',
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       {
@@ -46,6 +56,7 @@ const sentryConfigOptions = {
 
 // Conditionally set the tunnelRoute if NODE_ENV is production
 if (process.env.NODE_ENV === 'production') {
+  //@ts-ignore
   sentryConfigOptions.tunnelRoute = '/monitoring'
 }
 
