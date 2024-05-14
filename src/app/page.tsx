@@ -1,7 +1,7 @@
 function Home (): JSX.Element {
   return (
     <div>
-      Test
+      Home Page
     </div>
   )
 }

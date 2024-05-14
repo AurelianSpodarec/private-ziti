@@ -29,23 +29,24 @@ export const metadata: Metadata = {
       follow: false, // Specifically tell Googlebot not to follow links
       noimageindex: true, // Prevent Googlebot from indexing images
       'max-video-preview': -1, // No video previews
-      'max-image-preview': 'none', // No image previews
+      'max-image-preview': 'none',
       'max-snippet': -1 // No snippets
     }
   }
 }
 
-function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>): JSX.Element {
+function RootLayout ({ children, auth }: Readonly<{ children: React.ReactNode, auth: React.ReactNode }>): JSX.Element {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <MixpanelInitializer />
       <TrafficSourceTracker />
-      <body className={`${poppins.variable} ${sourceSerif.variable}`}>
+      <body className={`${poppins.variable} ${sourceSerif.variable}`} suppressHydrationWarning={true}>
         <Provider>
           {/* TODO: <MobileNativeMenu /> */}
           <Header />
           <main>
             {children}
+            {auth}
           </main>
           {/* <Footer /> */}
         </Provider>

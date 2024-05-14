@@ -7,7 +7,7 @@ interface IMenuMobile {
 
 function MenuMobile ({ isOpen, setMobileOpen }: IMenuMobile) {
   return (
-    <div id="menu-mobile" className={`fixed top-0 bottom-0 right-0 w-[80%] z-10 bg-[#1a1a1a] transition duration-150 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+    <div id="menu-mobile" className={`lg:hidden fixed top-0 bottom-0 right-0 w-[80%] z-10 bg-[#1a1a1a] transition duration-150 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
 
       <div className="flex justify-between px-4 pt-2">
         <div></div>
