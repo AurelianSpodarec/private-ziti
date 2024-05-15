@@ -23,9 +23,6 @@
       "version": "detect"
     }
   },
-  // "ignorePatterns": [
-  //   "src/app/components/ui/*"
-  // ],
   "rules": {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
