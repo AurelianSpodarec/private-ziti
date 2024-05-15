@@ -1,9 +1,7 @@
+import BlogIndex from './articles/page'
+
 function Home (): JSX.Element {
-  return (
-    <div>
-      Test
-    </div>
-  )
+  return <BlogIndex />
 }
 
 export default Home
