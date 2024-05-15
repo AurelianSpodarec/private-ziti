@@ -6,7 +6,7 @@ import MixpanelInitializer from '@/lib/other/MixpanelInitializer'
 import TrafficSourceTracker from '@/lib/other/TrafficSourceTracker'
 import Scripts from '@/lib/other/Scripts'
 
-import Provider from '@/context/provider'
+import ContextProvider from '@/context'
 import { poppins, sourceSerif } from '@/app/fonts'
 
 import './../styles/styles.scss'
@@ -40,7 +40,7 @@ function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>) {
       <MixpanelInitializer />
       <TrafficSourceTracker />
       <body className={`${poppins.variable} ${sourceSerif.variable}`} suppressHydrationWarning={true}>
-        <Provider>
+        <ContextProvider>
 
           <Header />
           <main>
@@ -48,7 +48,7 @@ function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>) {
           </main>
 
           <DynamicModalAuth />
-        </Provider>
+        </ContextProvider>
       </body>
       <Scripts />
     </html>

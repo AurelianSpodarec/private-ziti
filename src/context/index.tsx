@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import { ThemeProvider } from '@/context/theme-provider'
-import ModalProvider from './modal-provider'
+import ModalProvider from './modal/modal-provider'
 
 function Provider ({ children, session }: { children: React.ReactNode, session?: unknown }) {
   const [client] = useState(new QueryClient())

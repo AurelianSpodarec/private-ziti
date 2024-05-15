@@ -30,7 +30,16 @@ export interface IProperty {
   PropertyStatus: IPropertyStatus
   PropertyType: IPropertyType
   Sector: ISector
-  images: string[]
+  images: IPropertyImage[]
+}
+
+export interface IPropertyImage {
+  id: string
+  displayOrder: string
+  url: string
+  description: string
+  width: number | null
+  height: number | null
 }
 
 export interface IPropertyStatus {

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { type IProperty, type IPropertyStatus } from '@/interfaces/IProperties'
 import CarouselProperty from './_components/PropertyCarousel'
-import useModal from '@/context/useModal'
+import useModal from '@/context/modal/useModal'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -70,7 +70,9 @@ function CardProperty ({ data, isLoading }: ICardProperty) {
 
         <div className="h-[330px] p-4">
           <div className="absolute top-0 right-0 bottom-0 left-0 ">
-            {/* <CarouselProperty images={['placeholder.jpg']} /> */}
+            {data?.images &&
+              <CarouselProperty images={data?.images} />
+            }
           </div>
 
           <div className="relative h-full flex">

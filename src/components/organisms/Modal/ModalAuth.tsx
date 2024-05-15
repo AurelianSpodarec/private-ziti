@@ -12,7 +12,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog'
 
 function ModalAuth () {
   return (
-    <Dialog modal open={true}>
+    <Dialog modal open={false}>
       <DialogContent>
         Modal Auth
       </DialogContent>
