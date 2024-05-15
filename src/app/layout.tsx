@@ -36,10 +36,10 @@ export const metadata: Metadata = {
 
 function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" >
+    <html lang="en" suppressHydrationWarning={true}>
       <MixpanelInitializer />
       <TrafficSourceTracker />
-      <body className={`${poppins.variable} ${sourceSerif.variable}`} >
+      <body className={`${poppins.variable} ${sourceSerif.variable}`} suppressHydrationWarning={true}>
         <Provider>
 
           <Header />
