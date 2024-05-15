@@ -7,7 +7,7 @@ import TrafficSourceTracker from '@/lib/other/TrafficSourceTracker'
 import Scripts from '@/lib/other/Scripts'
 
 import Provider from '@/context/provider'
-import { poppins, sourceSerif } from '@/utils/fonts'
+import { poppins, sourceSerif } from '@/app/fonts'
 
 import './../styles/styles.scss'
 
