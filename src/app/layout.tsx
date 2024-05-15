@@ -1,20 +1,19 @@
 // src/app/layout.tsx
-
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 
 import MixpanelInitializer from '@/lib/other/MixpanelInitializer'
 import TrafficSourceTracker from '@/lib/other/TrafficSourceTracker'
 import Scripts from '@/lib/other/Scripts'
 
-import Provider from '@/utils/provider'
+import Provider from '@/context/provider'
 import { poppins, sourceSerif } from '@/utils/fonts'
 
 import './../styles/styles.scss'
 
 import Header from './_components/Header'
-import Footer from './_components/Footer'
 
-// import MobileNativeMenu from './_components/MobileNativeMenu'
+const DynamicModalAuth = dynamic(async () => await import('@/components/organisms/Modal/ModalAuth'), { ssr: false })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ziti.io'),
@@ -30,25 +29,25 @@ export const metadata: Metadata = {
       noimageindex: true, // Prevent Googlebot from indexing images
       'max-video-preview': -1, // No video previews
       'max-image-preview': 'none',
-      'max-snippet': -1 // No snippets
+      'max-snippet': -1
     }
   }
 }
 
-function RootLayout ({ children, auth }: Readonly<{ children: React.ReactNode, auth: React.ReactNode }>): JSX.Element {
+function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en" >
       <MixpanelInitializer />
       <TrafficSourceTracker />
-      <body className={`${poppins.variable} ${sourceSerif.variable}`} suppressHydrationWarning={true}>
+      <body className={`${poppins.variable} ${sourceSerif.variable}`} >
         <Provider>
-          {/* TODO: <MobileNativeMenu /> */}
+
           <Header />
           <main>
             {children}
-            {auth}
           </main>
-          {/* <Footer /> */}
+
+          <DynamicModalAuth />
         </Provider>
       </body>
       <Scripts />

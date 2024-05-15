@@ -1,6 +1,6 @@
 import PropertiesPage from './(app)/properties/page'
 
-function Home (): JSX.Element {
+function Home () {
   return <PropertiesPage />
 }
 

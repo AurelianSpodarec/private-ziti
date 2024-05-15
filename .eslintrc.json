@@ -24,7 +24,7 @@
     }
   },
   "ignorePatterns": [
-    "src/components/ui/*"
+    "src/app/components/ui/*"
   ],
   "rules": {
     "react/prop-types": "off",

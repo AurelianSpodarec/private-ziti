@@ -1,7 +1,10 @@
+'use client'
+
 import Link from 'next/link'
 
 import { type IProperty, type IPropertyStatus } from '@/interfaces/IProperties'
 import CarouselProperty from './_components/PropertyCarousel'
+import useModal from '@/context/useModal'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -38,6 +41,8 @@ function CardProperty ({ data, isLoading }: ICardProperty) {
     )
   }
 
+  const { openModal } = useModal()
+
   const cardPropertyStatus = data?.PropertyStatus.statusName
   const cardPropertyStatuses: ICardPropertyStatuses = {
     available: {
@@ -52,6 +57,11 @@ function CardProperty ({ data, isLoading }: ICardProperty) {
       name: 'Pre-Construction',
       class: 'bg-blue-550 bg-opacity-75'
     }
+  }
+
+  function openModalTest (event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault()
+    openModal()
   }
 
   return (
@@ -72,11 +82,11 @@ function CardProperty ({ data, isLoading }: ICardProperty) {
                     {cardPropertyStatus && cardPropertyStatuses[cardPropertyStatus].name}
                   </Badge>
                 }
-                <Button className="ml-auto rounded-full" variant="clean" kind="glass">
+                <Button onClick={(event) => { openModalTest(event) }} className="ml-auto rounded-full" variant="clean" kind="glass">
                   <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20.8382 2.60987C20.3274 2.09888 19.721 1.69352 19.0535 1.41696C18.3861 1.14039 17.6707 0.998047 16.9482 0.998047C16.2257 0.998047 15.5103 1.14039 14.8428 1.41696C14.1754 1.69352 13.5689 2.09888 13.0582 2.60987L11.9982 3.66987L10.9382 2.60987C9.90647 1.57818 8.5072 0.998582 7.04817 0.998582C5.58913 0.998582 4.18986 1.57818 3.15817 2.60987C2.12647 3.64156 1.54688 5.04084 1.54688 6.49987C1.54687 7.95891 2.12647 9.35818 3.15817 10.3899L4.21817 11.4499L11.9982 19.2299L19.7782 11.4499L20.8382 10.3899C21.3492 9.87912 21.7545 9.27269 22.0311 8.60523C22.3076 7.93777 22.45 7.22236 22.45 6.49987C22.45 5.77738 22.3076 5.06198 22.0311 4.39452C21.7545 3.72706 21.3492 3.12063 20.8382 2.60987V2.60987Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                  <span className="sr-only">Like</span>
+                  <span className="sr-only">Bookmark</span>
                 </Button>
               </div>
             </div>

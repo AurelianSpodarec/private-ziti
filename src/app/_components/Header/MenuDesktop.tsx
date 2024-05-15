@@ -1,9 +1,12 @@
-import ModeToggle from '@/components/atoms/ModeToggle'
+'use client'
+
+// import useModal from '@/context/useModal'
+import { Button } from '@/components/ui/button'
 import UserDropdown from '../UserDropdown'
-import Link from 'next/link'
 
 function MenuDesktop () {
   const isLogged = false
+  // const { openModal } = useModal()
 
   return (
     <nav className="hidden lg:block text-sm text-white font-montserrat">
@@ -14,13 +17,12 @@ function MenuDesktop () {
           {isLogged &&
             <UserDropdown />
           }
-          <button className="text-black">
 
-            <Link href={'/signin'}>
+          {/* <Button onClick={() => openModal()}> */}
+          <Button>
+            Login Button
+          </Button>
 
-              Login Button
-            </Link>
-          </button>
         </div>
 
       </div>
