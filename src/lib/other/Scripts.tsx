@@ -1,5 +1,7 @@
 // src/components/Scripts.tsx
 
+'use client'
+
 import Script from 'next/script'
 
 const segmentScript = `
@@ -23,8 +25,8 @@ const hotjarScript = `
 const Scripts = (): JSX.Element | undefined => {
   // Check if the code is running in the browser environment
   if (typeof window !== 'undefined') {
-    // Check if NODE_ENV is 'production' and hostname is exactly 'ziti.io'
-    if (process.env.NODE_ENV === 'production' && window.location.hostname === 'ziti.io') {
+    // Check if hostname is exactly 'ziti.io'
+    if (window.location.hostname === 'ziti.io') {
       return (
       <>
         <Script
@@ -40,6 +42,8 @@ const Scripts = (): JSX.Element | undefined => {
         {/* Add more scripts here as needed */}
       </>
       )
+    } else {
+      console.log('Scripts initialization skipped outside of production deployment.')
     }
   }
 
