@@ -14,7 +14,7 @@ import Footer from './_components/Footer'
 
 // import MobileNativeMenu from './_components/MobileNativeMenu'
 
-const isActualProduction = process.env.IS_ACTUAL_PRODUCTION === 'true'
+const isActualProduction = process.env.NEXT_PUBLIC_IS_ACTUAL_PRODUCTION === 'true'
 
 export const metadata: Metadata = isActualProduction
   ? { // production metadata

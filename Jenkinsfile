@@ -9,7 +9,7 @@ pipeline {
         DOCKER_COMPOSE_CREDENTIALS_ID = '59023cb5-fac2-48f8-998e-107cec2c3de0'
         PATH = "${env.HOME}/bin:${env.PATH}"
         IMAGE_NAME = "${env.BRANCH_NAME.replaceAll("[^a-zA-Z0-9_.-]", "-").toLowerCase()}-app-ziti"
-        IS_ACTUAL_PRODUCTION = (env.BRANCH_NAME == 'main').toString()
+        NEXT_PUBLIC_IS_ACTUAL_PRODUCTION = (env.BRANCH_NAME == 'main').toString()
     }
 
     stages {

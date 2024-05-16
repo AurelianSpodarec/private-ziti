@@ -6,7 +6,7 @@ import type { NextRequest } from 'next/server'
 // Middleware function to control search engine indexing based on deployment environment
 export function middleware (req: NextRequest) {
   // Check if the deployment is actual production
-  const isActualProduction = process.env.IS_ACTUAL_PRODUCTION === 'true'
+  const isActualProduction = process.env.NEXT_PUBLIC_IS_ACTUAL_PRODUCTION === 'true'
 
   // If not in actual production, set headers to prevent search engines from indexing the pages
   if (!isActualProduction) {

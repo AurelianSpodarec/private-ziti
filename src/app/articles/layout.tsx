@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-const isActualProduction = process.env.IS_ACTUAL_PRODUCTION === 'true'
+const isActualProduction = process.env.NEXT_PUBLIC_IS_ACTUAL_PRODUCTION === 'true'
 
 export const metadata: Metadata = isActualProduction
   ? { // production metadata
