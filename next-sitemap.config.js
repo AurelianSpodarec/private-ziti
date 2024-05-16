@@ -59,6 +59,7 @@ module.exports = {
     '/faq',
     '/contact',
     '/sitemap',
-    '/articles-sitemap.xml'
+    '/articles-sitemap.xml',
+    '/articles'
   ]
 }
