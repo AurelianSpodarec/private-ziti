@@ -10,7 +10,7 @@ export function middleware (req: NextRequest) {
   // If not in actual production, set headers to prevent search engines from indexing the pages
   if (!isActualProduction) {
     const response = NextResponse.next()
-    response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet')
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow, nocache, noarchive, nosnippet, noimageindex')
     return response
   }
 

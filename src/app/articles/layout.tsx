@@ -8,10 +8,14 @@ export const metadata: Metadata = isActualProduction
       robots: {
         index: true, // Allow indexing
         follow: true, // Follow links
-        nocache: false, // Cache the page
+        nocache: false, // Do not cache the page
+        noimageindex: true, // Prevent from indexing images
+        'max-video-preview': -1, // No video previews
+        'max-image-preview': 'none', // No image previews
         googleBot: {
           index: true, // Specifically tell Googlebot to index
           follow: true, // Specifically tell Googlebot to follow links
+          nocache: false, // Do not cache the page
           noimageindex: true, // Prevent Googlebot from indexing images
           'max-video-preview': -1, // No video previews
           'max-image-preview': 'none' // No image previews
@@ -25,7 +29,10 @@ export const metadata: Metadata = isActualProduction
       robots: {
         index: false,
         follow: false,
-        nocache: true
+        nocache: true,
+        noarchive: true,
+        nosnippet: true,
+        noimageindex: true
       }
     }
 
