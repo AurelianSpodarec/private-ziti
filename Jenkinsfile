@@ -16,7 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    env.ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? 'b156afaf-7f89-4c7c-9490-9a9a7eafe28b' : 'b156afaf-7f89-4c7c-9490-9a9a7eafe28b'
+                    env.ENV_FILE_CREDENTIALS_ID = (env.BRANCH_NAME == 'main') ? 'b156afaf-7f89-4c7c-9490-9a9a7eafe28b' : '1e5edd28-d954-438a-9bf7-d2e359feea90'
                     def buildArgs = ''
                     dir('docker-compose') {
                         def branchToProject = [
