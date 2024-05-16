@@ -8,8 +8,8 @@ const nextConfig = {
       {
         source: '/properties',
         destination: '/',
-        permanent: true,
-      },
+        permanent: true
+      }
     ]
   },
   images: {

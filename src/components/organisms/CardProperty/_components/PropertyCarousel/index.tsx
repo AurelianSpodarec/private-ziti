@@ -5,10 +5,11 @@ import {
   type CarouselApi
 } from '@/components/ui/carousel'
 
+import { type IPropertyImage } from '@/interfaces/IProperties'
+
 import PropertyCarouselList from './_components/List'
 import PropertyCarouselControls from './_components/Controls'
 import PropertyCarouselPagination from './_components/Pagination'
-import { type IPropertyImage } from '@/interfaces/IProperties'
 
 function CarouselProperty ({ images }: { images: IPropertyImage[] }) {
   const [api, setApi] = React.useState<CarouselApi>()

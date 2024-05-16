@@ -11,10 +11,6 @@ import ModalProvider from './modal/modal-provider'
 function Provider ({ children, session }: { children: React.ReactNode, session?: unknown }) {
   const [client] = useState(new QueryClient())
 
-  if (process.env.NEXT_PUBLIC_ENVIRONMENT === undefined) {
-    console.error('Enviroment file not defined or staging variable not defined (.env)')
-  }
-
   return (
     <ThemeProvider
       attribute="class"
