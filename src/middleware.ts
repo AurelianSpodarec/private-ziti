@@ -11,7 +11,6 @@ export function middleware (req: NextRequest) {
   if (!isActualProduction) {
     const response = NextResponse.next()
     response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet')
-    // response.headers.set('X-Ivan', 'Hello.')
     return response
   }
 
