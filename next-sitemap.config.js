@@ -41,7 +41,7 @@ module.exports = {
       }
     ],
     additionalSitemaps: [
-      'https://ziti.io/articles-sitemap.xml' // <==== Add here
+      'https://ziti.io/sitemap-articles.xml'
     ]
   },
   exclude: [
