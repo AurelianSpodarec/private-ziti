@@ -7,8 +7,8 @@ const nextConfig = {
       {
         source: '/articles',
         destination: '/',
-        permanent: true,
-      },
+        permanent: true
+      }
     ]
   },
   images: {
