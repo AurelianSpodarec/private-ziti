@@ -50,6 +50,7 @@ pipeline {
                             }
                         }.join(' ')
                     }
+                    sh "echo Is actual production? ${env.NEXT_PUBLIC_IS_ACTUAL_PRODUCTION}"
                     // Building Docker image
                     sh "docker build ${buildArgs} -t ${env.IMAGE_NAME}:latest ."
 
