@@ -46,9 +46,16 @@ export const metadata: Metadata = isActualProduction
       title: 'Discover, Connect, Invest - Ziti',
       description: 'Explore global property listings, connect with experts, and invest confidently worldwide with Ziti.',
       robots: {
-        index: false,
-        follow: false,
-        nocache: true
+        index: true, // Allow indexing
+        follow: true, // Follow links
+        nocache: false, // Do not cache the page
+        googleBot: {
+          index: true, // Specifically tell Googlebot to index
+          follow: true, // Specifically tell Googlebot to follow links
+          noimageindex: true, // Prevent Googlebot from indexing images
+          'max-video-preview': -1, // No video previews
+          'max-image-preview': 'none' // No image previews
+        }
       }
     }
 
