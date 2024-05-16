@@ -13,7 +13,7 @@ import './../styles/styles.scss'
 
 import Header from './_components/Header'
 
-const DynamicModalAuth = dynamic(async () => await import('@/components/organisms/Modal/ModalAuth'), { ssr: false })
+const DynamicModalAuth = dynamic(async () => await import('@/components/organisms/Modal/Auth'), { ssr: false })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ziti.io'),
