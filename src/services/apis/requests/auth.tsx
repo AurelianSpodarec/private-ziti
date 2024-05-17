@@ -33,12 +33,17 @@ interface IAuthRegisterByEmail {
   email: string
 }
 
+export async function authCheckEmail (data: string) {
+  console.log('wop', data)
+  return await FetchZiti('auth/email', 'POST', { email: data })
+}
+
 // Register
 // ===========================================
 
-export async function authRegisterByEmail (data: IAuthRegisterByEmail) {
-  return await FetchZiti('auth/email', 'POST', data)
-}
+// export async function authRegisterByEmail (data: IAuthRegisterByEmail) {
+//   return await FetchZiti('auth/email', 'POST', data)
+// }
 
 export function authRegisterByPhone () {
 

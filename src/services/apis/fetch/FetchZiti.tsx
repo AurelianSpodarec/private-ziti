@@ -4,7 +4,8 @@ import config from './config_ziti'
 async function FetchZiti<T> (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', data?: unknown): Promise<T> {
   const response = await fetch(`${config.API_URL}/${endpoint}`, {
     method,
-    credentials: 'omit',
+    // credentials: 'omit',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
