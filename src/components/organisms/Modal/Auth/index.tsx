@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 import { serverLoginEmaislAction } from './loginServerAction'
 import { authCheckEmail } from '@/services/apis/requests/auth'
 
-type LoginMethod = "phone" | "email"
+type LoginMethod = 'phone' | 'email'
 
 interface IUserAccount {
   hasAccount: boolean
@@ -70,7 +70,6 @@ function EmailFinishRegister ({ onAction }: any) {
   )
 }
 
-
 function EmailPassword ({ onAction }: any) {
   return (
     <div>
@@ -83,7 +82,7 @@ function EmailPassword ({ onAction }: any) {
 }
 
 function EmailLoginView ({ setOpen }) {
-  const [stage, setStage] = useState('emailLogin') //emailLogin, emailRegister, password
+  const [stage, setStage] = useState('emailLogin') // emailLogin, emailRegister, password
 
   async function checkEmail () {
     const res = await authCheckEmail('aurelianxspodarec@gmail.com')
@@ -96,7 +95,6 @@ function EmailLoginView ({ setOpen }) {
     } else {
       setStage('emailRegister')
     }
-
   }
 
   // TODO: Update to dynamic values, and check the auth.ts file as well
@@ -111,22 +109,20 @@ function EmailLoginView ({ setOpen }) {
   return (
     <div>
 
-      {stage === "emailLogin" && <EmailLogin onAction={checkEmail} />}
-      {stage === "emailRegister" && <EmailFinishRegister />}
-      {stage === "password" && <EmailPassword onAction={loginEmail} />}
+      {stage === 'emailLogin' && <EmailLogin onAction={checkEmail} />}
+      {stage === 'emailRegister' && <EmailFinishRegister />}
+      {stage === 'password' && <EmailPassword onAction={loginEmail} />}
     </div>
   )
 }
 
-function StartLogin ({ loginMethod = "email", setOpen }: { loginMethod?: LoginMethod }) {
-
+function StartLogin ({ loginMethod = 'email', setOpen }: { loginMethod?: LoginMethod }) {
   return (
     <div>
       <EmailLoginView setOpen={setOpen} />
     </div>
   )
 }
-
 
 type Option = 'email' | 'phone'
 function ModalAuth () {

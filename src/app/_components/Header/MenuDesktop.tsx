@@ -5,11 +5,10 @@ import { serverActionUser } from './serverActionUser'
 import { useEffect, useState } from 'react'
 
 function MenuDesktop () {
-
   const [user, setUser] = useState({})
   useEffect(() => {
     const fetchData = async () => {
-      let user = await serverActionUser()
+      const user = await serverActionUser()
       setUser(user)
     }
 
@@ -30,10 +29,9 @@ function MenuDesktop () {
           }
 
           {/* <Button onClick={() => openModal()}> */}
-          {user?.id ?
-            <p className="text-black">Hello Ivan</p>
-            :
-            <Button>
+          {user?.id
+            ? <p className="text-black">Hello Ivan</p>
+            : <Button>
               Login Button
             </Button>
           }
