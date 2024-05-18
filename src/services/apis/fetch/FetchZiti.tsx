@@ -22,8 +22,10 @@ async function FetchZiti<T> (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 
 
   const content = await getResponseContent(response) as T
   const cookies = response.headers.get('Set-Cookie')
-
-  if (response.ok) return { content, cookies }
+  console.log("cookies", cookies)
+  // if (response.ok) return { content, cookies }
+  console.log(content)
+  if (response.ok) return { ...content, cookies }
   throw new RequestError(response.statusText, response.status, content)
 }
 

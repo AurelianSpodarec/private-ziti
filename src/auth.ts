@@ -20,9 +20,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!res) {
           throw new Error("User not found.")
         }
+        console.log("###################################", res)
         const cookies = parseCookies(res.cookies)
         return {
-          token: res.content.accessToken,
+          token: res.accessToken,
           refresh: cookies.refresh,
         }
       },
@@ -36,7 +37,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           const res = await refreshToken(token?.refresh)
           const cookies = parseCookies(res.cookies)
           const user = {
-            token: res.content.accessToken,
+            token: res.accessToken,
             refresh: cookies.refresh
           }
           return {
