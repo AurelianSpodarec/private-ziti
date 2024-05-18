@@ -2,10 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { getArticleBySlug } from '@/services/apis/requests/blog'
-import { readingTime } from '@/lib/readingTime'
 
 import UserAvatarBox from '@/components/molecules/EmptyState/UserAvatarBox'
 import Container from '@/components/Container'
+import { readingTime } from '@/lib/utils'
 
 async function BlogView ({ params: { slug } }: { params: { slug: string } }) {
   const res = await getArticleBySlug(slug)

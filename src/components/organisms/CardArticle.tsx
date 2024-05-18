@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { type IArticle } from '@/interfaces/IBlog'
-import { readingTime } from '@/lib/readingTime'
+import { readingTime } from '@/lib/utils'
 
 import UserAvatarBox from '../molecules/EmptyState/UserAvatarBox'
 
