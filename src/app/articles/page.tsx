@@ -33,7 +33,7 @@ async function BlogIndex () {
 
             <div className="relative w-[55%] h-full hidden lg:block">
               <Image
-                src="/images/blog-image-banner.png"
+                src="https://media.ziti.io/assets/articles/banner-hero.png"
                 alt="Real Estate Homes"
                 width="0"
                 height="0"

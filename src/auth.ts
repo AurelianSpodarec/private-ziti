@@ -56,5 +56,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.cookies = token.cookies
       return session
     },
+    async redirect ({ url, baseUrl }) {
+      console.log({ baseUrl })
+      console.log({ url })
+      return baseUrl
+    },
   }
 })

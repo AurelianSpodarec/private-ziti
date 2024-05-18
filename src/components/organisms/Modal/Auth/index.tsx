@@ -6,8 +6,9 @@ import { Input } from '@/components/ui/input'
 
 import SocialLoginList from './SocialLoginList'
 import DividerWithText from './DividerWithText'
-import { useEffect } from 'react'
-import { authCheckEmail, authLoginByEmail } from '@/services/apis/requests/auth'
+import { useEffect, useState } from 'react'
+import { serverLoginEmaislAction } from './loginServerAction'
+
 
 // interface IModalAuth {
 //   isOpen: boolean
@@ -49,25 +50,37 @@ function ModalAuth () {
 
   // TODO: Check if email exists, if it does, login
 
-  function checkEmail () {
-    const res = authCheckEmail('aurelianxspodarec@gmail.com')
-    console.log('checkEmailg', res)
+  const [open, setOpen] = useState(true)
+  // function checkEmail () {
+  //   const res = authCheckEmail('aurelianxspodarec@gmail.com')
+  //   console.log('checkEmailg', res)
+  // }
+
+  async function loginEmail () {
+    // TODO: Currently this goes from the Auth as hardcoded values
+    // const res = authLoginByEmail({
+    //   identifier: 'ivanferrera@gmail.com',
+    //   pwd: 'abc123',
+    //   rememberMe: true
+    // })
+    const res = await serverLoginEmaislAction()
+    console.log("res", res)
+    if (res) {
+      setOpen(false)
+    }
+    // If login not successfull
+
+    // login successfull, 
+    // setOpen(false)
   }
 
-  function loginEmail () {
-    const res = authLoginByEmail({
-      identifier: 'ivanferrera@gmail.com',
-      pwd: 'abc123',
-      rememberMe: true
-    })
-    console.log(res)
-  }
-
+  // TODO: Hide modal on successful authentication
+  // We can try 'use server on click
   return (
-    <Dialog modal open={false}>
+    <Dialog modal open={open}>
       <DialogContent>
-        <button onClick={() => { checkEmail() }}>Check Email</button>
-        <button onClick={() => { loginEmail() }}>Login Email</button>
+        {/* <button onClick={() => { checkEmail() }}>Check Email</button> */}
+        <button onClick={() => loginEmail()}>Login Email</button>
         {/* <StartLogin /> */}
 
       </DialogContent>
