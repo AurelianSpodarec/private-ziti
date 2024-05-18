@@ -1,22 +1,29 @@
 import { getResponseContent, RequestError } from '../../requests'
 import config from './config_ziti'
 
-async function FetchZiti<T> (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', data?: unknown): Promise<T> {
+async function FetchZiti<T> (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', data?: unknown, refreshToken?: string): Promise<T> {
+
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    Origin: 'ziti'
+  }
+
+  if (refreshToken) {
+    headers['Cookie'] = `refresh=${refreshToken}`
+  }
+
   const response = await fetch(`${config.API_URL}/${endpoint}`, {
     method,
-    // credentials: 'omit',
     credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Origin: 'ziti'
-    },
-    body: JSON.stringify(data)
+    headers,
+    body: method !== 'GET' ? JSON.stringify(data) : undefined
   })
 
   const content = await getResponseContent(response) as T
+  const cookies = response.headers.get('Set-Cookie')
 
-  if (response.ok) return content
+  if (response.ok) return { content, cookies }
   throw new RequestError(response.statusText, response.status, content)
 }
 

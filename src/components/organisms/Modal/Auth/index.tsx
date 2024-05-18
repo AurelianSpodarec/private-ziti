@@ -64,7 +64,7 @@ function ModalAuth () {
   }
 
   return (
-    <Dialog modal open={true}>
+    <Dialog modal open={false}>
       <DialogContent>
         <button onClick={() => { checkEmail() }}>Check Email</button>
         <button onClick={() => { loginEmail() }}>Login Email</button>
