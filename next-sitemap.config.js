@@ -42,7 +42,15 @@ module.exports = {
     ],
     additionalSitemaps: [
       'https://ziti.io/sitemap-articles.xml'
-    ]
+    ],
+    transformRobotsTxt: async (_, robotsTxt) => {
+      const withoutHost = robotsTxt.replace(
+        `# Host\nHost: ${process.env.SITE_URL}\n\n`,
+        ''
+      )
+
+      return withoutHost
+    }
   },
   exclude: [
     '/about',
