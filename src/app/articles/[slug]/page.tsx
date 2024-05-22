@@ -58,7 +58,7 @@ async function BlogView ({ params: { slug } }: { params: { slug: string } }) {
         <section className="bg-primary-50 py-8 md:py-16 xl:py-20 mb-8 md:mb-16">
           <Container size="6xl">
 
-            <Link href="/articles" className="flex items-center space-x-1 mb-8">
+            <Link href="/" className="flex items-center space-x-1 mb-8">
               <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14 8.5L2 8.5" stroke="#939BA1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M6.9998 13.5L2 8.5L6.9999 3.5" stroke="#939BA1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
