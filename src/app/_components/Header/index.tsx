@@ -54,7 +54,7 @@ function Header () {
           {!isBlogPage && (
             <>
               <div className="lg:hidden">
-                <button type="button" onClick={() => { setMobileOpen(true) }}>
+                <button type="button" aria-label="Open mobile menu" onClick={() => { setMobileOpen(true) }}>
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none"><g id="Menu / Hamburger_LG"><path id="Vector" d="M3 17H21M3 12H21M3 7H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path></g></svg>
                 </button>
               </div>

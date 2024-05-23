@@ -17,7 +17,7 @@ function ModeToggle () {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div className="text-red-500">
-          <button type="button" className="">Toggle Theme</button>
+          <button type="button" aria-label="Toggle theme" className="">Toggle Theme</button>
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
