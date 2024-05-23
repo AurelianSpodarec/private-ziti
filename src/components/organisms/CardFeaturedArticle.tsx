@@ -28,9 +28,9 @@ function CardFeaturedArticle ({ data }: ICardFeaturedArticle) {
         <header className="z-10 relative w-full xl:w-[30%] xl:p-8 flex">
           <div className="my-auto">
 
-            <h3 className="text-foreground-750 text-base md:text-xl lg:text-2xl font-medium">
+            <h2 className="text-foreground-750 text-base md:text-xl lg:text-2xl font-medium">
               {data.title}
-            </h3>
+            </h2>
 
             <p className="py-4 xl:py-8">
               {data.excerpt}
