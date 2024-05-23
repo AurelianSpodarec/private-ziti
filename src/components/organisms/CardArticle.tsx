@@ -27,7 +27,7 @@ function CardArticle ({ data }: ICardArticle) {
           />
         </div>
         <header>
-          <h3 className="py-2 text-foreground-750 text-base md:text-lg lg:text-xl font-medium">{data.title}</h3>
+          <h2 className="py-2 text-foreground-750 text-base md:text-lg lg:text-xl font-medium">{data.title}</h2>
           <UserAvatarBox
             src={data?.Author.imageUrl}
             name={data?.Author.givenName}
