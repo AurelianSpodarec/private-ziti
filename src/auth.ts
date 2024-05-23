@@ -2,6 +2,17 @@ import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { authLoginByEmail, refreshToken } from "./services/apis/requests/auth"
 import { parseCookies } from "./lib/utils"
+import { jwtDecode } from "jwt-decode"
+
+function parseJwt (token) {
+  try {
+    return jwtDecode(token)
+  } catch (error) {
+    console.error("Failed to decode JWT", error)
+    return null
+  }
+}
+
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -20,8 +31,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!res) {
           throw new Error("User not found.")
         }
-        console.log("###################################", res)
+        // console.log("###################################", res)
         const cookies = parseCookies(res.cookies)
+        const user = parseJwt(res.accessToken)
+        console.log("~###############################", user)
         return {
           token: res.accessToken,
           refresh: cookies.refresh,

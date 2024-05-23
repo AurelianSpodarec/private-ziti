@@ -9,6 +9,7 @@ import DividerWithText from './DividerWithText'
 import { useEffect, useState } from 'react'
 import { serverLoginEmaislAction } from './loginServerAction'
 import { authCheckEmail } from '@/services/apis/requests/auth'
+import AuthForm from '@/app/(auth)/AuthForm'
 
 type LoginMethod = 'phone' | 'email'
 
@@ -132,7 +133,8 @@ function ModalAuth () {
   return (
     <Dialog modal open={open}>
       <DialogContent>
-        <StartLogin setOpen={setOpen} />
+        {/* <StartLogin setOpen={setOpen} /> */}
+        <AuthForm />
       </DialogContent>
     </Dialog>
   )

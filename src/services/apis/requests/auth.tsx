@@ -34,7 +34,6 @@ interface IAuthRegisterByEmail {
 }
 
 export async function authCheckEmail (data: string) {
-  console.log('wop', data)
   return await FetchZiti('auth/email', 'POST', { email: data })
 }
 
