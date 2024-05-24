@@ -4,7 +4,7 @@ import CheckEmail from '../_steps/CheckEmail'
 import RegisterForm from '../_steps/RegisterForm'
 import PasswordForm from '../_steps/PasswordForm'
 
-const checkEmail = [
+const authEmailController = [
   {
     component: CheckEmail,
     onSubmit: async (data: { email: string }) => {
@@ -17,7 +17,7 @@ const checkEmail = [
       const newAccount = false
       const canLogin = true
 
-      let updatedCheckEmail = [...checkEmail]
+      let updatedCheckEmail = [...authEmailController]
 
       if (newAccount) {
         updatedCheckEmail.push(
@@ -46,4 +46,4 @@ const checkEmail = [
   }
 ]
 
-export default checkEmail
+export default authEmailController

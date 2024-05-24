@@ -5,7 +5,7 @@
 import CheckPhone from '../_steps/CheckPhone'
 
 
-const phoneOtpSteps = [
+const authPhoneOtpController = [
   {
     component: CheckPhone,
     onSubmit: async (data: { phoneNumber: string }) => {
@@ -30,4 +30,4 @@ const phoneOtpSteps = [
   // }
 ]
 
-export default phoneOtpSteps
+export default authPhoneOtpController

@@ -12,7 +12,7 @@ interface MultiStepFormProps {
   initialSteps: Step[]
 }
 
-const MultiStepForm: React.FC<MultiStepFormProps> = ({ initialSteps }) => {
+function MultiStepForm ({ initialSteps }: MultiStepFormProps) {
   const [currentStep, setCurrentStep] = useState(0)
   const [steps, setSteps] = useState<Step[]>(initialSteps)
   const [formData, setFormData] = useState<Record<string, any>>({})
