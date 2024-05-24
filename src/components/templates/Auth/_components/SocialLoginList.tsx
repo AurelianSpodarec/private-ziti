@@ -1,27 +1,11 @@
 import SocialLoginButton from "./SocialLoginButton"
 
-function SocialLoginList () {
+function SocialLoginList ({ authMethod, handleAuthMethodSelection }: any) {
   return (
-    <div className="text-left">
-      <SocialLoginButton
-        name="FaceBook"
-        icon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            display="block"
-            viewBox="0 0 32 32"
-            className="h-5 w-5 rounded-full"
-          >
-            <path fill="#1877F2" d="M32 0v32H0V0z"></path>
-            <path
-              fill="#FFF"
-              d="M22.94 16H18.5v-3c0-1.27.62-2.5 2.6-2.5h2.02V6.56s-1.83-.31-3.58-.31c-3.65 0-6.04 2.21-6.04 6.22V16H9.44v4.63h4.06V32h5V20.62h3.73l.7-4.62z"
-            ></path>
-          </svg>
-        }
-      />
+    <div>
       <SocialLoginButton
         name="Google"
+        onClick={() => console.log("Google auth not implemented")}
         icon={
           <svg className="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12.0003 4.75C13.7703 4.75 15.3553 5.36002 16.6053 6.54998L20.0303 3.125C17.9502 1.19 15.2353 0 12.0003 0C7.31028 0 3.25527 2.69 1.28027 6.60998L5.27028 9.70498C6.21525 6.86002 8.87028 4.75 12.0003 4.75Z" fill="#EA4335"></path>
@@ -31,47 +15,54 @@ function SocialLoginList () {
           </svg>
         }
       />
-      <SocialLoginButton
-        name="Apple"
-        icon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentcolor"
-            display="block"
-            viewBox="0 0 24 24"
-            className="h-5 w-5"
-          >
-            <path d="M13.3 2.1A5.1 5.1 0 0117.1 0a5.1 5.1 0 01-1.2 3.8 4.1 4.1 0 01-3.6 1.7 4.5 4.5 0 011-3.4zm-5 3.7c-2.8 0-5.8 2.5-5.8 7.3C2.5 18 6 24 8.8 24c1 0 2.5-1 4-1s2.6.9 4 .9c3.1 0 5.3-6.4 5.3-6.4a5.3 5.3 0 01-3.2-4.9 5.2 5.2 0 012.6-4.5 5.4 5.4 0 00-4.7-2.4c-2 0-3.5 1.1-4.3 1.1-.9 0-2.4-1-4.2-1z"></path>
-          </svg>
-        }
-      />
-      <SocialLoginButton
-        name="Email"
-        icon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="25"
-            fill="none"
-            viewBox="0 0 24 25"
-          >
-            <path
-              stroke="#1D2F3B"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 4.737h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-12c0-1.1.9-2 2-2z"
-            ></path>
-            <path
-              stroke="#1D2F3B"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M22 6.737l-10 7-10-7"
-            ></path>
-          </svg>
-        }
-      />
+      {authMethod === "phoneOtp" &&
+        <SocialLoginButton
+          onClick={() => { handleAuthMethodSelection('checkEmail') }}
+          name="Email"
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="25"
+              fill="none"
+              viewBox="0 0 24 25"
+            >
+              <path
+                stroke="#1D2F3B"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 4.737h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-12c0-1.1.9-2 2-2z"
+              ></path>
+              <path
+                stroke="#1D2F3B"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M22 6.737l-10 7-10-7"
+              ></path>
+            </svg>
+          }
+        />
+      }
+
+      {authMethod === "checkEmail" &&
+        <SocialLoginButton
+          onClick={() => { handleAuthMethodSelection('phoneOtp') }}
+          name="Phone"
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentcolor"
+              display="block"
+              viewBox="0 0 32 32"
+              style={{ height: 20, width: 20 }}
+            >
+              <path d="M22 1a5 5 0 015 4.78V26a5 5 0 01-4.78 5H10a5 5 0 01-5-4.78V6a5 5 0 014.78-5H10zm0 2H10a3 3 0 00-3 2.82V26a3 3 0 002.82 3H22a3 3 0 003-2.82V6a3 3 0 00-2.82-3zm-6 22a1 1 0 110 2 1 1 0 010-2zm4-4a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm8-4a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm8-4a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2z"></path>
+            </svg>
+          }
+        />
+      }
     </div>
   )
 }

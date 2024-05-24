@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import MultiStepForm from './MultiStepForm'
 
-import SocialLoginButton from './_components/SocialLoginButton'
+import MultiStepForm from './MultiStepForm'
+import SocialLoginList from './_components/SocialLoginList'
 
 import checkEmail from './_controller/checkEmail'
 import phoneOtpSteps from './_controller/phoneOtpSteps'
@@ -19,73 +19,12 @@ const AuthForm: React.FC = () => {
     setAuthMethod('register')
     setIsSignup(true)
   }
-  // console.log("hw", authMethod)
+
   return (
     <div>
       <h1>Step: {isSignup ? 'Sign Up' : 'Login'}</h1>
-      {authMethod && !isSignup && (
-        <MultiStepForm
-          initialSteps={authMethod === 'phoneOtp' ? phoneOtpSteps : checkEmail}
-        />
-        // <MultiStepForm
-        //   initialSteps={phoneOtpSteps}
-        // />
-      )}
-      {/* {isSignup && <MultiStepForm steps={registrationSteps} />} */}
-      {/* {!authMethod && ( */}
-
-      <div>
-
-        {authMethod === "phoneOtp" &&
-          <SocialLoginButton
-            onClick={() => { handleAuthMethodSelection('checkEmail') }}
-            name="Email"
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="25"
-                fill="none"
-                viewBox="0 0 24 25"
-              >
-                <path
-                  stroke="#1D2F3B"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 4.737h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-12c0-1.1.9-2 2-2z"
-                ></path>
-                <path
-                  stroke="#1D2F3B"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M22 6.737l-10 7-10-7"
-                ></path>
-              </svg>
-            }
-          />
-        }
-
-        {authMethod === "checkEmail" &&
-          <SocialLoginButton
-            onClick={() => { handleAuthMethodSelection('phoneOtp') }}
-            name="Phone"
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentcolor"
-                display="block"
-                viewBox="0 0 32 32"
-                style={{ height: 20, width: 20 }}
-              >
-                <path d="M22 1a5 5 0 015 4.78V26a5 5 0 01-4.78 5H10a5 5 0 01-5-4.78V6a5 5 0 014.78-5H10zm0 2H10a3 3 0 00-3 2.82V26a3 3 0 002.82 3H22a3 3 0 003-2.82V6a3 3 0 00-2.82-3zm-6 22a1 1 0 110 2 1 1 0 010-2zm4-4a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm8-4a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm8-4a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2zm-4 0a1 1 0 110 2 1 1 0 010-2z"></path>
-              </svg>
-            }
-          />
-        }
-      </div>
-      {/* )} */}
+      <MultiStepForm initialSteps={authMethod === 'phoneOtp' ? phoneOtpSteps : checkEmail} />
+      <SocialLoginList authMethod={authMethod} handleAuthMethodSelection={handleAuthMethodSelection} />
     </div>
   )
 }

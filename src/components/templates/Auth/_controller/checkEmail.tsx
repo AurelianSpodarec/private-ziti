@@ -1,21 +1,21 @@
 import { authCheckEmail, authLoginByEmail } from '@/services/apis/requests/auth'
-import CheckEmail from '../_views/CheckEmail'
-import RegisterForm from '../_views/RegisterForm'
-import PasswordForm from '../_views/PasswordForm'
+
+import CheckEmail from '../_steps/CheckEmail'
+import RegisterForm from '../_steps/RegisterForm'
+import PasswordForm from '../_steps/PasswordForm'
 
 const checkEmail = [
   {
     component: CheckEmail,
     onSubmit: async (data: { email: string }) => {
-      console.log("sds", data)
-      const res = await authCheckEmail("aurelianxspodarec@gmail.com")
-      // const res = await authCheckEmail("")
+      const res = await authCheckEmail(data.email)
+
       console.log("res", res)
 
       // const newAccount = !res.accountComplete
       // const hasAccount = res.accountComplete && res.hadAccount
       const newAccount = false
-      const hasAccount = true // canLogin
+      const canLogin = true
 
       let updatedCheckEmail = [...checkEmail]
 
@@ -30,7 +30,7 @@ const checkEmail = [
         )
       }
 
-      if (hasAccount) {
+      if (canLogin) {
         updatedCheckEmail.push(
           {
             component: PasswordForm,
