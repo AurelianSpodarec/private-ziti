@@ -1,6 +1,12 @@
 import { Button } from "@/components/ui/button"
 
-function SocialLoginButton ({ children, onClick, name, icon }: { onClick: () => void; name: string, icon: React.ReactNode }) {
+interface ISocialLoginButton {
+  onClick: () => void
+  name: string
+  icon: React.ReactNode
+}
+
+function SocialLoginButton ({ onClick, name, icon }: ISocialLoginButton) {
   return (
     <Button
       onClick={onClick}

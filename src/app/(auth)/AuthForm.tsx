@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import MultiStepForm from './MultiStepForm'
-import emailPasswordSteps from './_components/steps/emailPasswordSteps'
-import SocialLoginButton from './_components/ui/SocialLoginButton'
-// import phoneOtpSteps from './phoneOtpSteps'
 
-// import registrationSteps from './registrationSteps'
+import SocialLoginButton from './_components/ui/SocialLoginButton'
+
+import checkEmail from './_components/steps/checkEmail'
+import phoneOtpSteps from './_components/steps/phoneOtpSteps'
 
 const AuthForm: React.FC = () => {
-  const [authMethod, setAuthMethod] = useState<string | null>("emailPassword")
+  const [authMethod, setAuthMethod] = useState<string | null>("checkEmail")
   const [isSignup, setIsSignup] = useState(false)
 
   const handleAuthMethodSelection = (method: string) => {
@@ -19,25 +19,26 @@ const AuthForm: React.FC = () => {
     setAuthMethod('register')
     setIsSignup(true)
   }
-
+  // console.log("hw", authMethod)
   return (
     <div>
       <h1>Step: {isSignup ? 'Sign Up' : 'Login'}</h1>
       {authMethod && !isSignup && (
-        // <MultiStepForm
-        //   steps={authMethod === 'phoneOtp' ? phoneOtpSteps : emailPasswordSteps}
-        // />
         <MultiStepForm
-          steps={emailPasswordSteps}
+          initialSteps={authMethod === 'phoneOtp' ? phoneOtpSteps : checkEmail}
         />
+        // <MultiStepForm
+        //   initialSteps={phoneOtpSteps}
+        // />
       )}
       {/* {isSignup && <MultiStepForm steps={registrationSteps} />} */}
       {/* {!authMethod && ( */}
+
       <div>
 
         {authMethod === "phoneOtp" &&
           <SocialLoginButton
-            onClick={() => { handleAuthMethodSelection('emailPassword') }}
+            onClick={() => { handleAuthMethodSelection('checkEmail') }}
             name="Email"
             icon={
               <svg
@@ -66,7 +67,7 @@ const AuthForm: React.FC = () => {
           />
         }
 
-        {authMethod === "emailPassword" &&
+        {authMethod === "checkEmail" &&
           <SocialLoginButton
             onClick={() => { handleAuthMethodSelection('phoneOtp') }}
             name="Phone"

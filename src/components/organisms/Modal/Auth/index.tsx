@@ -128,12 +128,10 @@ function StartLogin ({ loginMethod = 'email', setOpen }: { loginMethod?: LoginMe
 type Option = 'email' | 'phone'
 function ModalAuth () {
   const [open, setOpen] = useState(true)
-  const [option, setOption] = useState<Option>('email')
 
   return (
     <Dialog modal open={open}>
       <DialogContent>
-        {/* <StartLogin setOpen={setOpen} /> */}
         <AuthForm />
       </DialogContent>
     </Dialog>
