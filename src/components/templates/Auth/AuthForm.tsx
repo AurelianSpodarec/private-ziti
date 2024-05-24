@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import MultiStepForm from './MultiStepForm'
 
-import SocialLoginButton from './_components/ui/SocialLoginButton'
+import SocialLoginButton from './_components/SocialLoginButton'
 
-import checkEmail from './_components/steps/checkEmail'
-import phoneOtpSteps from './_components/steps/phoneOtpSteps'
+import checkEmail from './_controller/checkEmail'
+import phoneOtpSteps from './_controller/phoneOtpSteps'
 
 const AuthForm: React.FC = () => {
   const [authMethod, setAuthMethod] = useState<string | null>("checkEmail")

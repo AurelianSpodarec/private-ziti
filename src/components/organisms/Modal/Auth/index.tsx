@@ -9,7 +9,7 @@ import DividerWithText from './DividerWithText'
 import { useEffect, useState } from 'react'
 import { serverLoginEmaislAction } from './loginServerAction'
 import { authCheckEmail } from '@/services/apis/requests/auth'
-import AuthForm from '@/app/(auth)/AuthForm'
+import AuthForm from '@/components/templates/Auth/AuthForm'
 
 type LoginMethod = 'phone' | 'email'
 

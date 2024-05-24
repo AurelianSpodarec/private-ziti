@@ -1,7 +1,7 @@
 import { authCheckEmail, authLoginByEmail } from '@/services/apis/requests/auth'
-import CheckEmail from '../login/CheckEmail'
-import RegisterForm from '../RegisterForm'
-import PasswordForm from '../PasswordForm'
+import CheckEmail from '../_views/CheckEmail'
+import RegisterForm from '../_views/RegisterForm'
+import PasswordForm from '../_views/PasswordForm'
 
 const checkEmail = [
   {
