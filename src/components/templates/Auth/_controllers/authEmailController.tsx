@@ -1,4 +1,4 @@
-import { authCheckEmail, authLoginByEmail } from '@/services/apis/requests/auth'
+import { authCheckEmail } from '@/services/apis/requests/auth'
 
 import CheckEmail from '../_steps/CheckEmail'
 import RegisterForm from '../_steps/RegisterForm'
@@ -23,7 +23,7 @@ const authEmailController = [
         updatedCheckEmail.push(
           {
             component: RegisterForm,
-            onSubmit: async () => {
+            onSubmit: () => {
               return { success: true }
             }
           }
@@ -34,7 +34,7 @@ const authEmailController = [
         updatedCheckEmail.push(
           {
             component: PasswordForm,
-            onSubmit: async () => {
+            onSubmit: () => {
               return { success: true }
             }
           }

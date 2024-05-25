@@ -53,9 +53,8 @@ function MultiStepForm ({ initialSteps }: MultiStepFormProps) {
     setSteps(initialSteps)
   }, [initialSteps])
 
-  // console.log(steps[currentStep]?.component)
   const StepComponent = steps[currentStep] ? steps[currentStep].component : null
-  console.log("form", formData)
+
   return (
     <div>
       <form onSubmit={handleSubmit}>

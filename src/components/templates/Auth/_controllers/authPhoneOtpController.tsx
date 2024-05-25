@@ -1,9 +1,4 @@
-// import OtpStep from '../forms/OtpStep'
-// import PhoneNumberStep from "@/components/forms/login/otp/PhoneNumberStep"
-// update this to server actions
-// import { sendOtp, verifyOtp } from '../../services/apis/requests/auth'
 import CheckPhone from '../_steps/CheckPhone'
-
 
 const authPhoneOtpController = [
   {
