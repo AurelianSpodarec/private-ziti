@@ -9,6 +9,7 @@ function TemplateAuth () {
   const [authMethod, setAuthMethod] = useState<string | null>("checkEmail")
   const [isSignup, setIsSignup] = useState(false)
 
+  // console.log({ authMethod })
   const handleAuthMethodSelection = (method: string) => {
     setAuthMethod(method)
     setIsSignup(false)
@@ -41,7 +42,7 @@ function TemplateAuth () {
       </header>
 
       <section className="p-6">
-        <MultiStepForm initialSteps={authMethod === 'phoneOtp' ? helperAuth.getController("checkPhone") : helperAuth.getController("checkEmail")} />
+        <MultiStepForm authMethod={authMethod} />
         <SocialLoginList authMethod={authMethod} handleAuthMethodSelection={handleAuthMethodSelection} />
       </section>
     </div>

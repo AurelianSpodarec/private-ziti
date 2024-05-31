@@ -10,7 +10,8 @@ interface IRegisterForm {
 function RegisterForm ({ formData, handleInputChange }: IRegisterForm) {
   return (
     <div>
-      <div>
+      Register Form
+      {/* <div>
         <h2>Legal Name</h2>
         <Input
           placeholder='First name on ID'
@@ -54,7 +55,7 @@ function RegisterForm ({ formData, handleInputChange }: IRegisterForm) {
         />
       </div>
 
-      <Button block>Continue and agree</Button>
+      <Button block>Continue and agree</Button> */}
     </div>
   )
 }

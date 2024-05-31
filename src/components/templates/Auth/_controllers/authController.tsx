@@ -5,13 +5,30 @@ import PasswordForm from "../_steps/PasswordForm"
 import RegisterForm from "../_steps/RegisterForm"
 import helperAuth from "./helperAuth"
 
+// BACK BUTTON
+// TODO: Need global state for the form auth before
+// There are two possible screens the user can go back from the same component depending if they selected email or phone
+// Check current state on the ReisterForm (which is this component)
+// -if email: go back to CheckEmailForm
+// - else, go back to CheckPhoneForm
+
 const authController = [
   {
     id: "register",
     component: RegisterForm,
+    onBack: () => {
+      let updatedAuthController = [...authController]
+    },
     onSubmit: async (data) => {
       console.log("registerrr", data)
       return { success: true }
+    }
+  },
+  {
+    id: "password",
+    component: PasswordForm,
+    onSubmit: () => {
+      return { success: true, passwordForm: true }
     }
   },
   {
@@ -31,27 +48,18 @@ const authController = [
     onSubmit: async (data: { email: string }) => {
       const res = await authCheckEmail(data.email)
 
-      const hasAccount = !res.accountComplete
-      let updatedCheckEmail = [...authController]
-
-      if (hasAccount) {
-        updatedCheckEmail.push(
-          helperAuth.getController("checkEmail")
-        )
+      if (res.hasAccount) {
+        return {
+          success: true,
+          next: helperAuth.getController("password")
+        }
       } else {
-        updatedCheckEmail.push(
-          {
-            component: PasswordForm,
-            onSubmit: () => {
-              return { success: true }
-            }
-          }
-        )
-
+        return {
+          success: true,
+          next: helperAuth.getController("register")
+        }
       }
 
-      // if that is not successfull we need to return the erro given back the component in this case <CheckEmail/> so it can display it to the user under the form or highlight the form.
-      return { success: true, steps: updatedCheckEmail }
     }
   }
 ]

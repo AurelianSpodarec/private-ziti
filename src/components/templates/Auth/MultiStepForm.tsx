@@ -33,20 +33,14 @@ interface Step {
 
 interface MultiStepFormProps {
   initialSteps: Step[]
+  authMethod: "checkEmail" | "checkPhone"
 }
 
-function MultiStepForm ({ initialSteps }: MultiStepFormProps) {
-  const [currentStep, setCurrentStep] = useState(0)
-  const [steps, setSteps] = useState<Step[]>(initialSteps)
+function MultiStepForm ({ authMethod, initialSteps }: MultiStepFormProps) {
 
-  // This should create new forms for all forms - a global form state
   const [formData, setFormData] = useState<Record<string, any>>({
-
   })
-
-  console.log("woooo", currentStep, steps, formData)
-  const nextStep = () => setCurrentStep(prevStep => prevStep + 1)
-  const prevStep = () => setCurrentStep(prevStep => prevStep - 1)
+  const [step, setStep] = useState(helperAuth.getController(authMethod))
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -58,45 +52,26 @@ function MultiStepForm ({ initialSteps }: MultiStepFormProps) {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    const step = steps[currentStep]
-
-    if (step.onSubmit) {
-      const result = await step.onSubmit(formData)
-      console.log("on submit", result)
+    if (step?.onSubmit) {
+      const result = await step?.onSubmit(formData)
       if (result.success) {
-        if (result.steps) {
-          setSteps(result.steps)
-        }
-        nextStep()
-      } else {
-        alert(result.message)
+        setStep(result.next)
       }
-
-    } else {
-      nextStep()
+      // error
+      // state errors
+      // step component would have errors on it
+      // if theres error, pass the error down and display it to the component on the lowest end
     }
   }
 
   useEffect(() => {
-    setSteps(initialSteps)
-  }, [initialSteps])
+    setStep(helperAuth.getController(authMethod))
+  }, [authMethod])
 
-  // const StepComponent = steps[currentStep] ? steps[currentStep].component : null
-
-  const StepComponent = helperAuth.getController("checkEmail")?.component
+  const StepComponent = step?.component
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {currentStep > 0 && (
-          <button type="button" onClick={prevStep}>
-            Back
-          </button>
-        )}
-
-        {/* <button type="submit">
-          {currentStep < steps.length - 1 ? 'Next' : 'Submit'}
-        </button> */}
-
         {StepComponent && (
           <StepComponent formData={formData} handleInputChange={handleInputChange} />
         )}

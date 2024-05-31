@@ -13,9 +13,9 @@ function CheckPhoneForm ({ formData, handleInputChange }: CheckPhoneFormProps) {
       <label>
         PHONEEEEEEEEEE
         <Input
-          placeholder="Email"
-          type="email"
-          name="email"
+          placeholder="Phone"
+          type="phone"
+          name="phone"
           value={formData.email || ''}
           // value=""
           onChange={handleInputChange}
