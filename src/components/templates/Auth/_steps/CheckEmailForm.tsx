@@ -8,7 +8,7 @@ interface CheckEmailFormProps {
   errors: {}
 }
 
-function CheckEmailForm ({ formData, handleInputChange, errors = {} }: CheckEmailFormProps) {
+function CheckEmailForm ({ formData, handleInputChange, errors }: CheckEmailFormProps) {
   return (
     <div>
       <label>
@@ -18,10 +18,12 @@ function CheckEmailForm ({ formData, handleInputChange, errors = {} }: CheckEmai
           name="email"
           value={formData.email || ''}
           onChange={handleInputChange}
-          required
+
         />
       </label>
-      {/* {errors && errors.map((error) => (<p>{error.message}</p>))} */}
+      {/* TODO: Abstract into error component */}
+      {errors && errors.map((error) => (<p>{error.message}</p>))}
+
       <Button block variant="primary">
         Continue
       </Button>

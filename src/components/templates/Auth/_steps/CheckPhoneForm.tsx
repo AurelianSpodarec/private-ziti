@@ -3,7 +3,7 @@ import { Input } from '@/components/ui/input'
 import { type ChangeEvent } from 'react'
 
 interface CheckPhoneFormProps {
-  formData: { email?: string, password?: string }
+  formData: { phone?: string, password?: string }
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -16,10 +16,10 @@ function CheckPhoneForm ({ formData, handleInputChange }: CheckPhoneFormProps) {
           placeholder="Phone"
           type="phone"
           name="phone"
-          value={formData.email || ''}
+          value={formData.phone || ''}
           // value=""
           onChange={handleInputChange}
-          required
+
         />
       </label>
       <Button block variant="primary">

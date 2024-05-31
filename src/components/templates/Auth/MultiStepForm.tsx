@@ -36,11 +36,15 @@ interface MultiStepFormProps {
   authMethod: "checkEmail" | "checkPhone"
 }
 
+// TODO: Back button
 function MultiStepForm ({ authMethod, initialSteps }: MultiStepFormProps) {
 
   const [formData, setFormData] = useState<Record<string, any>>({
+    email: ""
   })
+
   const [step, setStep] = useState(helperAuth.getController(authMethod))
+  const [errors, setErrors] = useState([])
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -56,11 +60,9 @@ function MultiStepForm ({ authMethod, initialSteps }: MultiStepFormProps) {
       const result = await step?.onSubmit(formData)
       if (result.success) {
         setStep(result.next)
+      } else {
+        setErrors(result.errors)
       }
-      // error
-      // state errors
-      // step component would have errors on it
-      // if theres error, pass the error down and display it to the component on the lowest end
     }
   }
 
@@ -73,7 +75,7 @@ function MultiStepForm ({ authMethod, initialSteps }: MultiStepFormProps) {
     <div>
       <form onSubmit={handleSubmit}>
         {StepComponent && (
-          <StepComponent formData={formData} handleInputChange={handleInputChange} />
+          <StepComponent formData={formData} errors={errors} handleInputChange={handleInputChange} />
         )}
       </form>
     </div>

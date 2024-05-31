@@ -28,34 +28,42 @@ const authController = [
     id: "password",
     component: PasswordForm,
     onSubmit: () => {
-      return { success: true, passwordForm: true }
+      return { success: true }
     }
   },
-  {
+  { // checkPhone 
     id: "checkPhone",
     component: CheckPhoneForm,
     onSubmit: async (data: { phoneNumber: string }) => {
       // const response = await sendOtp({ phoneNumber: data.phoneNumber })
-      const response = {}
-      return response.success
-        ? { success: true }
-        : { success: false, message: 'Failed to send OTP' }
+      // const response = {}
+      // return response.success
+      //   ? { success: true }
+      //   : { success: false, message: 'Failed to send OTP' }
     }
   },
   {
     id: "checkEmail",
     component: CheckEmailForm,
     onSubmit: async (data: { email: string }) => {
-      const res = await authCheckEmail(data.email)
+      let errors = []
 
+      // TODO: should be on keyPress fired as well
+      if (data.email === "") {
+        return {
+          errors: [
+            { message: "empty email" }
+          ]
+        }
+      }
+
+      const res = await authCheckEmail(data.email)
       if (res.hasAccount) {
         return {
-          success: true,
           next: helperAuth.getController("password")
         }
       } else {
         return {
-          success: true,
           next: helperAuth.getController("register")
         }
       }
