@@ -2,16 +2,16 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { type ChangeEvent } from 'react'
 
-interface CheckEmailProps {
+interface CheckPhoneFormProps {
   formData: { email?: string, password?: string }
-  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void,
-  errors: {}
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-function CheckEmail ({ formData, handleInputChange, errors = {} }: CheckEmailProps) {
+function CheckPhoneForm ({ formData, handleInputChange }: CheckPhoneFormProps) {
   return (
     <div>
       <label>
+        PHONEEEEEEEEEE
         <Input
           placeholder="Email"
           type="email"
@@ -22,7 +22,6 @@ function CheckEmail ({ formData, handleInputChange, errors = {} }: CheckEmailPro
           required
         />
       </label>
-      {/* {errors && errors.map((error) => (<p>{error.message}</p>))} */}
       <Button block variant="primary">
         Continue
       </Button>
@@ -30,4 +29,4 @@ function CheckEmail ({ formData, handleInputChange, errors = {} }: CheckEmailPro
   )
 }
 
-export default CheckEmail
+export default CheckPhoneForm
