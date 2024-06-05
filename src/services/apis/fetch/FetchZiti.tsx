@@ -1,7 +1,15 @@
 import { getResponseContent, RequestError } from '../../requests'
 import config from './config_ziti'
 
-async function FetchZiti<T> (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', data?: unknown, refreshToken?: string): Promise<T> {
+type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
+
+async function FetchZiti<T> (
+  endpoint: string,
+  method: HttpMethod,
+  data?: unknown,
+  refreshToken?: string,
+  bearerToken?: string
+): Promise<T> {
 
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
@@ -11,6 +19,10 @@ async function FetchZiti<T> (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 
 
   if (refreshToken) {
     headers['Cookie'] = `refresh=${refreshToken}`
+  }
+
+  if (bearerToken) {
+    headers['Authorization'] = `Bearer ${bearerToken}`
   }
 
   const response = await fetch(`${config.API_URL}/${endpoint}`, {

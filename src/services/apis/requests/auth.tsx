@@ -3,66 +3,58 @@
 // ============================================================
 
 import FetchZiti from '../fetch/FetchZiti'
+import transformerAuth from '@/transformers/transformerAuth'
+import { IAuthLogin, IAuthLoginByEmail, IAuthLoginByPhone, IAuthOTPVerify, IAuthRegister, IAuthToken } from '@/interfaces/IAuth'
 
-// {
-//   "hasAccount": true,
-//   "accountComplete": false,
-//   "emailVerified": true,
-//   "audienceType": [
-//       "buyer"
-//   ],
-//   "privateAccountData": {
-//       "obfuscatedEmail": "iv•••••@gm•••••.com"
-//   }
-// }
-
-// {
-//   "hasAccount": false,
-//   "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxZjFlYWZkLThjNWQtNDZmZC1iNTAzLWI5MjhlOTg0NDg1NSIsInJvbGVzIjpbImJ1eWVyIl0sImlhdCI6MTcxNTYzMTQ0NywiZXhwIjoxNzE1NjMyMzQ3fQ.X-GOfSLXlw4GTXrOEF2hupLd3KtUDl0FN4HM_vilGH0",
-//   "accountComplete": false,
-//   "emailVerified": false
-// }
-
-export interface IAuthLoginByEmail {
-  identifier: string
-  pwd: string
-  rememberMe: boolean
-}
-
-interface IAuthRegisterByEmail {
-  email: string
-}
+// Check: Email and OTP
+// ===========================================
 
 export async function authCheckEmail (data: string) {
   return await FetchZiti('auth/email', 'POST', { email: data })
 }
 
-// Register
-// ===========================================
-
-// export async function authRegisterByEmail (data: IAuthRegisterByEmail) {
-//   return await FetchZiti('auth/email', 'POST', data)
-// }
-
-export function authRegisterByPhone () {
-
+export async function authCheckOTP (data: string) {
+  return await FetchZiti('auth/otp', 'POST', { phone: data })
 }
 
 // Login
 // ===========================================
 
-export async function authLoginByEmail (data: IAuthLoginByEmail) {
+export async function authLogin (data: IAuthLogin) {
   return await FetchZiti('auth/login', 'POST', data)
 }
 
-export function authLoginByPhone () {
-
+export async function authLoginByEmail (data: IAuthLoginByEmail) {
+  const transformedData = transformerAuth.LoginByEmail(data)
+  return await FetchZiti('auth/login', 'POST', transformedData)
 }
 
-export async function getUserprofile () {
-  return await FetchZiti('users/profile', 'GET')
+export async function authLoginByPhoneAndPassword (data: IAuthLoginByPhone) {
+  const transformedData = transformerAuth.LoginPhoneAndPassword(data)
+  return await FetchZiti('auth/login', 'POST', transformedData)
 }
+
+// Verify
+// ===========================================
+
+export async function authVerifyEmail (data: IAuthToken) {
+  return await FetchZiti('users/verify-email', 'POST', { email: data })
+}
+
+export async function authVerifyOTP (data: IAuthOTPVerify) {
+  return await FetchZiti('auth/verify-otp', 'POST', { phone: data })
+}
+
+// Register
+// ===========================================
+
+export async function authRegister (data: IAuthRegister) {
+  return await FetchZiti('users/create-account', 'POST', data)
+}
+
+// Other
+// ===========================================
 
 export async function refreshToken (refreshToken: string) {
-  return await FetchZiti('auth/refresh', 'GET', undefined, refreshToken)
+  return await FetchZiti('auth/refresh', 'GET', undefined, refreshToken, undefined)
 }
