@@ -3,13 +3,10 @@ import { useState } from 'react'
 import MultiStepForm from './MultiStepForm'
 import SocialLoginList from './_components/SocialLoginList'
 
-import helperAuth from './_controllers/helperAuth'
-
 function TemplateAuth () {
   const [authMethod, setAuthMethod] = useState<string | null>("checkEmail")
   const [isSignup, setIsSignup] = useState(false)
 
-  // console.log({ authMethod })
   const handleAuthMethodSelection = (method: string) => {
     setAuthMethod(method)
     setIsSignup(false)

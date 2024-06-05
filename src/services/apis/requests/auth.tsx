@@ -38,11 +38,11 @@ export async function authLoginByPhoneAndPassword (data: IAuthLoginByPhone) {
 // ===========================================
 
 export async function authVerifyEmail (data: IAuthToken) {
-  return await FetchZiti('users/verify-email', 'POST', { email: data })
+  return await FetchZiti('users/verify-email', 'POST', data)
 }
 
 export async function authVerifyOTP (data: IAuthOTPVerify) {
-  return await FetchZiti('auth/verify-otp', 'POST', { phone: data })
+  return await FetchZiti('auth/verify-otp', 'POST', data)
 }
 
 // Register

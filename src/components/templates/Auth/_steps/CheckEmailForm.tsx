@@ -21,6 +21,7 @@ function CheckEmailForm ({ formData, handleInputChange, errors }: CheckEmailForm
 
         />
       </label>
+
       {/* TODO: Abstract into error component */}
       {errors && errors.map((error) => (<p>{error.message}</p>))}
 
