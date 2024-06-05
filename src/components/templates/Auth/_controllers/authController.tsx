@@ -1,3 +1,5 @@
+// authContext.js
+import React, { createContext, useContext, useCallback } from 'react'
 import { authCheckEmail, authCheckOTP, authVerifyOTP } from "@/services/apis/requests/auth"
 import CheckEmailForm from "../_steps/CheckEmailForm"
 import CheckPhoneForm from "../_steps/CheckPhoneForm"
@@ -6,69 +8,72 @@ import RegisterForm from "../_steps/RegisterForm"
 import helperAuth from "./helperAuth"
 import VerifyPhoneCode from "../_steps/VerifyPhoneCode"
 import VerifyEmailForm from "../_steps/VerifyEmailForm"
-import useModal from "@/context/modal/useModal"
 
-// BACK BUTTON
-// TODO: Need global state for the form auth before
-// There are two possible screens the user can go back from the same component depending if they selected email or phone
-// Check current state on the ReisterForm (which is this component)
-
-interface IAuthController {
+interface Step {
   id: string
-  component: React.ComponentType<any>
-  onBack?: any
-  onSubmit: (data?: any) => Promise<void> | void
+  component: any
+  onSubmit?: (data: any) => Promise<{ success: boolean; message?: string; steps?: Step[] }>
 }
 
-
-const authController: IAuthController[] = [
-  // =========================================================
-  // Check: Email and OTP
-  // =========================================================
+const authController: Step[] = [
+  // ===============================================
+  // 
+  // ===============================================
   {
     id: "checkEmail",
     component: CheckEmailForm,
-    onSubmit: async (data: { email: string }) => {
+    onSubmit: async (data) => {
       let errors = []
-      // console.log("check email", openModal)
-      // TODO: should be on keyPress fired as well
       if (data.email === "") {
-        return {
-          errors: [
-            { message: "empty email" }
-          ]
-        }
+        return { errors: [{ message: "empty email" }] }
       }
 
       const res = await authCheckEmail(data.email)
       if (res.hasAccount) {
-        return {
-          next: helperAuth.getController("password")
-        }
+        return { next: helperAuth.getController("password") }
       } else {
-        return {
-          next: helperAuth.getController("register")
-        }
+        return { next: helperAuth.getController("register") }
       }
-
     }
   },
   {
     id: "checkPhone",
     component: CheckPhoneForm,
-    onSubmit: async (data: { phoneNumber: string }) => {
-      const res = await authCheckOTP(data.phoneNumber)
+    onSubmit: async (data) => {
+      // const res = await authCheckOTP("+447751022563")
 
-      if (res.success) {
-        // go to next component to enter the code
+      // if (res.success) {
+      console.log("fire checkPhone")
+      if (true) {
+        console.log("fire checkPhone true") //todo: fix doesn't update the component
+        return {
+          next: helperAuth.getController("verifyPhone")
+        }
       } else {
+
+        console.log("fire checkPhone false")
         // error message 'Failed to send OTP
       }
     }
   },
-  // =========================================================
-  // Login
-  // =========================================================
+  // ===============================================
+  // Verify
+  // ===============================================
+  {
+    id: "verifyEmail",
+    component: VerifyEmailForm,
+    onSubmit: async () => { }
+  },
+  {
+    id: "verifyPhone",
+    component: VerifyPhoneCode,
+    onSubmit: async (data) => {
+      const res = await authVerifyOTP("+447751022563")
+    }
+  },
+  // ===============================================
+  // Password
+  // ===============================================
   {
     id: "password",
     component: PasswordForm,
@@ -76,27 +81,9 @@ const authController: IAuthController[] = [
       return { success: true }
     }
   },
-  // =========================================================
-  // Verify
-  // =========================================================
-  {
-    id: "verifyEmail",
-    component: VerifyEmailForm,
-    onSubmit: async () => {
-
-    }
-  },
-  {
-    id: "verifyPhone",
-    component: VerifyPhoneCode,
-    // Phone needs to come from previous state
-    onSubmit: async (data: {}) => {
-      const res = await authVerifyOTP()
-    }
-  },
-  // =========================================================
+  // ===============================================
   // Other
-  // =========================================================
+  // ===============================================
   {
     id: "register",
     component: RegisterForm,
