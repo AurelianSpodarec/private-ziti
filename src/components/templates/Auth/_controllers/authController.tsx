@@ -16,6 +16,25 @@ interface Step {
   onSubmit?: (data: any) => Promise<{ success: boolean; message?: string; steps?: Step[] }>
 }
 
+// const authController = {
+//   name: "authController",
+//   initialState: {
+//     authMethod: "checkEmail",
+//     dataForm: {
+//       name: "Joe",
+//       lastName: "Smith"
+//     }
+//   },
+//   controllers: {
+//     checkEmail: {
+//       component: CheckEmailForm,
+//       onSubmit: async (data) => {
+//         console.log("Helllllllloooooooo")
+//       }
+//     }
+//   }
+// }
+
 const authController: Step[] = [
   // ===============================================
   // Check
