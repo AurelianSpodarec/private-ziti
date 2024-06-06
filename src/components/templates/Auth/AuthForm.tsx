@@ -1,7 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react'
 import helperAuth from './_controllers/helperAuth'
-import useAuth from './_context/useAuth'
+// import useAuth from './_context/useAuth'
 import SocialLoginList from './_components/SocialLoginList'
+import { useAuth } from './useAuth'
 
 function AuthForm () {
   const {
@@ -40,12 +41,19 @@ function AuthForm () {
         <div></div>
       </header>
 
+      {/* <button onClick={step.back}>Back</button> */}
       <section className="p-6">
         <form onSubmit={handleSubmit}>
           {StepComponent && (
             <>
-              <StepComponent formData={formData} errors={errors} handleInputChange={handleInputChange} />
-              <SocialLoginList authMethod={authMethod} handleAuthMethodSelection={handleAuthMethodSelection} />
+              <StepComponent
+                formData={formData}
+                errors={errors}
+                handleInputChange={handleInputChange}
+              />
+              {authMethod === "checkEmail" || authMethod === "checkPhone" &&
+                <SocialLoginList authMethod={authMethod} handleAuthMethodSelection={handleAuthMethodSelection} />
+              }
             </>
           )}
         </form>

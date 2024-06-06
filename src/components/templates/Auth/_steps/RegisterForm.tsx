@@ -3,23 +3,31 @@ import { Input } from "@/components/ui/input"
 import { ChangeEvent } from "react"
 
 interface IRegisterForm {
-  formData: { firstName?: string, lastName?: string, dob?: string, email?: string, pwd?: string }
+  formData: {
+    firstName?: string,
+    lastName?: string,
+    dob?: string,
+    email?: string,
+    pwd?: string,
+    marketingOptOut: boolean
+  }
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 function RegisterForm ({ formData, handleInputChange }: IRegisterForm) {
   return (
     <div>
-      Register Form
-      {/* <div>
-        <h2>Legal Name</h2>
+
+      <div>
         <Input
           placeholder='First name on ID'
+          name="firstName"
           value={formData.firstName || ''}
           onChange={handleInputChange}
         />
         <Input
           placeholder='Last name on ID'
+          name="lastName"
           value={formData.lastName || ''}
           onChange={handleInputChange}
         />
@@ -30,6 +38,7 @@ function RegisterForm ({ formData, handleInputChange }: IRegisterForm) {
         <h2>Daate of birth</h2>
         <Input
           placeholder="Date of birth"
+          name="dob"
           value={formData.dob || ''}
           onChange={handleInputChange}
         />
@@ -40,6 +49,7 @@ function RegisterForm ({ formData, handleInputChange }: IRegisterForm) {
         <h2>Email</h2>
         <Input
           placeholder="Email"
+          name="email"
           value={formData.email || ''}
           onChange={handleInputChange}
         />
@@ -50,12 +60,19 @@ function RegisterForm ({ formData, handleInputChange }: IRegisterForm) {
         <h2>Password</h2>
         <Input
           placeholder="Password"
+          name="pwd"
           value={formData.pwd || ''}
           onChange={handleInputChange}
         />
       </div>
 
-      <Button block>Continue and agree</Button> */}
+      <div>
+        <p>Ziti sends exclusive deals, inspiration, emails, and push notifications. Opt out anytime in your account settings or from marketing notifications.</p>
+        <input type="checkbox" name="marketingOptOut" value={formData.marketingOptOut} />
+        <label for="marketingOptOut">I don’t want to receive marketing messages from Airbnb.</label>
+      </div>
+
+      <Button block>Continue and agree</Button>
     </div>
   )
 }

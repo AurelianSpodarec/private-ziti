@@ -1,3 +1,4 @@
+import { useState } from "react"
 import PropertyAmenities from "./_steps/Amenities"
 import PropertyDescription from "./_steps/Description"
 import PropertyInformation from "./_steps/Information"
@@ -14,6 +15,13 @@ interface PropertyObject {
   slug: string
   component: React.ComponentType<any>
 }
+
+// User can go forward (if step is not completed, optional 'Skip'), custom name for 'forward button'
+// User can go backwards
+// User can save and exit
+
+
+// Global state of the property where?
 
 const createPropertyController: PropertyObject[] = [
   {
@@ -70,6 +78,8 @@ const createPropertyController: PropertyObject[] = [
 
 function CreateProperty () {
   //URL become-a-host/{propertyID}/{step}
+
+  const [formData, setFormData] = useState({})
   return (
     <div>
 
