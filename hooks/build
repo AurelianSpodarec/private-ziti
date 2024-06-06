@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Pass the environment variable from Docker Hub UI to the Docker build process
+docker build -t $IMAGE_NAME \
+  --build-arg NEXT_PUBLIC_API_HOST=$NEXT_PUBLIC_API_HOST \
+  --build-arg NEXT_PUBLIC_MIXPANEL_TOKEN=$NEXT_PUBLIC_MIXPANEL_TOKEN \
+  --build-arg SITE_URL=$SITE_URL \
+  --build-arg NEXT_PUBLIC_SENTRY_DSN=$NEXT_PUBLIC_SENTRY_DSN \
+  --build-arg SENTRY_ORG=$SENTRY_ORG \
+  --build-arg SENTRY_PROJECT=$SENTRY_PROJECT \
+  --build-arg SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN .
