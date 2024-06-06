@@ -8,6 +8,7 @@ import RegisterForm from "../_steps/RegisterForm"
 import helperAuth from "./helperAuth"
 import VerifyPhoneCode from "../_steps/VerifyPhoneCode"
 import VerifyEmailForm from "../_steps/VerifyEmailForm"
+import useAuth from '../_context/useAuth'
 
 interface Step {
   id: string
@@ -17,7 +18,7 @@ interface Step {
 
 const authController: Step[] = [
   // ===============================================
-  // 
+  // Check
   // ===============================================
   {
     id: "checkEmail",
@@ -27,7 +28,7 @@ const authController: Step[] = [
       if (data.email === "") {
         return { errors: [{ message: "empty email" }] }
       }
-
+      console.log("Form data")
       const res = await authCheckEmail(data.email)
       if (res.hasAccount) {
         return { next: helperAuth.getController("password") }
@@ -48,6 +49,7 @@ const authController: Step[] = [
         console.log("fire checkPhone true") //todo: fix doesn't update the component
         return {
           next: helperAuth.getController("verifyPhone")
+          //authController['checkPhone']
         }
       } else {
 
@@ -76,6 +78,13 @@ const authController: Step[] = [
   // ===============================================
   {
     id: "password",
+    component: PasswordForm,
+    onSubmit: () => {
+      return { success: true }
+    }
+  },
+  {
+    id: "forgottenPassword",
     component: PasswordForm,
     onSubmit: () => {
       return { success: true }

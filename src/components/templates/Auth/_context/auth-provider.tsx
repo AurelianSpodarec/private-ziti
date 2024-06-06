@@ -2,6 +2,7 @@
 
 import { ChangeEvent, FormEvent, createContext, useEffect, useState } from 'react'
 import helperAuth from '../_controllers/helperAuth'
+import authController from '../_controllers/authController'
 
 interface IAuthContext {
   children: React.ReactNode
@@ -94,12 +95,14 @@ export default AuthProvider
 //   const [step, setStep] = useState(helperAuth.getController(authMethod))
 //   const [errors, setErrors] = useState([])
 
+// const [controller, setController] = useState(authController)
+
 //   const getController = useCallback((controllerID) => {
 //     return authController.find(item => item.id === controllerID);
 //   }, []);
 
 //   return (
-//     <AuthContext.Provider value={{ authController, getController, fomData, step }}>
+//     <AuthContext.Provider value={{ getController, fomData, step }}>
 //       {children}
 //     </AuthContext.Provider>
 //   );
