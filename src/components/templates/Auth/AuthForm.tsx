@@ -19,6 +19,7 @@ function AuthForm () {
   } = useAuth()
 
   const StepComponent = step?.component
+  console.log(authMethod)
   return (
     <div>
 
@@ -51,14 +52,14 @@ function AuthForm () {
                 errors={errors}
                 handleInputChange={handleInputChange}
               />
-              {authMethod === "checkEmail" || authMethod === "checkPhone" &&
+              {(authMethod === "checkEmail" || authMethod === "checkPhone") &&
                 <SocialLoginList authMethod={authMethod} handleAuthMethodSelection={handleAuthMethodSelection} />
               }
             </>
           )}
         </form>
       </section>
-    </div >
+    </div>
   )
 }
 

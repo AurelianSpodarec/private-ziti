@@ -3,25 +3,26 @@
 import { useState } from 'react'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import TemplateAuth from '@/components/templates/Auth'
+import useModal from '@/context/modal/useModal'
 
-type LoginMethod = 'phone' | 'email'
+// type LoginMethod = 'phone' | 'email'
 
-interface IUserAccount {
-  hasAccount: boolean
-  accountComplete: boolean
-  emailVerified: boolean
-  audienceType: string[]
-  privateAccountData: {
-    obfuscatedEmail: string
-  }
-  cookies: string
-}
+// interface IUserAccount {
+//   hasAccount: boolean
+//   accountComplete: boolean
+//   emailVerified: boolean
+//   audienceType: string[]
+//   privateAccountData: {
+//     obfuscatedEmail: string
+//   }
+//   cookies: string
+// }
 
 function ModalAuth () {
-  const [open, setOpen] = useState(true)
+  const { isOpen } = useModal()
 
   return (
-    <Dialog modal open={open}>
+    <Dialog modal open={isOpen}>
       <DialogContent>
         <TemplateAuth />
       </DialogContent>

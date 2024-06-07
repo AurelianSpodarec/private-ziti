@@ -129,8 +129,8 @@ const authController: Step[] = [
       // }
       if (res.message === "success") {
         return {
-          next: "",
-          setModalOpen: false
+          next: true,
+          setModalState: "close"
         }
       } else {
         // error

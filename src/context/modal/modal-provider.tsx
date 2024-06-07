@@ -12,7 +12,7 @@ interface IModalContext {
 export const ModalContext = createContext<IModalContext | undefined>(undefined)
 
 function ModalProvider ({ children }: { children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   function setModalOpen () {
     setIsOpen(true)
@@ -24,11 +24,20 @@ function ModalProvider ({ children }: { children: React.ReactNode }) {
     document.body.style.overflow = 'auto'
   }
 
+  function setModalState (state: "close" | "open") {
+    if (state === "open") {
+      setModalOpen()
+    } else {
+      setModalClose()
+    }
+  }
+
   const readValues = {
     children,
     isOpen,
     closeModal: setModalClose,
-    openModal: setModalOpen
+    openModal: setModalOpen,
+    setModalState
   }
 
   return (

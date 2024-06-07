@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import helperAuth from './_controllers/helperAuth'
+import useModal from '@/context/modal/useModal'
 
 
 // type AuthMethod = "email" | "phone"
@@ -12,6 +13,8 @@ interface IAuthState {
 }
 
 export const useAuth = (): IAuthState => {
+
+  const { isOpen, openModal, setModalState } = useModal()
   const [authMethod, setAuthMethod] = useState<string>("checkEmail")
   // const [stepID, setStepID] = useState<string>("checkEmail") // refactor this later
 
@@ -47,11 +50,16 @@ export const useAuth = (): IAuthState => {
     if (step?.onSubmit) {
       const result = await step?.onSubmit(formData)
       console.log("res", result)
+
       if (result.next) {
-        console.log("fire")
+        console.log("fireee", result)
         setStep(result.next)
         setAuthMethod(result.next)
-        console.log("s", result.next)
+
+        if (result.setModalState === "close") {
+          console.log("fire", isOpen)
+          setModalState("close")
+        }
       } else {
         setErrors(result.errors)
         console.log("handleSubmit", result)
