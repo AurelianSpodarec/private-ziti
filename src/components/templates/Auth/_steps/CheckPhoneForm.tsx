@@ -11,7 +11,8 @@ function CheckPhoneForm ({ formData, handleInputChange }: CheckPhoneFormProps) {
   return (
     <div>
       <label>
-        PHONEEEEEEEEEE
+
+
         <Input
           placeholder="Phone"
           type="phone"
