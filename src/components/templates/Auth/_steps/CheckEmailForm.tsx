@@ -10,7 +10,7 @@ interface CheckEmailFormProps {
 
 function CheckEmailForm ({ formData, handleInputChange, errors }: CheckEmailFormProps) {
   return (
-    <div>
+    <div className="space-y-4">
       <label>
         <Input
           placeholder="Email"

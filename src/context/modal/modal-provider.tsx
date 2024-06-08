@@ -12,7 +12,7 @@ interface IModalContext {
 export const ModalContext = createContext<IModalContext | undefined>(undefined)
 
 function ModalProvider ({ children }: { children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   function setModalOpen () {
     setIsOpen(true)

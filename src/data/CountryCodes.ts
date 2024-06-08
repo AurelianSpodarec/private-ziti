@@ -1,4 +1,4 @@
-const CountryCodes = [
+const countryCodes = [
   {
     "name": "Andorra",
     "code": "AD",
@@ -1929,4 +1929,4 @@ const CountryCodes = [
   }
 ]
 
-export default CountryCodes
+export default countryCodes

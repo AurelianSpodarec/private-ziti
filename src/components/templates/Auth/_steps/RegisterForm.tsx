@@ -67,7 +67,7 @@ function RegisterForm ({ formData, handleInputChange }: IRegisterForm) {
       </div>
 
       <div>
-        <p>Ziti sends exclusive deals, inspiration, emails, and push notifications. Opt out anytime in your account settings or from marketing notifications.</p>
+        <p className="text-xs">Ziti sends exclusive deals, inspiration, emails, and push notifications. Opt out anytime in your account settings or from marketing notifications.</p>
         <input type="checkbox" name="marketingOptOut" value={formData.marketingOptOut} />
         <label for="marketingOptOut">I don’t want to receive marketing messages from Airbnb.</label>
       </div>

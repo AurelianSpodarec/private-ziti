@@ -5,7 +5,7 @@ function SocialLoginList ({ authMethod, handleAuthMethodSelection }: any) {
   return (
     <>
       <DividerLine />
-      <div>
+      <div className="space-y-4">
         <SocialLoginButton
           name="Google"
           onClick={() => console.log("Google auth not implemented")}

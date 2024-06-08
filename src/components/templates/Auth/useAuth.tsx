@@ -3,7 +3,7 @@ import helperAuth from './_controllers/helperAuth'
 import useModal from '@/context/modal/useModal'
 
 
-// type AuthMethod = "email" | "phone"
+type AuthMethod = "checkEmail" | "checkPhone"
 
 interface IAuthState {
   authMethod: string,
@@ -15,7 +15,7 @@ interface IAuthState {
 export const useAuth = (): IAuthState => {
 
   const { isOpen, openModal, setModalState } = useModal()
-  const [authMethod, setAuthMethod] = useState<string>("checkEmail")
+  const [authMethod, setAuthMethod] = useState<AuthMethod>("checkPhone")
   // const [stepID, setStepID] = useState<string>("checkEmail") // refactor this later
 
   const [step, setStep] = useState(helperAuth.getController(authMethod))
@@ -24,8 +24,8 @@ export const useAuth = (): IAuthState => {
     firstName: "John",
     lastName: "Smith",
     dob: "1979-09-22",
-    email: "",
-    pwd: "QWEqwe123",
+    email: "ivanferrera@gmail.com",
+    pwd: "abc123",
     marketingOptOut: false,
     reference: "",
     phone: "",

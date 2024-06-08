@@ -23,6 +23,7 @@ function ModalAuth () {
 
   return (
     <Dialog modal open={isOpen}>
+      {/* title */}
       <DialogContent>
         <TemplateAuth />
       </DialogContent>

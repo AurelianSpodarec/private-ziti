@@ -1,12 +1,13 @@
 import { cva } from 'class-variance-authority'
 
+// Needs to be dynamic
 const buttonVariants = cva(
   'inline-flex items-center duration-75 justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
         default: 'bg-white text-text shadow-button border border-gray-400',
-        primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        primary: 'bg-primary text-white hover:bg-primary/90',
 
         secondary: '',
 

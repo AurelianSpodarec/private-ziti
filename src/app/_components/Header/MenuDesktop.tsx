@@ -4,19 +4,22 @@ import { auth } from '@/auth'
 import { serverActionUser } from './serverActionUser'
 import { useEffect, useState } from 'react'
 import useModal from '@/context/modal/useModal'
+import { getUserprofile } from '@/services/apis/requests/user'
 
 function MenuDesktop () {
   const [user, setUser] = useState({})
+
   useEffect(() => {
     const fetchData = async () => {
       const user = await serverActionUser()
       setUser(user)
+      // const a = await getUserprofile()
+      // console.log("a", a)
     }
 
     fetchData()
   }, [])
 
-  const isLogged = false
   const { openModal } = useModal()
   // if (!user.id) return
   return (

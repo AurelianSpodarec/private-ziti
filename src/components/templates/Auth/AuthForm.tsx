@@ -19,7 +19,7 @@ function AuthForm () {
   } = useAuth()
 
   const StepComponent = step?.component
-  console.log(authMethod)
+  // console.log(authMethod)
   return (
     <div>
 

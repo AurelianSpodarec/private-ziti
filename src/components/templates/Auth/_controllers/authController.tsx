@@ -7,6 +7,7 @@ import PasswordForm from "../_steps/PasswordForm"
 import RegisterForm from "../_steps/RegisterForm"
 import VerifyPhoneCode from "../_steps/VerifyPhoneCode"
 import VerifyEmailForm from "../_steps/VerifyEmailForm"
+import { serverLoginEmaislAction } from "@/actions/loginServerAction"
 
 interface Step {
   id: string
@@ -81,7 +82,6 @@ const authController: Step[] = [
       }
 
 
-      console.log("phone verify", res)
     }
   },
   // ===============================================
@@ -90,8 +90,20 @@ const authController: Step[] = [
   {
     id: "password",
     component: PasswordForm,
-    onSubmit: () => {
-      return { success: true }
+    onSubmit: async (formData) => {
+
+      const res = await serverLoginEmaislAction({ email: formData.email, password: formData.pwd })
+
+      // login the user, hide modal
+      // if (res.message === "success") {
+      //   return {
+      //     next: true,
+      //     setModalState: "close"
+      //   }
+      // } else {
+      //   // error
+      // }
+      // return { success: true }
     }
   },
   {
@@ -108,7 +120,7 @@ const authController: Step[] = [
     id: "register",
     component: RegisterForm,
     onSubmit: async (formData) => {
-      console.log("fire", formData)
+      // console.log("fire", formData)
 
       const res = await authRegister({
         firstName: formData.firstName,
@@ -119,7 +131,7 @@ const authController: Step[] = [
         marketingOptOut: formData.marketingOptOut
         // reference: formData.reference
       })
-      console.log(res)
+      // console.log(res)
 
       //TS
       //   {

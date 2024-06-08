@@ -1,11 +1,28 @@
 'use server'
 
 import { signIn } from '@/auth'
+import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
+import { AuthError } from 'next-auth'
 
-export async function serverLoginEmaislAction () {
-  // This is just an example. Replace with your actual login logic.
-  const res = await signIn('credentials', {
-    redirect: false,
-  })
-  return res
+export async function serverLoginEmaislAction (values) {
+  const { email, password } = values
+  try {
+    await signIn('credentials', {
+      email,
+      password,
+      redirectTo: DEFAULT_LOGIN_REDIRECT
+    })
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return { error: "Invalid credentials!" }
+        default:
+          return { error: "Something went wrong ;-(" }
+      }
+    }
+
+    throw error
+  }
+
 }
