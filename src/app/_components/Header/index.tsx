@@ -1,13 +1,13 @@
-'use client'
 
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import Container from '@/components/Container'
 
 import MenuMobile from './MenuMobile'
 import MenuDesktop from './MenuDesktop'
-import { usePathname } from 'next/navigation'
+import { auth } from '@/auth'
+// import { usePathname } from 'next/navigation'
 
 function LogoZiti () {
   return (
@@ -21,23 +21,25 @@ function LogoZiti () {
   )
 }
 
-function Header () {
+async function Header () {
+  const session = await auth()
   // TODO: START; Remove once blog becomes part of theapp
-  const router = usePathname()
-  const isBlogPage = router.includes('/articles') // TODO: Use const for urls
+  // const router = usePathname()
+  // const isBlogPage = router.includes('/articles') // TODO: Use const for urls
   // TODO: END
 
-  const [mobileOpen, setMobileOpen] = useState(false)
+  // const [mobileOpen, setMobileOpen] = useState(false)
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 1220) setMobileOpen(false)
-    }
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     if (window.innerWidth <= 1220) setMobileOpen(false)
+  //   }
 
-    window.addEventListener('resize', handleResize)
-    return () => { window.removeEventListener('resize', handleResize) }
-  }, [])
+  //   window.addEventListener('resize', handleResize)
+  //   return () => { window.removeEventListener('resize', handleResize) }
+  // }, [])
 
+  console.log("woopopo", session.user)
   return (
     <header className="w-full z-30">
       <Container>
@@ -48,10 +50,10 @@ function Header () {
             <span className="sr-only">Ziti</span>
           </Link>
 
-          <MenuDesktop />
+          <MenuDesktop session={session} />
 
           {/* TODO: Temporary - remove once the blog becomes part of the app */}
-          {!isBlogPage && (
+          {/* {!isBlogPage && (
             <>
               <div className="lg:hidden">
                 <button type="button" onClick={() => { setMobileOpen(true) }}>
@@ -61,7 +63,7 @@ function Header () {
 
               <MenuMobile isOpen={mobileOpen} setMobileOpen={setMobileOpen} />
             </>
-          )}
+          )} */}
         </div>
       </Container>
     </header>

@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import UserDropdown from '../UserDropdown'
 import { auth } from '@/auth'
@@ -6,19 +8,20 @@ import { useEffect, useState } from 'react'
 import useModal from '@/context/modal/useModal'
 import { getUserprofile } from '@/services/apis/requests/user'
 
-function MenuDesktop () {
-  const [user, setUser] = useState({})
+function MenuDesktop ({ session }) {
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const user = await serverActionUser()
-      setUser(user)
-      // const a = await getUserprofile()
-      // console.log("a", a)
-    }
+  // const [user, setUser] = useState({})
 
-    fetchData()
-  }, [])
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const user = await serverActionUser()
+  //     setUser(user)
+  //     // const a = await getUserprofile()
+  //     // console.log("a", a)
+  //   }
+
+  //   fetchData()
+  // }, [])
 
   const { openModal } = useModal()
   // if (!user.id) return
@@ -32,14 +35,18 @@ function MenuDesktop () {
             <UserDropdown />
           } */}
 
-          {user?.id
+          {session?.user?.id
             ?
-            <p className="text-black">Hello User</p>
+            <p className="text-black">Hello {session?.user?.givenName}</p>
             :
             <Button onClick={() => openModal()}>
               Login
             </Button>
           }
+
+          <button className="text-black" onClick={() => openModal()}>
+            Login Again
+          </button>
 
         </div>
 

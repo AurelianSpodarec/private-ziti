@@ -14,7 +14,6 @@ function parseJwt (token) {
   }
 }
 
-
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
@@ -23,7 +22,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       authorize: async (credentials, req) => {
-        console.log("hiiiiiiiiiiiiiii", credentials)
         const { email, password, rememberMe } = credentials
 
         const res: any = await authLoginByEmail({
@@ -31,7 +29,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           pwd: password,
           rememberMe: true
         })
-        console.log("authorize res", res)
 
         if (!res) {
           throw new Error("User not found.")
@@ -43,27 +40,37 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return {
           token: res.accessToken,
           refresh: cookies.refresh,
-          // user: userProfile
+          user
         }
       },
     }),
   ],
   callbacks: {
     async session ({ token, session }) {
-      // console.log({ sessionToken: token })
+      console.log({ sessionToken: token, session })
+
+      const existingUser = await getUserprofile(token.token)
 
       if (token.sub && session.user) {
-        session.user.id = token.sub
+        session.user = existingUser
       }
       return session
     },
     async jwt ({ token, user }) {
-      // console.log("jwttttttttt", token)
 
-      // if (!token.sub) return token
+      // console.log("ressss", res)
+      console.log("wot", token)
 
-      const existingUser = await getUserprofile(token.token)
-      console.log("wooooo", existingUser)
+
+
+      // return token
+      console.log("jwttttttttt", token)
+      console.log("woo", token.token)
+
+      // if (!token.token) return token
+
+      // const existingUser = await getUserprofile(token.token)
+      // console.log("wooooo", existingUser)
 
       // if (!existingUser) return token
 

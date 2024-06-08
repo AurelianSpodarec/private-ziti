@@ -94,6 +94,7 @@ const authController: Step[] = [
 
       const res = await serverLoginEmaislAction({ email: formData.email, password: formData.pwd })
 
+      console.log("wooooommmmmmmmmm", res)
       // login the user, hide modal
       // if (res.message === "success") {
       //   return {
