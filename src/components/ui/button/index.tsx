@@ -54,7 +54,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         )}
 
         {!hideTextLoading &&
-          <span>{children || label}</span>
+          <span className="text-nowrap">{children || label}</span>
         }
 
         {isLoading && (

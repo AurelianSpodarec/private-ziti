@@ -15,11 +15,15 @@ interface IAvatar {
   fallbackText: string
 }
 
+// TODO: Get name and get its first letter for fallback text, like google
 function Avatar ({ src, fallbackText, name, size = 'h-8 w-8', verified, shape = 'rounded-full' }: IAvatar) {
   return (
-    <UIAvatar className={`rounded-full ${shape} ${size}`}>
-      <UIAvatarImage className={`rounded-full ${shape}`} src={src} alt={name} />
-      <UIAvatarFallback>{fallbackText}</UIAvatarFallback>
+    <UIAvatar className={`flex rounded-full ${shape} ${size}`}>
+      <div className="flex items-center space-x-2">
+        <UIAvatarImage className={`rounded-full ${shape}`} src={src} alt={name} />
+        <span className="text-foreground text-nowrap text-sm">{name}</span>
+        <UIAvatarFallback>{fallbackText}</UIAvatarFallback>
+      </div>
 
       {verified &&
         <div className="absolute top-5 left-5 h-5 w-5">

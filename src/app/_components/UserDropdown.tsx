@@ -11,37 +11,47 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 
-function UserDropdown () {
+function UserDropdown ({ session }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="flex items-center justify-between space-x-2">
-          <Avatar src="https://media.ziti.io/profile/bacbf896-83d1-4b0a-bf8d-78f4a4ddf42e/e1839b5b-1820-4f52-842e-77f0cfe4e79c.webp" fallbackText="JD" name="John Doe" />
-          <span className="text-black">
-            John Doe
-          </span>
+        <div>
+          <Avatar src="https://media.licdn.com/dms/image/D4D03AQE8vC6NMPCXyA/profile-displayphoto-shrink_200_200/0/1710696258127?e=2147483647&v=beta&t=_TMmtZ5lFsbXJGRKA01HzRRFmQnIuhxOn7ypfqpUJL0"
+            fallbackText="JD"
+            name={`Hi! ${session?.user.givenName}`}
+          />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 bg-white">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <Link href="#">
-              <span>Profile</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
             <Link href="/settings/membership">
-              <span>Membership</span>
+              <span>Messages</span>
             </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <Link href="/settings">
-              <span>Settings</span>
+              <span>Whishlist</span>
             </Link>
           </DropdownMenuItem>
+
+          <DropdownMenuSeparator />
+
+          <DropdownMenuItem>
+            <Link href="#">
+              <span>Account</span>
+            </Link>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem>
+            <Link href="#">
+              <span>Post Property</span>
+            </Link>
+          </DropdownMenuItem>
+
+          <DropdownMenuSeparator />
 
           <DropdownMenuItem>
             <form action="/api/auth/sign-out" method="post">
