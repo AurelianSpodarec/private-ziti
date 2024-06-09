@@ -18,7 +18,7 @@ function UserDropdown ({ session }) {
         <div>
           <Avatar src="https://media.licdn.com/dms/image/D4D03AQE8vC6NMPCXyA/profile-displayphoto-shrink_200_200/0/1710696258127?e=2147483647&v=beta&t=_TMmtZ5lFsbXJGRKA01HzRRFmQnIuhxOn7ypfqpUJL0"
             fallbackText="JD"
-            name={`Hi! ${session?.user.givenName}`}
+            name={`${session?.user.givenName}`}
           />
         </div>
       </DropdownMenuTrigger>

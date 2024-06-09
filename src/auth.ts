@@ -58,28 +58,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async jwt ({ token, user }) {
 
-      // console.log("ressss", res)
-      console.log("wot", token)
-
-
-
-      // return token
-      console.log("jwttttttttt", token)
-      console.log("woo", token.token)
-
-      // if (!token.token) return token
-
-      // const existingUser = await getUserprofile(token.token)
-      // console.log("wooooo", existingUser)
-
-      // if (!existingUser) return token
-
-      // console.log({ existingUser })
-
-
-      // return token
+      console.log("tokkk", token)
       const currentTime = Math.floor(Date.now() / 1000)
       if (token?.exp && currentTime > token.exp) {
+        console.log("token expired", token, currentTime)
         try {
           const res = await refreshToken(token?.refresh)
           const cookies = parseCookies(res.cookies)
@@ -95,7 +77,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           }
         } catch (error) {
           console.log("err", error)
-          //   return new URL("/signin")
         }
       }
       return { ...token, ...user }

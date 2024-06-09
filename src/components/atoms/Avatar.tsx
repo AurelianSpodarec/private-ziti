@@ -19,9 +19,9 @@ interface IAvatar {
 function Avatar ({ src, fallbackText, name, size = 'h-8 w-8', verified, shape = 'rounded-full' }: IAvatar) {
   return (
     <UIAvatar className={`flex rounded-full ${shape} ${size}`}>
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-3">
+        <span className="text-foreground text-nowrap text-md font-semibold">{name}</span>
         <UIAvatarImage className={`rounded-full ${shape}`} src={src} alt={name} />
-        <span className="text-foreground text-nowrap text-sm">{name}</span>
         <UIAvatarFallback>{fallbackText}</UIAvatarFallback>
       </div>
 

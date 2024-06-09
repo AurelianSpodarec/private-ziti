@@ -4,7 +4,9 @@
  * @type {string[]}
  */
 export const publicRoutes = [
-  "/"
+  "/",
+  "/properties",
+  "/properties/[id]"
 ]
 
 /**
