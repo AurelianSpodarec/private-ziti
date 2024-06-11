@@ -27,6 +27,8 @@ ENV SENTRY_PROJECT=${SENTRY_PROJECT}
 ENV SENTRY_AUTH_TOKEN=${SENTRY_AUTH_TOKEN}
 ENV IS_ACTUAL_PRODUCTION=${IS_ACTUAL_PRODUCTION}}
 
+RUN echo "This is actual production: ${IS_ACTUAL_PRODUCTION}"
+
 # Copy the rest of the application code
 COPY . .
 
