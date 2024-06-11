@@ -26,6 +26,18 @@ const nextConfig = {
         pathname: '/**'
       },
       {
+        protocol: 'https',
+        hostname: 'dev.media.ziti.io',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'staging.media.ziti.io',
+        port: '',
+        pathname: '/**'
+      },
+      {
         protocol: 'http',
         hostname: 'localhost',
         port: '3000',
