@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata, ResolvingMetadata } from 'next'
+import { notFound } from 'next/navigation'
 
 import { getArticles, getArticleBySlug } from '@/services/apis/requests/blog'
 import { readingTime } from '@/lib/readingTime'
@@ -43,6 +44,9 @@ async function BlogView ({ params: { slug } }: { params: { slug: string } }) {
   const res = await getArticleBySlug(slug)
 
   const data = res.NewsArticle
+  if (!data) {
+    notFound()
+  }
 
   return (
     <>
